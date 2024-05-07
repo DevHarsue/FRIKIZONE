@@ -1,9 +1,22 @@
 import mariadb
+import os
+from dotenv import load_dotenv
 
+#Para cargar las variable de entorno (estan en un archivo .env)
+load_dotenv()
 class Data_Base:
     def __init__(self):
-        self.conn = mariadb.connect(user = "user_system",password="0311",host="localhost",port=3306,database="frikizone")
-        #este diccionario servira para saber los atributos que tiene cada tabla
+        #Diccionario de la configuracion para conectarse a la db, saca los datos de un archivo .env
+        self.config = {
+            "user": os.getenv("USER"),
+            "password": os.getenv("PASSWORD"),
+            "host": os.getenv("HOST"),
+            "port": os.getenv("PORT"),
+            "database": os.getenv("DATABASE")
+        }
+        
+        #este diccionario servira para saber los atributos que tiene cada tabla 
+        #Esto esta en fase de pruebas ya que podria haber una mejor manera de hacerlo
         self.dictionary_tables = {
             "products": "product_name,product_description,product_date,product_value",
             "employees": "employee_id,employee_name,employee_last_name,employee_address,employee_password,employee_salt",
@@ -19,11 +32,13 @@ class Data_Base:
     # True o False devuelve si la operacion es un insert, update o delete, datos si es un select 
     def execute(self,query):
         try:
-            cursor = self.conn.cursor()
-            cursor.execute(query)
-            result = cursor.fetchall() if query.find("SELECT")!=-1 else True
-            self.conn.commit()
-            return result
+            # Utilizo with, ya que de esta manera la conexion se cierra automaticamente
+            with mariadb.connect(**self.config) as conn:
+                cursor = conn.cursor()
+                cursor.execute(query)
+                result = cursor.fetchall() if query.find("SELECT")!=-1 else True
+                self.conn.commit()
+                return result
         except:
             return False
     
@@ -65,14 +80,14 @@ class Data_Base:
         return self.execute(text)
     
     # Para actualizar datos, se dice la tabla, el id(primary key) de la fila
-    # los datos a actualizar se pasan como tuplas ("employee_name","hardware")("employee_last_name","martinez")  
+    # los datos a actualizar se pasan como tuplas ("employee_name","hardware"),("employee_last_name","martinez")  
     def query_update(self,table,id,*args):
         # Comprobamos que los parametros que paso existen como atrs en la tabla
         atrs = self.dictionary_tables[f"{table}"].split(",")
         for update in args:
-            error = filter(lambda x: x==update[0],atrs)
+            error = list(filter(lambda x: x==update[0],atrs))
             if not error:
-                return False
+                return f"Los parametros validos son: {self.dictionary_tables[table]}"
             
         # Creamos el texto que servira para la consulta 
         # debe quedar: employee_name="hardware",employee_last_name="martinez" 
@@ -91,6 +106,3 @@ class Data_Base:
         
         return self.execute(text)
     
-
-db = Data_Base()
-print(db.query_update("currencys",1,("currency_id",1)))

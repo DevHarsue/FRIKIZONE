@@ -1,0 +1,5 @@
+*.pdf
+*.png
+frikizone
+__pycache__
+*.env
