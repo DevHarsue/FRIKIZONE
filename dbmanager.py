@@ -11,18 +11,18 @@ class Data_Base:
             "user": os.getenv("USER"),
             "password": os.getenv("PASSWORD"),
             "host": os.getenv("HOST"),
-            "port": os.getenv("PORT"),
+            "port": int(os.getenv("PORT")),
             "database": os.getenv("DATABASE")
         }
-        
-        #este diccionario servira para saber los atributos que tiene cada tabla 
+                
+        #este diccionario servira para saber las columnas que tiene cada tabla 
         #Esto esta en fase de pruebas ya que podria haber una mejor manera de hacerlo
         self.dictionary_tables = {
             "products": "product_name,product_description,product_date,product_value",
-            "employees": "employee_id,employee_name,employee_last_name,employee_address,employee_password,employee_salt",
+            "employees": "employee_id,employee_name,employee_last_name,employee_address,employee_password,employee_salt,rol_id",
             "sales": "sale_date,client_id,employee_id",
             "sales_details": "sale_id,product_id,currency_id,method_id,sale_detail_quantity",
-            "clients": "client_id,client_name,client_last_name,client_address",
+            "clients": "client_id,client_name,client_lastname,client_address",
             "methods": "method_name,method_description",
             "currencys": "currency_name,currency_relation",
             "rols" : "rol_name,rol_permissions"
@@ -31,63 +31,50 @@ class Data_Base:
     # Metodo que ejecuta las consultas y devuelve ya sea datos, o un true o false
     # True o False devuelve si la operacion es un insert, update o delete, datos si es un select 
     def execute(self,query):
-        try:
-            # Utilizo with, ya que de esta manera la conexion se cierra automaticamente
-            with mariadb.connect(**self.config) as conn:
-                cursor = conn.cursor()
-                cursor.execute(query)
-                result = cursor.fetchall() if query.find("SELECT")!=-1 else True
-                self.conn.commit()
-                return result
-        except:
-            return False
-    
-    # Tranforma algun iterable de la forma (2,"holas",232) a "2,'holas',232"
-    def tranform_to_text(self,iterable):
-        text = ""
-        # En tal caso que el iterable no sea un interable
-        if type(iterable) is int or type(iterable) is str:
-            return iterable
         
-        for i,element in enumerate(iterable):
-            text += "'"+str(element)+"'"+"," if i!=len(iterable)-1 else "'"+str(element)+"'"
-        return text
-    
-    # Para seleccionar datos, se le pasa la tabla
-    # si no se quieren todos los datos se especifican los nombres uno por uno (no en iterable)
+        # Utilizo with, ya que de esta manera la conexion se cierra automaticamente
+        with mariadb.connect(**self.config) as conn:
+            cursor = conn.cursor()
+            cursor.execute(query)
+            result = cursor.fetchall() if query.find("SELECT")!=-1 or query.find("DESCRIBE")!=-1 else True
+            conn.commit()
+            return result
+        
+    # Para seleccionar datos, se le pasan las tablas
+    # si no se quieren todas las columnas se especifican los nombres uno por uno (no en iterable)
     def query_select(self,table,*args):
-        atrs = self.tranform_to_text(args)
+        columns = str(args).replace("(","").replace(")","").replace("'","") if len(args)>1 else args[0] if args else None
         
-        # Comprueba si es un select de todo o de atributos especificos
-        text = f"SELECT {atrs} FROM {table}" if len(args)>0 else f"SELECT * FROM {table};"
+        # Comprueba si es un select de todo o de columnas especificos
+        text = f"SELECT {columns} FROM {table}" if args else f"SELECT * FROM {table};"
         
         return self.execute(text)
     
     # Para insertar datos, se le pasa la tabla y los valores
     def query_insert(self,table,*args):
-        # Busca en el diccionario cuales son los atributos que se deben insertar
-        atrs = self.dictionary_tables[f"{table}"]
+        # Busca en el diccionario cuales son las columnas que se deben insertar
+        columns = self.dictionary_tables[f"{table}"]
         
-        # Comprueba si el numero de parametros que se paso a la funcion es igual al numero de atrs que pide la db
+        # Comprueba si el numero de elementos en args que se paso a la funcion es igual al numero de columns que pide la db
         # En caso que no dice cuales son
-        if len(args) != len(atrs.split(",")):
-            return f"Los atributos son: {atrs}"
+        if len(args) != len(columns.split(",")):
+            return f"Las columnas son: {columns}"
         
-        values = self.tranform_to_text(args)
+        values = str(args).replace("(","").replace(")","")
         
-        text = f"INSERT INTO {table}({atrs}) VALUES({values});"
+        text = f"INSERT INTO {table}({columns}) VALUES({values});"
         
         return self.execute(text)
     
     # Para actualizar datos, se dice la tabla, el id(primary key) de la fila
     # los datos a actualizar se pasan como tuplas ("employee_name","hardware"),("employee_last_name","martinez")  
     def query_update(self,table,id,*args):
-        # Comprobamos que los parametros que paso existen como atrs en la tabla
-        atrs = self.dictionary_tables[f"{table}"].split(",")
+        # Comprobamos que los parametros que paso existen como columnas en la tabla
+        columns = tuple(x[0] for x in self.execute(f"DESCRIBE {table};"))
         for update in args:
-            error = list(filter(lambda x: x==update[0],atrs))
+            error = list(filter(lambda x: x==update[0],columns))
             if not error:
-                return f"Los parametros validos son: {self.dictionary_tables[table]}"
+                return f"Los parametros validos son: {columns}"
             
         # Creamos el texto que servira para la consulta 
         # debe quedar: employee_name="hardware",employee_last_name="martinez" 
