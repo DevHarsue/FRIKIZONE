@@ -19,213 +19,213 @@
 CREATE DATABASE IF NOT EXISTS `frikizone` /*!40100 DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci */;
 USE `frikizone`;
 
--- Volcando estructura para tabla frikizone.clients
-CREATE TABLE IF NOT EXISTS `clients` (
-  `client_id` int(10) NOT NULL,
-  `client_name` varchar(30) NOT NULL,
-  `client_lastname` varchar(30) NOT NULL,
-  `client_address` text NOT NULL,
-  PRIMARY KEY (`client_id`)
+-- Volcando estructura para tabla frikizone.auditoria_actualizar_detalles_ventas
+CREATE TABLE IF NOT EXISTS `auditoria_actualizar_detalles_ventas` (
+  `adv_id` int(11) NOT NULL AUTO_INCREMENT,
+  `venta_detalle_id` int(11) NOT NULL,
+  `adv_fecha` datetime NOT NULL,
+  `adv_columna` varchar(30) NOT NULL,
+  `adv_viejo_valor` int(11) NOT NULL,
+  `adv_nuevo_valor` int(11) NOT NULL,
+  `usuario_id` int(10) DEFAULT NULL,
+  PRIMARY KEY (`adv_id`) USING BTREE,
+  KEY `FK__usuarios` (`usuario_id`) USING BTREE,
+  KEY `FK__ventas_detalles` (`venta_detalle_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- La exportación de datos fue deseleccionada.
 
--- Volcando estructura para tabla frikizone.currencys
-CREATE TABLE IF NOT EXISTS `currencys` (
-  `currency_id` int(3) NOT NULL AUTO_INCREMENT,
-  `currency_name` varchar(30) NOT NULL,
-  `currency_relation` decimal(10,2) NOT NULL,
-  PRIMARY KEY (`currency_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+-- Volcando estructura para tabla frikizone.auditoria_borrar_detalles_ventas
+CREATE TABLE IF NOT EXISTS `auditoria_borrar_detalles_ventas` (
+  `bdv_id` int(11) NOT NULL AUTO_INCREMENT,
+  `venta_detalle_id` int(11) NOT NULL,
+  `bdv_fecha` datetime NOT NULL,
+  `venta_id` int(11) NOT NULL,
+  `producto_id` int(11) NOT NULL,
+  `divisa_id` int(11) NOT NULL,
+  `metodo_id` int(11) NOT NULL,
+  `venta_detalle_cantidad` int(11) NOT NULL,
+  `usuarios_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`bdv_id`) USING BTREE,
+  KEY `FK__ventas_detalles` (`venta_detalle_id`) USING BTREE,
+  KEY `FK__usuarios` (`usuarios_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- La exportación de datos fue deseleccionada.
 
--- Volcando estructura para tabla frikizone.methods
-CREATE TABLE IF NOT EXISTS `methods` (
-  `method_id` int(3) NOT NULL AUTO_INCREMENT,
-  `method_name` varchar(30) NOT NULL,
-  `method_description` text NOT NULL,
-  PRIMARY KEY (`method_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+-- Volcando estructura para tabla frikizone.clientes
+CREATE TABLE IF NOT EXISTS `clientes` (
+  `cliente_id` int(11) NOT NULL,
+  `cliente_nombre` varchar(30) NOT NULL,
+  `cliente_apellido` varchar(30) NOT NULL,
+  `cliente_direccion` text NOT NULL,
+  PRIMARY KEY (`cliente_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- La exportación de datos fue deseleccionada.
 
--- Volcando estructura para tabla frikizone.monitor_delete_sales_details
-CREATE TABLE IF NOT EXISTS `monitor_delete_sales_details` (
-  `mdsd_id` int(10) NOT NULL AUTO_INCREMENT,
-  `mdsd_date` datetime NOT NULL,
-  `sale_detail_id` int(10) NOT NULL,
-  `sale_id` int(10) DEFAULT NULL,
-  `product_id` int(10) DEFAULT NULL,
-  `currency_id` int(3) DEFAULT NULL,
-  `method_id` int(3) DEFAULT NULL,
-  `sale_detail_quantity` int(5) DEFAULT NULL,
-  `user_id` int(10) DEFAULT NULL,
-  PRIMARY KEY (`mdsd_id`) USING BTREE,
-  KEY `FK__sales_details` (`sale_detail_id`) USING BTREE,
-  KEY `FK__users` (`user_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+-- Volcando estructura para tabla frikizone.divisas
+CREATE TABLE IF NOT EXISTS `divisas` (
+  `divisa_id` int(11) NOT NULL AUTO_INCREMENT,
+  `divisa_nombre` varchar(30) NOT NULL,
+  `divisa_relacion` decimal(10,2) NOT NULL,
+  PRIMARY KEY (`divisa_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- La exportación de datos fue deseleccionada.
 
--- Volcando estructura para tabla frikizone.monitor_update_sales_details
-CREATE TABLE IF NOT EXISTS `monitor_update_sales_details` (
-  `musd_id` int(10) NOT NULL AUTO_INCREMENT,
-  `sale_detail_id` int(10) NOT NULL,
-  `musd_date` datetime NOT NULL,
-  `musd_atr` varchar(30) DEFAULT NULL,
-  `musd_old_value` int(11) DEFAULT NULL,
-  `musd_new_value` int(11) DEFAULT NULL,
-  `user_id` int(10) DEFAULT NULL,
-  PRIMARY KEY (`musd_id`) USING BTREE,
-  KEY `FK__sales_details` (`sale_detail_id`),
-  KEY `FK__users` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+-- Volcando estructura para tabla frikizone.metodos
+CREATE TABLE IF NOT EXISTS `metodos` (
+  `metodo_id` int(11) NOT NULL AUTO_INCREMENT,
+  `metodo_nombre` varchar(30) NOT NULL,
+  `metodo_descripcion` text NOT NULL,
+  PRIMARY KEY (`metodo_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- La exportación de datos fue deseleccionada.
 
--- Volcando estructura para tabla frikizone.products
-CREATE TABLE IF NOT EXISTS `products` (
-  `product_id` int(10) NOT NULL AUTO_INCREMENT,
-  `product_name` varchar(30) NOT NULL,
-  `product_description` text NOT NULL,
-  `product_date` datetime NOT NULL,
-  `product_value` decimal(10,2) NOT NULL,
-  PRIMARY KEY (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+-- Volcando estructura para tabla frikizone.productos
+CREATE TABLE IF NOT EXISTS `productos` (
+  `producto_id` int(11) NOT NULL AUTO_INCREMENT,
+  `producto_nombre` varchar(30) NOT NULL,
+  `producto_descripcion` text NOT NULL,
+  `producto_fecha` datetime NOT NULL,
+  `producto_valor` decimal(10,2) NOT NULL,
+  PRIMARY KEY (`producto_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- La exportación de datos fue deseleccionada.
 
--- Volcando estructura para tabla frikizone.rols
-CREATE TABLE IF NOT EXISTS `rols` (
-  `rol_id` int(2) NOT NULL AUTO_INCREMENT,
-  `rol_name` varchar(30) NOT NULL,
-  `rol_permissions` text NOT NULL,
+-- Volcando estructura para tabla frikizone.roles
+CREATE TABLE IF NOT EXISTS `roles` (
+  `rol_id` int(11) NOT NULL AUTO_INCREMENT,
+  `rol_nombre` varchar(30) NOT NULL,
+  `rol_permisos` text NOT NULL,
   PRIMARY KEY (`rol_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
--- La exportación de datos fue deseleccionada.
-
--- Volcando estructura para tabla frikizone.sales
-CREATE TABLE IF NOT EXISTS `sales` (
-  `sale_id` int(10) NOT NULL AUTO_INCREMENT,
-  `sale_date` datetime NOT NULL,
-  `client_id` int(10) NOT NULL,
-  `user_id` int(10) NOT NULL,
-  PRIMARY KEY (`sale_id`),
-  KEY `FK__clients` (`client_id`),
-  KEY `FK__users` (`user_id`),
-  CONSTRAINT `FK__clients` FOREIGN KEY (`client_id`) REFERENCES `clients` (`client_id`) ON UPDATE CASCADE,
-  CONSTRAINT `FK__users` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
--- La exportación de datos fue deseleccionada.
-
--- Volcando estructura para tabla frikizone.sales_details
-CREATE TABLE IF NOT EXISTS `sales_details` (
-  `sale_detail_id` int(10) NOT NULL AUTO_INCREMENT,
-  `sale_id` int(10) NOT NULL,
-  `product_id` int(10) NOT NULL,
-  `currency_id` int(3) NOT NULL,
-  `method_id` int(3) NOT NULL,
-  `sale_detail_quantity` int(5) NOT NULL,
-  PRIMARY KEY (`sale_detail_id`),
-  KEY `FK__sales` (`sale_id`),
-  KEY `FK__products` (`product_id`) USING BTREE,
-  KEY `FK__currencys` (`currency_id`) USING BTREE,
-  KEY `FK__methods` (`method_id`) USING BTREE,
-  CONSTRAINT `FK__currencys` FOREIGN KEY (`currency_id`) REFERENCES `currencys` (`currency_id`),
-  CONSTRAINT `FK__methods` FOREIGN KEY (`method_id`) REFERENCES `methods` (`method_id`),
-  CONSTRAINT `FK__products` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON UPDATE CASCADE,
-  CONSTRAINT `FK__sales` FOREIGN KEY (`sale_id`) REFERENCES `sales` (`sale_id`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
--- La exportación de datos fue deseleccionada.
-
--- Volcando estructura para tabla frikizone.users
-CREATE TABLE IF NOT EXISTS `users` (
-  `user_id` int(10) NOT NULL,
-  `user_name` varchar(30) NOT NULL,
-  `user_last_name` varchar(30) NOT NULL,
-  `user_address` text NOT NULL,
-  `user_password` varchar(64) NOT NULL,
-  `user_salt` varchar(16) NOT NULL,
-  `rol_id` int(2) NOT NULL,
-  PRIMARY KEY (`user_id`),
-  KEY `FK_rols` (`rol_id`),
-  CONSTRAINT `FK__rols` FOREIGN KEY (`rol_id`) REFERENCES `rols` (`rol_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- La exportación de datos fue deseleccionada.
 
--- Volcando estructura para procedimiento frikizone.insert_into_musd
+-- Volcando estructura para tabla frikizone.usuarios
+CREATE TABLE IF NOT EXISTS `usuarios` (
+  `usuario_id` int(11) NOT NULL,
+  `usuario_nombre` varchar(30) NOT NULL,
+  `usuario_apellido` varchar(30) NOT NULL,
+  `usuario_direccion` text NOT NULL,
+  `usuario_contraseña` varchar(64) NOT NULL,
+  `usuario_salt` varchar(16) NOT NULL,
+  `rol_id` int(11) NOT NULL,
+  PRIMARY KEY (`usuario_id`),
+  KEY `FK__rols` (`rol_id`) USING BTREE,
+  CONSTRAINT `FK__rols` FOREIGN KEY (`rol_id`) REFERENCES `roles` (`rol_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- La exportación de datos fue deseleccionada.
+
+-- Volcando estructura para tabla frikizone.ventas
+CREATE TABLE IF NOT EXISTS `ventas` (
+  `venta_id` int(11) NOT NULL AUTO_INCREMENT,
+  `venta_fecha` datetime NOT NULL,
+  `usuario_id` int(11) NOT NULL,
+  `cliente_id` int(11) NOT NULL,
+  PRIMARY KEY (`venta_id`),
+  KEY `fk_ventas_usuario` (`usuario_id`),
+  KEY `fk_clientes_id` (`cliente_id`),
+  CONSTRAINT `fk_clientes_id` FOREIGN KEY (`cliente_id`) REFERENCES `clientes` (`cliente_id`),
+  CONSTRAINT `fk_ventas_usuario` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`usuario_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- La exportación de datos fue deseleccionada.
+
+-- Volcando estructura para tabla frikizone.ventas_detalles
+CREATE TABLE IF NOT EXISTS `ventas_detalles` (
+  `venta_detalle_id` int(11) NOT NULL AUTO_INCREMENT,
+  `venta_id` int(11) NOT NULL,
+  `producto_id` int(11) NOT NULL,
+  `divisa_id` int(11) NOT NULL,
+  `metodo_id` int(11) NOT NULL,
+  `venta_detalle_cantidad` int(11) NOT NULL,
+  PRIMARY KEY (`venta_detalle_id`) USING BTREE,
+  KEY `FK__ventas` (`venta_id`) USING BTREE,
+  KEY `FK__productos` (`producto_id`) USING BTREE,
+  KEY `FK__divisas` (`divisa_id`) USING BTREE,
+  KEY `FK__metodos` (`metodo_id`) USING BTREE,
+  CONSTRAINT `fk_divisa_id` FOREIGN KEY (`divisa_id`) REFERENCES `divisas` (`divisa_id`),
+  CONSTRAINT `fk_metodo_id` FOREIGN KEY (`metodo_id`) REFERENCES `metodos` (`metodo_id`),
+  CONSTRAINT `fk_producto_id` FOREIGN KEY (`producto_id`) REFERENCES `productos` (`producto_id`),
+  CONSTRAINT `fk_venta_id` FOREIGN KEY (`venta_id`) REFERENCES `ventas` (`venta_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- La exportación de datos fue deseleccionada.
+
+-- Volcando estructura para procedimiento frikizone.insertar_en_adv
 DELIMITER //
-CREATE PROCEDURE `insert_into_musd`(
-	IN `sale_detail_id` INT,
-	IN `atr` TEXT,
-	IN `old_v` INT,
-	IN `new_v` INT
+CREATE PROCEDURE `insertar_en_adv`(
+	IN `venta_detalle_id` INT,
+	IN `col` TEXT,
+	IN `viejo_v` INT,
+	IN `nuevo_v` INT
 )
 BEGIN
-	INSERT INTO monitor_update_sales_details(sale_detail_id,musd_date,musd_atr,musd_old_value,musd_new_value)
-	VALUES (sale_detail_id,NOW(),atr,old_v,new_v);
+	INSERT INTO auditoria_actualizar_detalles_ventas(venta_detalle_id,adv_fecha,adv_columna,adv_viejo_valor,adv_nuevo_valor)
+	VALUES (venta_detalle_id,NOW(),col,viejo_v,nuevo_v);
 END//
 DELIMITER ;
 
--- Volcando estructura para procedimiento frikizone.old_new_equal
+-- Volcando estructura para procedimiento frikizone.procedimiento_adv
 DELIMITER //
-CREATE PROCEDURE `old_new_equal`(
-	IN `old_value` TEXT,
-	IN `new_value` TEXT,
-	OUT `result` BIT
-)
-BEGIN 
-	 IF old_value = new_value THEN
-        SET result = TRUE;
-    ELSE
-        SET result = FALSE;
-    END IF;
-END//
-DELIMITER ;
-
--- Volcando estructura para procedimiento frikizone.procedure_musd
-DELIMITER //
-CREATE PROCEDURE `procedure_musd`(
-	IN `sale_detail_id` INT,
-	IN `atr` TEXT,
-	IN `old_v` INT,
-	IN `new_v` INT
+CREATE PROCEDURE `procedimiento_adv`(
+	IN `venta_detalle_id` INT,
+	IN `col` TEXT,
+	IN `viejo_v` INT,
+	IN `nuevo_v` INT
 )
 BEGIN
 
-CALL old_new_equal(new_v,old_v,@result);
-IF @result = FALSE THEN 
-CALL insert_into_musd(sale_detail_id,atr,old_v,new_v);
+CALL viejo_nuevo_igual(nuevo_v,viejo_v,@resultado);
+IF @resultado = FALSE THEN 
+CALL insertar_en_adv(venta_detalle_id,col,viejo_v,nuevo_v);
 END IF;
 
 END//
 DELIMITER ;
 
--- Volcando estructura para disparador frikizone.sales_details_after_delete
+-- Volcando estructura para procedimiento frikizone.viejo_nuevo_igual
+DELIMITER //
+CREATE PROCEDURE `viejo_nuevo_igual`(
+	IN `viejo_valor` TEXT,
+	IN `nuevo_valor` TEXT,
+	OUT `resultado` BIT
+)
+BEGIN 
+	 IF viejo_valor = nuevo_valor THEN
+        SET resultado = TRUE;
+    ELSE
+        SET resultado = FALSE;
+    END IF;
+END//
+DELIMITER ;
+
+-- Volcando estructura para disparador frikizone.ventas_detalles_despues_actualizar
 SET @OLDTMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION';
 DELIMITER //
-CREATE TRIGGER `sales_details_after_delete` AFTER DELETE ON `sales_details` FOR EACH ROW BEGIN
-	INSERT INTO monitor_delete_sales_details
-	(mdsd_date,sale_detail_id,sale_id,product_id,currency_id,method_id,sale_detail_quantity)
-	VALUES (NOW(),OLD.sale_detail_id,OLD.sale_id,OLD.product_id,OLD.currency_id,OLD.method_id,OLD.sale_detail_quantity);
+CREATE TRIGGER `ventas_detalles_despues_actualizar` AFTER UPDATE ON `ventas_detalles` FOR EACH ROW BEGIN
+CALL procedimiento_adv(NEW.venta_detalle_id,"venta_id",OLD.venta_id,NEW.venta_id);
+CALL procedimiento_adv(NEW.venta_detalle_id,"producto_id",OLD.producto_id,NEW.producto_id);
+CALL procedimiento_adv(NEW.venta_detalle_id,"divisa_id",OLD.divisa_id,NEW.divisa_id);
+CALL procedimiento_adv(NEW.venta_detalle_id,"metodo_id",OLD.metodo_id,NEW.metodo_id);
+CALL procedimiento_adv(NEW.venta_detalle_id,"venta_detalle_id",OLD.venta_detalle_id,NEW.venta_detalle_id);
 END//
 DELIMITER ;
 SET SQL_MODE=@OLDTMP_SQL_MODE;
 
--- Volcando estructura para disparador frikizone.sales_details_after_update
+-- Volcando estructura para disparador frikizone.ventas_detalles_despues_borrar
 SET @OLDTMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION';
 DELIMITER //
-CREATE TRIGGER `sales_details_after_update` AFTER UPDATE ON `sales_details` FOR EACH ROW BEGIN
-CALL procedure_musd(NEW.sale_detail_id,"sale_id",OLD.sale_id,NEW.sale_id);
-CALL procedure_musd(NEW.sale_detail_id,"product_id",OLD.product_id,NEW.product_id);
-CALL procedure_musd(NEW.sale_detail_id,"currency_id",OLD.currency_id,NEW.currency_id);
-CALL procedure_musd(NEW.sale_detail_id,"method_id",OLD.method_id,NEW.method_id);
-CALL procedure_musd(NEW.sale_detail_id,"sale_detail_quantity",OLD.sale_detail_quantity,NEW.sale_detail_quantity);
+CREATE TRIGGER `ventas_detalles_despues_borrar` AFTER DELETE ON `ventas_detalles` FOR EACH ROW BEGIN
+	INSERT INTO auditoria_borrar_detalles_ventas
+	(bdv_fecha,venta_detalle_id,venta_id,producto_id,divisa_id,metodo_id,venta_detalle_cantidad)
+	VALUES (NOW(),OLD.venta_detalle_id,OLD.venta_id,OLD.producto_id,OLD.divisa_id,OLD.metodo_id,OLD.venta_detalle_cantidad);
 END//
 DELIMITER ;
 SET SQL_MODE=@OLDTMP_SQL_MODE;
