@@ -1,4 +1,12 @@
-class Cliente():
+from abc import ABC
+
+#Clase abstacta para cada objeto
+class ObjetoPadre(ABC):
+    pass
+
+#Objetos para cada tabla
+
+class Cliente(ObjetoPadre):
     def __init__(self,id: int,nombre: str,apellido: str,direccion: str):
         self.id = id
         self.nombre = nombre
@@ -8,7 +16,7 @@ class Cliente():
     def __repr__(self):
         return f'Cliente("{self.id}",{self.nombre},{self.apellido},{self.direccion})'
     
-class Rol():
+class Rol(ObjetoPadre):
     def __init__(self,id: int,nombre: str,permisos: str):
         self.id = id
         self.nombre = nombre
@@ -17,7 +25,7 @@ class Rol():
     def __repr__(self):
         return f'Rol("{self.id}",{self.nombre},{self.permisos})'
     
-class Usuario():
+class Usuario(ObjetoPadre):
     def __init__(self,id: int,nombre: str,apellido: str,direccion: str,contraseña: str,salt: str,rol_id: int):
         self.id = id
         self.nombre = nombre
@@ -30,7 +38,7 @@ class Usuario():
     def __repr__(self):
         return f'Usuario("{self.id}",{self.nombre},{self.apellido},{self.direccion},{self.rol_id})'
 
-class Producto():
+class Producto(ObjetoPadre):
     def __init__(self,id: int,nombre: str,descripcion: str,fecha: str,valor: float):
         self.id = id
         self.nombre = nombre
@@ -41,7 +49,7 @@ class Producto():
     def __repr__(self):
         return f'Producto("{self.id}",{self.nombre},{self.descripcion},{self.fecha},{self.valor})'   
 
-class Venta():
+class Venta(ObjetoPadre):
     def __init__(self,id: int,fecha: str,cliente_id: int,usuario_id: int):
         self.id = id
         self.fecha = fecha
@@ -51,7 +59,7 @@ class Venta():
     def __repr__(self):
         return f'Venta("{self.id}",{self.fecha},{self.cliente_id},{self.usuario_id})'
     
-class Divisa():
+class Divisa(ObjetoPadre):
     def __init__(self,id: int,nombre: str,relacion: float):
         self.id = id
         self.nombre = nombre
@@ -61,7 +69,7 @@ class Divisa():
         return f'Divisa("{self.id}",{self.nombre},{self.relacion})'
 
     
-class Metodo():
+class Metodo(ObjetoPadre):
     def __init__(self,id: int,nombre: str,descipcion: str):
         self.id = id
         self.nombre = nombre
@@ -70,7 +78,7 @@ class Metodo():
     def __repr__(self):
         return f'Metodo("{self.id}",{self.nombre},{self.descipcion})'
 
-class DetalleVenta():
+class DetalleVenta(ObjetoPadre):
     def __init__(self,id: int,venta_id: int,producto_id: int,divisa_id: int,metodo_id: int,cantidad: int):
         self.id = id
         self.venta_id = venta_id
