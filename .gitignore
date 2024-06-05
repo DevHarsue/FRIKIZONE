@@ -3,3 +3,4 @@
 frikizone
 __pycache__
 *.env
+*.vscode
