@@ -1,6 +1,7 @@
 import os
 import mariadb
 from dotenv import load_dotenv
+from conexion_bd.creador_bd_frikizone import Comprobador_BD
 
 class BaseDatos:
     def __init__(self) -> None:
@@ -15,6 +16,7 @@ class BaseDatos:
             "port": int(os.getenv("PORT")),
             "database": os.getenv("DATABASE")
         }
+        Comprobador_BD(self.configuracion)
     
     #Metodo que retorna la conexion y el cursor
     def crear_conexion_cursor(self):

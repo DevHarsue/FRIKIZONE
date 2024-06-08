@@ -1,10 +1,3 @@
--- --------------------------------------------------------
--- Host:                         localhost
--- Versión del servidor:         11.3.2-MariaDB - mariadb.org binary distribution
--- SO del servidor:              Win64
--- HeidiSQL Versión:             12.6.0.6765
--- --------------------------------------------------------
-
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET NAMES utf8 */;
 /*!50503 SET NAMES utf8mb4 */;
@@ -14,12 +7,9 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-
--- Volcando estructura de base de datos para frikizone
 CREATE DATABASE IF NOT EXISTS `frikizone` /*!40100 DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci */;
 USE `frikizone`;
 
--- Volcando estructura para tabla frikizone.auditoria_actualizar_detalles_ventas
 CREATE TABLE IF NOT EXISTS `auditoria_actualizar_detalles_ventas` (
   `adv_id` int(11) NOT NULL AUTO_INCREMENT,
   `venta_detalle_id` int(11) NOT NULL,
@@ -33,9 +23,6 @@ CREATE TABLE IF NOT EXISTS `auditoria_actualizar_detalles_ventas` (
   KEY `FK__ventas_detalles` (`venta_detalle_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- La exportación de datos fue deseleccionada.
-
--- Volcando estructura para tabla frikizone.auditoria_borrar_detalles_ventas
 CREATE TABLE IF NOT EXISTS `auditoria_borrar_detalles_ventas` (
   `bdv_id` int(11) NOT NULL AUTO_INCREMENT,
   `venta_detalle_id` int(11) NOT NULL,
@@ -51,20 +38,15 @@ CREATE TABLE IF NOT EXISTS `auditoria_borrar_detalles_ventas` (
   KEY `FK__usuarios` (`usuarios_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- La exportación de datos fue deseleccionada.
-
--- Volcando estructura para tabla frikizone.clientes
 CREATE TABLE IF NOT EXISTS `clientes` (
   `cliente_id` int(11) NOT NULL,
   `cliente_nombre` varchar(30) NOT NULL,
   `cliente_apellido` varchar(30) NOT NULL,
-  `cliente_direccion` text NOT NULL,
+  `cliente_direccion` text DEFAULT NULL,
+  `cliente_telefono` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`cliente_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- La exportación de datos fue deseleccionada.
-
--- Volcando estructura para tabla frikizone.divisas
 CREATE TABLE IF NOT EXISTS `divisas` (
   `divisa_id` int(11) NOT NULL AUTO_INCREMENT,
   `divisa_nombre` varchar(30) NOT NULL,
@@ -72,9 +54,6 @@ CREATE TABLE IF NOT EXISTS `divisas` (
   PRIMARY KEY (`divisa_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- La exportación de datos fue deseleccionada.
-
--- Volcando estructura para tabla frikizone.metodos
 CREATE TABLE IF NOT EXISTS `metodos` (
   `metodo_id` int(11) NOT NULL AUTO_INCREMENT,
   `metodo_nombre` varchar(30) NOT NULL,
@@ -82,21 +61,14 @@ CREATE TABLE IF NOT EXISTS `metodos` (
   PRIMARY KEY (`metodo_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- La exportación de datos fue deseleccionada.
-
--- Volcando estructura para tabla frikizone.productos
 CREATE TABLE IF NOT EXISTS `productos` (
   `producto_id` int(11) NOT NULL AUTO_INCREMENT,
   `producto_nombre` varchar(30) NOT NULL,
   `producto_descripcion` text NOT NULL,
-  `producto_fecha` datetime NOT NULL,
   `producto_valor` decimal(10,2) NOT NULL,
   PRIMARY KEY (`producto_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- La exportación de datos fue deseleccionada.
-
--- Volcando estructura para tabla frikizone.roles
 CREATE TABLE IF NOT EXISTS `roles` (
   `rol_id` int(11) NOT NULL AUTO_INCREMENT,
   `rol_nombre` varchar(30) NOT NULL,
@@ -104,14 +76,12 @@ CREATE TABLE IF NOT EXISTS `roles` (
   PRIMARY KEY (`rol_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- La exportación de datos fue deseleccionada.
-
--- Volcando estructura para tabla frikizone.usuarios
 CREATE TABLE IF NOT EXISTS `usuarios` (
   `usuario_id` int(11) NOT NULL,
   `usuario_nombre` varchar(30) NOT NULL,
   `usuario_apellido` varchar(30) NOT NULL,
   `usuario_direccion` text NOT NULL,
+  `usuario_telefono` varchar(20) NOT NULL DEFAULT '',
   `usuario_contraseña` varchar(64) NOT NULL,
   `usuario_salt` varchar(16) NOT NULL,
   `rol_id` int(11) NOT NULL,
@@ -120,9 +90,6 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   CONSTRAINT `FK__rols` FOREIGN KEY (`rol_id`) REFERENCES `roles` (`rol_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- La exportación de datos fue deseleccionada.
-
--- Volcando estructura para tabla frikizone.ventas
 CREATE TABLE IF NOT EXISTS `ventas` (
   `venta_id` int(11) NOT NULL AUTO_INCREMENT,
   `venta_fecha` datetime NOT NULL,
@@ -135,9 +102,6 @@ CREATE TABLE IF NOT EXISTS `ventas` (
   CONSTRAINT `fk_ventas_usuario` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`usuario_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- La exportación de datos fue deseleccionada.
-
--- Volcando estructura para tabla frikizone.ventas_detalles
 CREATE TABLE IF NOT EXISTS `ventas_detalles` (
   `venta_detalle_id` int(11) NOT NULL AUTO_INCREMENT,
   `venta_id` int(11) NOT NULL,
@@ -156,9 +120,6 @@ CREATE TABLE IF NOT EXISTS `ventas_detalles` (
   CONSTRAINT `fk_venta_id` FOREIGN KEY (`venta_id`) REFERENCES `ventas` (`venta_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- La exportación de datos fue deseleccionada.
-
--- Volcando estructura para procedimiento frikizone.insertar_en_adv
 DELIMITER //
 CREATE PROCEDURE `insertar_en_adv`(
 	IN `venta_detalle_id` INT,
@@ -172,7 +133,6 @@ BEGIN
 END//
 DELIMITER ;
 
--- Volcando estructura para procedimiento frikizone.procedimiento_adv
 DELIMITER //
 CREATE PROCEDURE `procedimiento_adv`(
 	IN `venta_detalle_id` INT,
@@ -190,7 +150,6 @@ END IF;
 END//
 DELIMITER ;
 
--- Volcando estructura para procedimiento frikizone.viejo_nuevo_igual
 DELIMITER //
 CREATE PROCEDURE `viejo_nuevo_igual`(
 	IN `viejo_valor` TEXT,
@@ -198,15 +157,14 @@ CREATE PROCEDURE `viejo_nuevo_igual`(
 	OUT `resultado` BIT
 )
 BEGIN 
-	 IF viejo_valor = nuevo_valor THEN
-        SET resultado = TRUE;
-    ELSE
-        SET resultado = FALSE;
-    END IF;
+	IF viejo_valor = nuevo_valor THEN
+		SET resultado = TRUE;
+	ELSE
+		SET resultado = FALSE;
+	END IF;
 END//
 DELIMITER ;
 
--- Volcando estructura para disparador frikizone.ventas_detalles_despues_actualizar
 SET @OLDTMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION';
 DELIMITER //
 CREATE TRIGGER `ventas_detalles_despues_actualizar` AFTER UPDATE ON `ventas_detalles` FOR EACH ROW BEGIN
@@ -219,7 +177,6 @@ END//
 DELIMITER ;
 SET SQL_MODE=@OLDTMP_SQL_MODE;
 
--- Volcando estructura para disparador frikizone.ventas_detalles_despues_borrar
 SET @OLDTMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION';
 DELIMITER //
 CREATE TRIGGER `ventas_detalles_despues_borrar` AFTER DELETE ON `ventas_detalles` FOR EACH ROW BEGIN
