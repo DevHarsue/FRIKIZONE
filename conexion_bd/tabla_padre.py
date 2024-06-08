@@ -10,14 +10,14 @@ class TablaPadre(ABC):
         #Este valor debe ser una clase hija de ObjetoPadre
         self.claseFila = None
         self.columna_id = ""
-        self.columnas = list()
+        self._columnas = list()
     
     #Para definir propiedades cuando se crea la tabla
     def definir_propiedades(self):
         descripcion_tabla = self.bd.consultar(f"DESCRIBE {self.nombre_tabla};")
         for descripcion in descripcion_tabla:
-            self.columnas.append(descripcion[0])#Para agregar el nombre de la columna
-        self.columna_id = self.columnas[0]
+            self._columnas.append(descripcion[0])#Para agregar el nombre de la columna
+        self.columna_id = self._columnas[0]
         
     def select(self,id: int = -1) -> tuple:
         """
@@ -34,11 +34,10 @@ class TablaPadre(ABC):
         else:
             condicion = "TRUE"
             
-        filas = self.bd.select(self.nombre_tabla,self.columnas,condicion)
+        filas = self.bd.select(self.nombre_tabla,self._columnas,condicion)
         return tuple(map(lambda x: self.claseFila(*x),filas))
     
     def insert(self,*valores) -> None:
-        print(valores)
         """
             Inserta en la tabla.
             
@@ -51,8 +50,8 @@ class TablaPadre(ABC):
             
         """
         #Comprueba que se hayan cargado todos los valores
-        if len(valores) != len(self.columnas) or isinstance(valores,str):
-            raise FaltanValores(self.columnas)
+        if len(valores) != len(self._columnas) or isinstance(valores,str):
+            raise FaltanValores(self._columnas)
         else:
             #se transforman los valores para crear el texto que se enviara a la bd
             valores_texto = ""
@@ -61,7 +60,7 @@ class TablaPadre(ABC):
             #Borra la coma del final
             valores_texto = valores_texto[:-1]
             
-            self.bd.insert(self.nombre_tabla,self.columnas,valores_texto)
+            self.bd.insert(self.nombre_tabla,self._columnas,valores_texto)
             
     def update(self,id: int,valores: dict) -> None:
         """
@@ -76,9 +75,9 @@ class TablaPadre(ABC):
         
         #Comprobamos que la columnas que se van a actualizar existan
         for col in tuple(valores.keys()):
-            encontrado = bool(tuple(filter(lambda c: c==col,self.columnas)))
+            encontrado = bool(tuple(filter(lambda c: c==col,self._columnas)))
             if not encontrado:
-                raise NoExisteColumna(self.columnas)
+                raise NoExisteColumna(self._columnas)
 
         self.bd.update(self.nombre_tabla,(self.columna_id,id),valores)
     

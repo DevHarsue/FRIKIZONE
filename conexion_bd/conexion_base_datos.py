@@ -27,22 +27,25 @@ class BaseDatos:
         try:
             conexion,cursor = self.crear_conexion_cursor()
             cursor.execute(sql)
-            conexion.commit()
-            conexion.close()
         except Exception as e:
+            conexion.rollback()
             print(e)
-            
+        
+        conexion.commit()
+        conexion.close()
+        
     # Metodo para consultar datos a la base de datos
     def consultar(self,sql: str) -> tuple:
         try:
             conexion,cursor = self.crear_conexion_cursor()
             cursor.execute(sql)
             resultados = tuple(cursor.fetchall())
-            conexion.close()
             return resultados
         except Exception as e:
             print(e)
-    
+            
+        conexion.close()
+        
     # Para seleccionar datos, se le pasa la tabla, columnas y la condicion
     def select(self,tabla: str,columnas: tuple,condicion: str) -> tuple:
         columnas_texto = ",".join(columnas)

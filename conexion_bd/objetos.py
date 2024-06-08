@@ -78,7 +78,7 @@ class Metodo(ObjetoPadre):
     def __repr__(self):
         return f'Metodo("{self.id}",{self.nombre},{self.descipcion})'
 
-class DetalleVenta(ObjetoPadre):
+class VentaDetalle(ObjetoPadre):
     def __init__(self,id: int,venta_id: int,producto_id: int,divisa_id: int,metodo_id: int,cantidad: int):
         self.id = id
         self.venta_id = venta_id
@@ -88,5 +88,5 @@ class DetalleVenta(ObjetoPadre):
         self.cantidad = cantidad
     
     def __repr__(self):
-        return f'DetalleVenta("{self.id}",{self.venta_id},{self.producto_id},{self.divisa_id},{self.metodo_id},{self.cantidad})'
+        return f'VentaDetalle("{self.id}",{self.venta_id},{self.producto_id},{self.divisa_id},{self.metodo_id},{self.cantidad})'
     
