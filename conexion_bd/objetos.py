@@ -90,3 +90,13 @@ class VentaDetalle(ObjetoPadre):
     def __repr__(self):
         return f'VentaDetalle("{self.id}",{self.venta_id},{self.producto_id},{self.divisa_id},{self.metodo_id},{self.cantidad})'
     
+class TotalDiario(ObjetoPadre):
+    def __init__(self,id: int, fecha: str, divisa_id: int, total: float):
+        self.id = id
+        self.fecha = fecha
+        self.divisa_id = divisa_id
+        self.total = total
+    
+    def __repr__(self):
+        return f'TotalDiario("{self.id}",{self.fecha},{self.divisa_id},{self.total}'
+        

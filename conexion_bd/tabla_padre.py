@@ -18,7 +18,21 @@ class TablaPadre(ABC):
         for descripcion in descripcion_tabla:
             self._columnas.append(descripcion[0])#Para agregar el nombre de la columna
         self.columna_id = self._columnas[0]
-        
+    
+    def crear_objetos(self,filas,claseFila = None) -> tuple:
+        """
+            Funcion para crear objetos hijos de ObjetoPadre (revisar objetos.py)
+            Args:
+                filas: Este parametro es lo que devuelve la base de datos.
+                claseFila: La clase a instanciar, sino se especifica se usa la de la tabla
+            
+            Returns:
+                Tuple: devuelve una tupla con los objetos instanciados
+        """
+        if not claseFila:
+            claseFila = self.claseFila
+        return tuple(map(lambda x: claseFila(*x),filas))
+    
     def select(self,id: int = -1) -> tuple:
         """
             Obtiene los valores de la tabla en una tupla
@@ -35,7 +49,8 @@ class TablaPadre(ABC):
             condicion = "TRUE"
             
         filas = self.bd.select(self.nombre_tabla,self._columnas,condicion)
-        return tuple(map(lambda x: self.claseFila(*x),filas))
+        
+        return self.crear_objetos(filas)
     
     def insert(self,*valores) -> None:
         """

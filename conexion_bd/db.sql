@@ -50,22 +50,22 @@ CREATE TABLE IF NOT EXISTS `clientes` (
 CREATE TABLE IF NOT EXISTS `divisas` (
   `divisa_id` int(11) NOT NULL AUTO_INCREMENT,
   `divisa_nombre` varchar(30) NOT NULL,
-  `divisa_relacion` decimal(10,2) NOT NULL,
+  `divisa_relacion` decimal(20,2) NOT NULL,
   PRIMARY KEY (`divisa_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 CREATE TABLE IF NOT EXISTS `metodos` (
   `metodo_id` int(11) NOT NULL AUTO_INCREMENT,
   `metodo_nombre` varchar(30) NOT NULL,
-  `metodo_descripcion` text NOT NULL,
+  `metodo_descripcion` text DEFAULT NULL,
   PRIMARY KEY (`metodo_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 CREATE TABLE IF NOT EXISTS `productos` (
   `producto_id` int(11) NOT NULL AUTO_INCREMENT,
   `producto_nombre` varchar(30) NOT NULL,
-  `producto_descripcion` text NOT NULL,
-  `producto_valor` decimal(10,2) NOT NULL,
+  `producto_descripcion` text DEFAULT NULL,
+  `producto_valor` decimal(20,2) NOT NULL,
   PRIMARY KEY (`producto_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -74,6 +74,16 @@ CREATE TABLE IF NOT EXISTS `roles` (
   `rol_nombre` varchar(30) NOT NULL,
   `rol_permisos` text NOT NULL,
   PRIMARY KEY (`rol_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+CREATE TABLE IF NOT EXISTS `totales_diarios` (
+  `total_diario_id` int(11) NOT NULL AUTO_INCREMENT,
+  `total_diario_fecha` date NOT NULL,
+  `divisa_id` int(11) NOT NULL,
+  `total_diario_cantidad` decimal(20,2) NOT NULL,
+  PRIMARY KEY (`total_diario_id`) USING BTREE,
+  KEY `FK_diarios_divisas` (`divisa_id`),
+  CONSTRAINT `FK_diarios_divisas` FOREIGN KEY (`divisa_id`) REFERENCES `divisas` (`divisa_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 CREATE TABLE IF NOT EXISTS `usuarios` (
@@ -92,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 
 CREATE TABLE IF NOT EXISTS `ventas` (
   `venta_id` int(11) NOT NULL AUTO_INCREMENT,
-  `venta_fecha` datetime NOT NULL,
+  `venta_fecha` date NOT NULL DEFAULT current_timestamp(),
   `usuario_id` int(11) NOT NULL,
   `cliente_id` int(11) NOT NULL,
   PRIMARY KEY (`venta_id`),
@@ -119,6 +129,41 @@ CREATE TABLE IF NOT EXISTS `ventas_detalles` (
   CONSTRAINT `fk_producto_id` FOREIGN KEY (`producto_id`) REFERENCES `productos` (`producto_id`),
   CONSTRAINT `fk_venta_id` FOREIGN KEY (`venta_id`) REFERENCES `ventas` (`venta_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+DELIMITER //
+CREATE PROCEDURE `calcular_ingreso_diario`(
+	IN `fecha` DATE
+)
+BEGIN
+SELECT t.divisa_id,t.divisa_nombre,SUM(t.total) total_ingresado
+FROM (
+	SELECT d.divisa_nombre,d.divisa_id,
+		SUM(vd.venta_detalle_cantidad)* p.producto_valor * d.divisa_relacion AS total
+	FROM ventas_detalles vd JOIN divisas d JOIN productos p JOIN ventas v
+		ON vd.divisa_id=d.divisa_id AND vd.producto_id=p.producto_id AND vd.venta_id=v.venta_id
+	WHERE v.venta_fecha = fecha
+	GROUP BY d.divisa_id,vd.producto_id,v.venta_id
+) AS t
+GROUP BY t.divisa_id;
+END//
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE `calcular_ingreso_producto_diario`(
+	IN `producto` INT,
+	IN `fecha` DATE
+)
+BEGIN
+SELECT d.divisa_nombre,SUM(vd.venta_detalle_cantidad) totales_vendidos, 
+	SUM(vd.venta_detalle_cantidad)* p.producto_valor * d.divisa_relacion AS total_vendido
+
+FROM ventas_detalles vd JOIN productos p JOIN divisas d JOIN ventas v
+	ON vd.producto_id=p.producto_id AND vd.divisa_id=d.divisa_id AND vd.venta_id=v.venta_id
+WHERE p.producto_id=producto AND v.venta_fecha=DATE(fecha)
+GROUP BY vd.divisa_id
+ORDER BY d.divisa_id;
+END//
+DELIMITER ;
 
 DELIMITER //
 CREATE PROCEDURE `insertar_en_adv`(
