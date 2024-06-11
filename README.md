@@ -19,3 +19,7 @@ DATABASE = "frikizone"
 ## Programas necesarios:
 1. MariaDB
 2. QtDesigner
+
+
+## Rutas en variable de entorno necesarias
+1. C:\Program Files\MariaDB 11.3\bin
