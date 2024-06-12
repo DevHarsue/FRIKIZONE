@@ -45,8 +45,9 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget#centralwidget{
-background:qlineargradient(spread:pad, x1:0.517, y1:0, x2:1, y2:1, stop:0 rgba(69, 155, 146, 255), stop:1 rgba(4, 76, 107, 255));
+background: qlineargradient(spread:pad, x1:0.517, y1:0, x2:0.511, y2:1, stop:0 rgba(20, 20, 02, 100), stop:1 rgba(12, 38, 60, 1))
 }
+
 </string>
   </property>
   <property name="animated">
@@ -94,8 +95,7 @@ background:qlineargradient(spread:pad, x1:0.517, y1:0, x2:1, y2:1, stop:0 rgba(6
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="styleSheet">
-     <string notr="true">
-</string>
+     <string notr="true"/>
     </property>
     <widget class="QLabel" name="Nombre_Empresa">
      <property name="geometry">
@@ -113,7 +113,9 @@ background:qlineargradient(spread:pad, x1:0.517, y1:0, x2:1, y2:1, stop:0 rgba(6
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="styleSheet">
-      <string notr="true">font: 36pt &quot;Sylfaen&quot;;</string>
+      <string notr="true">font: 700 36pt &quot;Sylfaen&quot;;
+
+color: rgb(55, 255, 248);</string>
      </property>
      <property name="text">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;FRIKIZONE&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -139,7 +141,8 @@ background:qlineargradient(spread:pad, x1:0.517, y1:0, x2:1, y2:1, stop:0 rgba(6
      </property>
      <property name="styleSheet">
       <string notr="true">font: 36pt &quot;Sylfaen&quot;;
-color: rgba(0,0,10,0.2);</string>
+color: rgba(10, 100, 80,0.2);
+background:transparent;</string>
      </property>
      <property name="text">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;FRIKIZONE &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -161,9 +164,22 @@ color: rgba(0,0,10,0.2);</string>
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color:rgba(90, 200, 255, 0.70);
+     <string notr="true">QPushButton{
+	border-radius:10px;
+	color: white;
+	background-color: rgba(57, 215, 200,0.8);
+}
+
+QPushButton:hover{
+	background-color: rgba(57, 225, 180,0.8);
+}
+
+QPushButton:pressed{
+	background-color: rgba(57, 210, 168,0.8);
+}
+
 font: 700 9pt &quot;Segoe UI&quot;;
-border-radius:8px;
+
 </string>
     </property>
     <property name="text">
@@ -183,13 +199,61 @@ border-radius:8px;
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color:rgba(90, 200, 255, 0.30);
+     <string notr="true">QPushButton{
+	border-radius:10px;
+	color: white;
+	background-color: rgba(57, 215, 200,0.5);
+}
+
+QPushButton:hover{
+	background-color: rgba(57, 225, 180,0.8);
+}
+
+QPushButton:pressed{
+	background-color: rgba(57, 210, 168,0.8);
+}
+
 font: 700 9pt &quot;Segoe UI&quot;;
-border-radius:8px;
+
 </string>
     </property>
     <property name="text">
      <string>Salir</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>370</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+	border-radius:10px;
+	color: black;
+	background-color: rgba(57, 230, 235,0.8);
+}
+
+QPushButton:hover{
+	background-color: rgba(57, 225, 180,0.8);
+}
+
+QPushButton:pressed{
+	background-color: rgba(57, 210, 168,0.8);
+}
+
+font: 700 9pt &quot;Segoe UI&quot;;
+
+</string>
+    </property>
+    <property name="text">
+     <string>Registrarse</string>
     </property>
    </widget>
   </widget>

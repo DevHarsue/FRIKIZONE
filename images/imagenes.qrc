@@ -1,0 +1,9 @@
+<RCC>
+  <qresource prefix="imagen">
+    <file>fondo.png</file>
+    <file>lock_icon.png</file>
+    <file>options_icon.png</file>
+    <file>perfil_icon.png</file>
+    <file>sincara_icon.png</file>
+  </qresource>
+</RCC>
