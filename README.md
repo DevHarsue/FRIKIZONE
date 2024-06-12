@@ -23,3 +23,6 @@ DATABASE = "frikizone"
 
 ## Rutas en variable de entorno necesarias
 1. C:\Program Files\MariaDB 11.3\bin
+
+## Para transformar de .ui a .py
+pyside6-uic ruta_del_ui -o ruta+nombre_nuevo_archivo.py
