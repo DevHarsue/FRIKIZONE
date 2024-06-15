@@ -1,8 +1,6 @@
-from conexion_bd.tablas import TablaClientes,TablaDivisas,TablaMetodos,TablaProductos,TablaRoles,TablaUsuarios,TablaVentas,TablaVentasDetalles,TablaTotalesDiarios
-from utilidades.funciones_utiles import obtener_fecha,obtener_tasa_bcv
-from utilidades.scrapping_web_cne import BuscadorPersonas
+from conexion_bd.tablas import *
 from interfaz_ui.interfaz_principal import Ui_MainWindow
-from interfaz_ui.ventana1 import Ui_MainWindow_2
+from utilidades.scrapping_web_cne import BuscadorPersonas
 from PySide6.QtWidgets import QMainWindow,QApplication,QMessageBox
 from PySide6.QtGui import QIntValidator
 import sys
@@ -12,36 +10,52 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.ventana = Ui_MainWindow()
         self.ventana.setupUi(self)
-        self.preparar_registro_clientes()
+        self.crear_logica()
         self.show()
-        self.tablaClientes = TablaClientes()
+    
+    def crear_logica(self):
+        self.ventana.stacked_widget.setCurrentIndex(3)
+        self.asignar_slots_vistas()
+        self.preparar_registro_clientes()
+    
+    def asignar_slots_vistas(self):
+        self.ventana.boton_v_registrar.pressed.connect(lambda: self.ventana.stacked_widget.setCurrentIndex(0))
+        self.ventana.boton_v_registrar_clientes.pressed.connect(lambda: self.ventana.stacked_widget.setCurrentIndex(1))
+        self.ventana.boton_v_facturar.pressed.connect(lambda: self.ventana.stacked_widget.setCurrentIndex(3))
+        self.ventana.boton_v_clientes.pressed.connect(lambda: self.ventana.stacked_widget.setCurrentIndex(4))
+        self.ventana.boton_v_productos.pressed.connect(lambda: self.ventana.stacked_widget.setCurrentIndex(5))
+        self.ventana.boton_v_cierre.pressed.connect(lambda: self.ventana.stacked_widget.setCurrentIndex(6))
+        self.ventana.boton_v_configuracion.pressed.connect(lambda: self.ventana.stacked_widget.setCurrentIndex(7))
+        self.ventana.boton_v_cerrar_sesion.pressed.connect(lambda: self.ventana.stacked_widget.setCurrentIndex(8))
+        self.ventana.boton_v_registar_productos.pressed.connect(lambda: self.ventana.stacked_widget.setCurrentIndex(9))
     
     def preparar_registro_clientes(self):
+        self.tablaClientes = TablaClientes()
         #Coloco el estado principal de checkbox y le agrego el slot
-        self.ventana.EDITAR.setChecked(True)
-        self.ventana.EDITAR.clicked.connect(self.cambiar_estado_inputs_nombre)
+        self.ventana.check_editar_rcliente.setChecked(True)
+        self.ventana.check_editar_rcliente.clicked.connect(self.cambiar_estado_inputs_nombre)
         
         #Estado inicial de line edits para el nombre
-        self.ventana.NOMBRE.setEnabled(False)
-        self.ventana.APELLIDO.setEnabled(False)
+        self.ventana.line_nombre_rcliente.setEnabled(False)
+        self.ventana.line_apellido_rcliente.setEnabled(False)
         
         #se agrega un validador al line edit de cedula para que solo admita numeros
-        self.ventana.CEDULA.setValidator(QIntValidator())
+        self.ventana.line_cedula_rcliente.setValidator(QIntValidator())
         
         #Conectamos los slots de los botones
-        self.ventana.BUSCAR.clicked.connect(self.buscar_cliente)
-        self.ventana.REGISTRAR.clicked.connect(self.registrar_cliente)
+        self.ventana.boton_buscar_rcliente.clicked.connect(self.buscar_cliente)
+        self.ventana.boton_registrar_rcliente.clicked.connect(self.registrar_cliente)
     
     def cambiar_estado_inputs_nombre(self):
-        if not self.ventana.EDITAR.isChecked():
-            self.ventana.NOMBRE.setEnabled(True)
-            self.ventana.APELLIDO.setEnabled(True)
+        if not self.ventana.check_editar_rcliente.isChecked():
+            self.ventana.line_nombre_rcliente.setEnabled(True)
+            self.ventana.line_apellido_rcliente.setEnabled(True)
         else:
-            self.ventana.NOMBRE.setEnabled(False)
-            self.ventana.APELLIDO.setEnabled(False)
+            self.ventana.line_nombre_rcliente.setEnabled(False)
+            self.ventana.line_apellido_rcliente.setEnabled(False)
     
     def buscar_cliente(self):
-        cedula = self.ventana.CEDULA.text()
+        cedula = self.ventana.line_cedula_rcliente.text()
         if cedula == "":
             QMessageBox.information(self,"Cedula vacia","Porfavor ingresa un numero de cedula",QMessageBox.StandardButton.Ok,QMessageBox.StandardButton.Ok)
             return 0
@@ -49,24 +63,24 @@ class MainWindow(QMainWindow):
             persona = self.tablaClientes.select(int(cedula))
             nombre = ""
             if not bool(persona):
-                nombre = BuscadorPersonas().buscar_persona(self.ventana.NACIONALIDAD.currentText(),cedula)
+                nombre = BuscadorPersonas().buscar_persona(self.ventana.combo_nacionalidad_rcliente.currentText(),cedula)
             else:
                 nombre = persona[0].nombre,persona[0].apellido
         
-            self.ventana.NOMBRE.setText(nombre[0])
-            self.ventana.APELLIDO.setText(nombre[1])
+            self.ventana.line_nombre_rcliente.setText(nombre[0])
+            self.ventana.line_apellido_rcliente.setText(nombre[1])
         except Exception as e:
             print(e)
-            self.ventana.EDITAR.setChecked(False)
+            self.ventana.check_editar_rcliente.setChecked(False)
             self.cambiar_estado_inputs_nombre()
 
     def registrar_cliente(self):
-        cedula = self.ventana.CEDULA.text()
-        nombre = self.ventana.NOMBRE.text()
-        apellido = self.ventana.APELLIDO.text()
-        nacionalidad = self.ventana.NACIONALIDAD.currentText()
-        direccion = self.ventana.DIRECCION.toPlainText()
-        numero = self.ventana.TELEFONO.text()
+        cedula = self.ventana.line_cedula_rcliente.text()
+        nombre = self.ventana.line_nombre_rcliente.text()
+        apellido = self.ventana.line_apellido_rcliente.text()
+        nacionalidad = self.ventana.combo_nacionalidad_rcliente.currentText()
+        direccion = self.ventana.text_descripcion_rcliente.toPlainText()
+        numero = self.ventana.line_telefono_rcliente.text()
         
         #Aqui deberian ir las validaciones
         

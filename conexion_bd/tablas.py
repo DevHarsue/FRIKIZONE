@@ -14,13 +14,6 @@ class TablaDivisas(TablaHija):
         self.claseFila = Divisa
         self.insertar_id = False
         super().__init__()
-
-class TablaMetodos(TablaHija):
-    def __init__(self) -> None:
-        self.nombre_tabla = "Metodos"
-        self.claseFila = Metodo
-        self.insertar_id = False
-        super().__init__()
         
 class TablaProductos(TablaHija):
     def __init__(self) -> None:
