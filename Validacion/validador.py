@@ -1,6 +1,6 @@
 import re
 
-class Validar_registro():
+class Validador():
     def __init__(self):
         self.validar_string_regex = r'^[a-zA-Z]+$'
         self.users = r'^[a-zA-Z0-9_]{8,}$'

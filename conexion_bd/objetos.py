@@ -7,11 +7,12 @@ class ObjetoPadre(ABC):
 #Objetos para cada tabla
 
 class Cliente(ObjetoPadre):
-    def __init__(self,id: int,nombre: str,apellido: str,direccion: str):
+    def __init__(self,id: int,nombre: str,apellido: str,direccion: str,telefono: str):
         self.id = id
         self.nombre = nombre
         self.apellido = apellido
         self.direccion = direccion
+        self.telefono = telefono
     
     def __repr__(self):
         return f'Cliente("{self.id}",{self.nombre},{self.apellido},{self.direccion})'

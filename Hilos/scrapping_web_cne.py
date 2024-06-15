@@ -11,5 +11,5 @@ class BuscadorPersonas():
             nombre = str(soup.findChild("b"))[3:-4].split(" ")
             nombre = [nombre[0],nombre[-2]]
         except Exception as e:
-            print(e)
+            return e
         return nombre
