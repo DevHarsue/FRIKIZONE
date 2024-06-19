@@ -1,9 +1,14 @@
 <RCC>
   <qresource prefix="imagen">
+    <file>imagenes.qrc</file>
     <file>fondo.png</file>
+    <file>imagenes.qrc</file>
     <file>lock_icon.png</file>
     <file>options_icon.png</file>
     <file>perfil_icon.png</file>
     <file>sincara_icon.png</file>
+    <file>zone.ico</file>
+    <file>zone.jpg</file>
   </qresource>
+  <qresource prefix="prefijoNuevo"/>
 </RCC>

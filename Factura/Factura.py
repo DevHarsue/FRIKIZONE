@@ -27,7 +27,7 @@ class FacturaPDF(FPDF):
         self.add_footer()
 
     def add_logo(self):
-        logo_path = 'logo.png'
+        logo_path = 'images/logo.png'
         if os.path.exists(logo_path):
             self.image(logo_path, 10, 8, 33)
         else:
