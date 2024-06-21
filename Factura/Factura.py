@@ -80,16 +80,62 @@ class FacturaPDF(FPDF):
         self.set_y(250)
         self.set_font('Arial', '', 12)
         self.cell(0, 10, f'No Requiere Firma', 0, 1, 'C')
-        
-      
 
+
+class CierreDiarioPDF(FPDF):
+    def __init__(self, fecha_cierre, tasa_bolivares, tasa_pesos, total_bolivares, total_pesos, total_dolares):
+        super().__init__()
+        self.fecha_cierre = fecha_cierre
+        self.tasa_bolivares = tasa_bolivares
+        self.tasa_pesos = tasa_pesos
+        self.total_bolivares = total_bolivares
+        self.total_pesos = total_pesos
+        self.total_dolares = total_dolares
+        
+        self.add_page()
+        self.set_auto_page_break(auto=True, margin=15)
+        self.add_logo()
+        self.add_title()
+        self.add_closure_info()
+        self.add_totals()
+
+    def add_logo(self):
+        logo_path = 'logo.png'
+        if os.path.exists(logo_path):
+            self.image(logo_path, 10, 8, 33)
+        else:
+            print(f"Error: No se encontró el archivo {logo_path}")
+
+    def add_title(self):
+        self.set_font('Arial', 'B', 20)
+        self.cell(0, 10, 'FRIKIZONE', 0, 1, 'C')
+        self.set_font('Arial', 'B', 16)
+        self.cell(0, 10, 'Cierre Diario', 0, 1, 'C')
+        self.cell(0, 10, f'Fecha: {self.fecha_cierre}', 0, 1, 'C')
+
+    def add_closure_info(self):
+        self.ln()
+        self.set_font('Arial', '', 20)
+        self.cell(0, 10, f'Tasa de Bolívares: {self.tasa_bolivares}', 0, 1, 'C')
+        self.cell(0, 10, f'Tasa de Pesos: {self.tasa_pesos}', 0, 1, 'C')
+
+    def add_totals(self):
+        self.ln()
+        self.set_font('Arial', 'B', 20)
+        self.cell(0, 10, 'Totales:', 0, 1, 'C')
+        self.set_font('Arial', '', 20)
+        self.cell(0, 10, f'Total en Bolívares: {self.total_bolivares}', 0, 1, 'C')
+        self.cell(0, 10, f'Total en Pesos: {self.total_pesos}', 0, 1, 'C')
+        self.cell(0, 10, f'Total en Dólares: {self.total_dolares}', 0, 1, 'C')
+
+
+# Example usage
 productos = [
     {'numero': '001', 'articulo': 'Producto 1', 'descripcion': 'Dragon ball tomo 1', 'qty': 2, 'precio': 10.00},
     {'numero': '002', 'articulo': 'Producto 2', 'descripcion': 'peluche de pochita', 'qty': 1, 'precio': 20.00},
     {'numero': '003', 'articulo': 'Producto 1', 'descripcion': 'Dragon ball tomo 2', 'qty': 3, 'precio': 30.00},
 ]
 
-# genera 2 factursa con sus repectivos datos 
 clientes = [
     {'nombre': 'Cliente Ejemplo 1', 'contacto': '987-654-3210', 'direccion': 'Avenida Siempre Viva 742'},
     {'nombre': 'Cliente Ejemplo 2', 'contacto': '123-456-7890', 'direccion': 'Calle Falsa 123'},
@@ -103,6 +149,27 @@ for cliente in clientes:
         contacto_cliente=cliente['contacto'],
         direccion_cliente=cliente['direccion'],
         productos=productos,
-        
     )
     factura.output(f'factura_{factura.numero_factura}.pdf')
+
+# Lista de datos para cierres diarios
+cierres_diarios = [
+    {
+        'fecha_cierr': datetime.now().strftime('%d/%m/%Y'),
+        'tasa_bolivares': 24.5,
+        'tasa_pesos': 0.05,
+        'total_bolivares': 2450.00,
+        'total_pesos': 5000.00,
+        'total_dolares': 100.00,
+    }
+    ]
+for cierre in cierres_diarios:
+    cierre_diario = CierreDiarioPDF(
+        fecha_cierre=cierre['fecha_cierr'],
+        tasa_bolivares=cierre['tasa_bolivares'],
+        tasa_pesos=cierre['tasa_pesos'],
+        total_bolivares=cierre['total_bolivares'],
+        total_pesos=cierre['total_pesos'],
+        total_dolares=cierre['total_dolares']
+    )
+    cierre_diario.output(f'cierre_diario_{cierre["fecha_cierr"].replace("/", "-")}.pdf')
