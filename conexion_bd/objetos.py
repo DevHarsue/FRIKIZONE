@@ -7,8 +7,9 @@ class ObjetoPadre(ABC):
 #Objetos para cada tabla
 
 class Cliente(ObjetoPadre):
-    def __init__(self,id: int,nombre: str,apellido: str,direccion: str,telefono: str):
+    def __init__(self,id: int,nacionalidad: str,nombre: str,apellido: str,direccion: str,telefono: str):
         self.id = id
+        self.nacionalidad = nacionalidad
         self.nombre = nombre
         self.apellido = apellido
         self.direccion = direccion

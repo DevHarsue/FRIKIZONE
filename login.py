@@ -1,9 +1,8 @@
 import sys
-from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton, QWidget, QLabel, QVBoxLayout
-from ui_ventana1 import Ui_MainWindow as Ventana1
-from ui_ventana1 import *
-from ui_ventana4 import *
-from interfaz_principal import *
+from PySide6.QtWidgets import QApplication, QMainWindow
+from interfaz.login.ui_ventana1 import Ui_MainWindow
+from interfaz.login.ui_ventana4 import Ui_MainWindow as w2
+from interfaz.interfaz_principal import Ui_MainWindow as w
 
 class VentanaPrincipal(QMainWindow):
     def __init__(self):
@@ -34,13 +33,13 @@ class VentanaPrincipal(QMainWindow):
 class Ventana_principal(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.ventana = Ui_MainPrincipal()
+        self.ventana = w()
         self.ventana.setupUi(self)
 
 class Ventana_registro(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.ventana = Ui_MainPrincipal()
+        self.ventana = w2()
         self.ventana.setupUi(self)
 
 
