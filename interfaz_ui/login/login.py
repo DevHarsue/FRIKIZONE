@@ -1,34 +1,54 @@
 import sys
-from PySide6 import QtWidgets
-from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QDialog, QStackedWidget
-from PyQt6.uic import loadUi
-from ui_ventana1 import Ui_MainWindow as Ventana1, QPushButton
-from ui_ventana2 import Ui_MainWindow as Ventana2
+from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton, QWidget, QLabel, QVBoxLayout
+from ui_ventana1 import Ui_MainWindow as Ventana1
+from ui_ventana1 import *
+from ui_ventana4 import *
+from interfaz_principal import *
 
-class MainWindow(QMainWindow):
+class VentanaPrincipal(QMainWindow):
     def __init__(self):
-        super(Ventana1, self).__init__()
-        loadUi("Ventana1", self)
-        self.button.clicked.connect(self.abrir_ventana)
+        super().__init__()
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self)
+        self.slotsbotones()
 
-    def abrir_ventana(self):
-        widget.setCurrentIndex(widget.currentIndex()+1)
-
-
-class ventana_2(QDialog):
-        def __init__(self):
-            super(Ventana2, self).__init__()
-            loadUi("Ventana2", self)
+    # BOTONES   
+    def slotsbotones(self):
+        self.ui.BotonLogin.pressed.connect(self.iniciar_sesion)
+        self.ui.BotonRegistro.pressed.connect(self.registrarse)
 
 
-app = QApplication(sys.argv)
-widget = QtWidgets.QStackedWidget()
-mainwindow = MainWindow()
-ventana2 = ventana_2()
-widget.addWidget(mainwindow)
-widget.addWidget(ventana2)
-widget.setFixedHeight(300)
-widget.setFixedWidth(400)
-widget.show()
+    # Slots
+    def iniciar_sesion(self):    
+        self.hide()
+        self.ventana = Ventana_principal()
+        self.ventana.show()
 
-        
+    def registrarse(self):
+        self.hide()
+        self.ventana2 = Ventana_registro()
+        self.ventana2.show
+
+
+    # VENTANAS
+class Ventana_principal(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.ventana = Ui_MainPrincipal()
+        self.ventana.setupUi(self)
+
+class Ventana_registro(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.ventana = Ui_MainPrincipal()
+        self.ventana.setupUi(self)
+
+
+#PARA EJECUTAR
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = VentanaPrincipal()
+    window.show()
+    sys.exit(app.exec())
+
+
