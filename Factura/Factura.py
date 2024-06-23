@@ -129,7 +129,149 @@ class CierreDiarioPDF(FPDF):
         self.cell(0, 10, f'Total en Dólares: {self.total_dolares}', 0, 1, 'C')
 
 
-# Example usage
+class CierreMensualPDF(FPDF):
+    def __init__(self, fecha_cierre, datos_mensuales):
+        super().__init__()
+        self.fecha_cierre = fecha_cierre
+        self.datos_mensuales = datos_mensuales
+        
+        self.add_page()
+        self.set_auto_page_break(auto=True, margin=15)
+        self.add_logo()
+        self.add_title()
+        self.add_closure_info()
+        self.add_totals()
+
+    def add_logo(self):
+        logo_path = 'logo.png'
+        if os.path.exists(logo_path):
+            self.image(logo_path, 10, 8, 33)
+        else:
+            print(f"Error: No se encontró el archivo {logo_path}")
+
+    def add_title(self):
+        self.set_font('Arial', 'B', 20)
+        self.cell(0, 10, 'FRIKIZONE', 0, 1, 'C')
+        self.set_font('Arial', 'B', 20)
+        self.cell(0, 10, 'Cierre Mensual', 0, 1, 'C')
+        self.cell(0, 10, f'Fecha: {self.fecha_cierre}', 0, 1, 'C')
+
+    def add_closure_info(self):
+        self.ln()
+        self.set_font('Arial', '', 20)
+        self.cell(0, 10, 'Resumen del Mes', 0, 1, 'C')
+
+    def add_totals(self):
+        self.ln()
+        self.set_font('Arial', 'B', 12)
+        self.cell(40, 10, 'Fecha', 1)
+        self.cell(50, 10, 'Total Bolívares', 1)
+        self.cell(50, 10, 'Total Pesos', 1)
+        self.cell(50, 10, 'Total Dólares', 1)
+        self.ln()
+        self.set_font('Arial', '', 12)
+        
+        for dato in self.datos_mensuales:
+            self.cell(40, 10, dato['fecha'], 1)
+            self.cell(50, 10, f"{dato['total_bolivares']:.2f}", 1)
+            self.cell(50, 10, f"{dato['total_pesos']:.2f}", 1)
+            self.cell(50, 10, f"{dato['total_dolares']:.2f}", 1)
+            self.ln()     
+
+class ProductoMasVendidosPDF(FPDF):
+    def __init__(self, fecha_reporte, productos):
+        super().__init__()
+        self.fecha_reporte = fecha_reporte
+        self.productos = productos
+        
+        self.add_page()
+        self.set_auto_page_break(auto=True, margin=15)
+        self.add_logo()
+        self.add_title()
+        self.add_table()
+
+    def add_logo(self):
+        logo_path = 'logo.png'
+        if os.path.exists(logo_path):
+            self.image(logo_path, 10, 8, 33)
+        else:
+            print(f"Error: No se encontró el archivo {logo_path}")
+
+    def add_title(self):
+        self.set_font('Arial', 'B', 20)
+        self.cell(0, 10, 'FRIKIZONE', 0, 1, 'C')
+        self.set_font('Arial', 'B', 16)
+        self.cell(0, 10, 'Productos Más Vendidos', 0, 1, 'C')
+        self.cell(0, 10, f'Fecha: {self.fecha_reporte}', 0, 1, 'C')
+
+    def add_table(self):
+        self.ln()
+        self.set_font('Arial', 'B', 12)
+        self.cell(30, 10, 'Número', 1)
+        self.cell(55, 10, 'Artículo', 1)
+        self.cell(55, 10, 'Descripción', 1)
+        self.cell(20, 10, 'QTY', 1)
+        self.cell(30, 10, 'Precio', 1)
+        self.ln()
+        self.set_font('Arial', '', 12)
+        
+        for producto in self.productos:
+            self.cell(30, 10, producto['numero'], 1)
+            self.cell(55, 10, producto['articulo'], 1)
+            self.cell(55, 10, producto['descripcion'], 1)
+            self.cell(20, 10, str(producto['qty']), 1)
+            self.cell(30, 10, f"${producto['precio']:.2f}", 1)
+            self.ln()
+
+
+class ProductoMenosVendidosPDF(FPDF):
+    def __init__(self, fecha_reporte, productos):
+        super().__init__()
+        self.fecha_reporte = fecha_reporte
+        self.productos = productos
+        
+        self.add_page()
+        self.set_auto_page_break(auto=True, margin=15)
+        self.add_logo()
+        self.add_title()
+        self.add_table()
+
+    def add_logo(self):
+        logo_path = 'logo.png'
+        if os.path.exists(logo_path):
+            self.image(logo_path, 10, 8, 33)
+        else:
+            print(f"Error: No se encontró el archivo {logo_path}")
+
+    def add_title(self):
+        self.set_font('Arial', 'B', 20)
+        self.cell(0, 10, 'FRIKIZONE', 0, 1, 'C')
+        self.set_font('Arial', 'B', 16)
+        self.cell(0, 10, 'Productos Menos Vendidos', 0, 1, 'C')
+        self.cell(0, 10, f'Fecha: {self.fecha_reporte}', 0, 1, 'C')
+
+    def add_table(self):
+        self.ln()
+        self.set_font('Arial', 'B', 12)
+        self.cell(30, 10, 'Número', 1)
+        self.cell(55, 10, 'Artículo', 1)
+        self.cell(55, 10, 'Descripción', 1)
+        self.cell(20, 10, 'QTY', 1)
+        self.cell(30, 10, 'Precio', 1)
+        self.ln()
+        self.set_font('Arial', '', 12)
+        
+        for producto in self.productos:
+            self.cell(30, 10, producto['numero'], 1)
+            self.cell(55, 10, producto['articulo'], 1)
+            self.cell(55, 10, producto['descripcion'], 1)
+            self.cell(20, 10, str(producto['qty']), 1)
+            self.cell(30, 10, f"${producto['precio']:.2f}", 1)
+            self.ln()
+
+
+# Ejemplo de uso
+
 productos = [
     {'numero': '001', 'articulo': 'Producto 1', 'descripcion': 'Dragon ball tomo 1', 'qty': 2, 'precio': 10.00},
     {'numero': '002', 'articulo': 'Producto 2', 'descripcion': 'peluche de pochita', 'qty': 1, 'precio': 20.00},
@@ -140,6 +282,27 @@ clientes = [
     {'nombre': 'Cliente Ejemplo 1', 'contacto': '987-654-3210', 'direccion': 'Avenida Siempre Viva 742'},
     {'nombre': 'Cliente Ejemplo 2', 'contacto': '123-456-7890', 'direccion': 'Calle Falsa 123'},
 ]
+
+
+datos_mensuales = [
+    {'fecha': '01/06/2024', 'total_bolivares': 1000.00, 'total_pesos': 5000.00, 'total_dolares': 200.00},
+    {'fecha': '02/06/2024', 'total_bolivares': 1500.00, 'total_pesos': 6000.00, 'total_dolares': 300.00},
+    # Agrega más datos según sea necesario
+]
+
+productos_mas_vendidos = [
+    {'numero': '001', 'articulo': 'Producto 1', 'descripcion': 'Descripción 1', 'qty': 10, 'precio': 10.00},
+    {'numero': '002', 'articulo': 'Producto 2', 'descripcion': 'Descripción 2', 'qty': 8, 'precio': 15.00},
+    # Agrega más productos según sea necesario
+]
+
+productos_menos_vendidos = [
+    {'numero': '003', 'articulo': 'Producto 3', 'descripcion': 'Descripción 3', 'qty': 2, 'precio': 5.00},
+    {'numero': '004', 'articulo': 'Producto 4', 'descripcion': 'Descripción 4', 'qty': 1, 'precio': 12.00},
+    {'numero': '005', 'articulo': 'Producto 5', 'descripcion': 'Descripción 4', 'qty': 1, 'precio': 12.00}
+    # Agrega más productos según sea necesario
+]
+
 
 for cliente in clientes:
     factura = FacturaPDF(
@@ -163,6 +326,7 @@ cierres_diarios = [
         'total_dolares': 100.00,
     }
     ]
+
 for cierre in cierres_diarios:
     cierre_diario = CierreDiarioPDF(
         fecha_cierre=cierre['fecha_cierr'],
@@ -172,4 +336,23 @@ for cierre in cierres_diarios:
         total_pesos=cierre['total_pesos'],
         total_dolares=cierre['total_dolares']
     )
-    cierre_diario.output(f'cierre_diario_{cierre["fecha_cierr"].replace("/", "-")}.pdf')
+
+cierre_mensual = CierreMensualPDF(
+    fecha_cierre=datetime.now().strftime('%d/%m/%Y'),
+    datos_mensuales=datos_mensuales
+)
+cierre_mensual.output(f'cierre_mensual_{cierre_mensual.fecha_cierre.replace("/", "-")}.pdf')
+
+producto_mas_vendidos = ProductoMasVendidosPDF(
+    fecha_reporte=datetime.now().strftime('%d/%m/%Y'),
+    productos=productos_mas_vendidos
+)
+producto_mas_vendidos.output(f'productos_mas_vendidos_{producto_mas_vendidos.fecha_reporte.replace("/", "-")}.pdf')
+
+producto_menos_vendidos = ProductoMenosVendidosPDF(
+    fecha_reporte=datetime.now().strftime('%d/%m/%Y'),
+    productos=productos_menos_vendidos
+)
+producto_menos_vendidos.output(f'productos_menos_vendidos_{producto_menos_vendidos.fecha_reporte.replace("/", "-")}.pdf')            
+                 
+                                 
