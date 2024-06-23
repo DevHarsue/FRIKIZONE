@@ -1,4 +1,4 @@
-from interfaz_ui.interfaz_principal import Ui_MainWindow
+from interfaz.interfaz_principal import Ui_MainWindow
 from Vistas.registrar_clientes import VistaRegistrarClientes
 from Vistas.registrar_productos import VistaRegistrarProductos
 from Vistas.productos import VistaProductos
@@ -6,8 +6,13 @@ from Vistas.facturar import VistaFacturar
 from Vistas.cierre import VistaCierre
 from Vistas.configuracion import VistaConfiguracion
 from PySide6.QtWidgets import QMainWindow,QApplication,QMessageBox
+from interfaz.login.ui_ventana1 import Ui_login
+from conexion_bd.tablas import TablaUsuarios
+from Validacion.hash import texto_a_hash
 import sys
 
+
+    # Ventana Principal
 class MainWindow(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
@@ -21,6 +26,7 @@ class MainWindow(QMainWindow):
         self.vista_configuracion = VistaConfiguracion(self)
         self.crear_logica()
         self.show()
+        
     
     def crear_logica(self):
         self.ui.stacked_widget.setCurrentWidget(self.ui.vista_facturar)
@@ -41,7 +47,59 @@ class MainWindow(QMainWindow):
     def mostrar_error(self,error):
         QMessageBox.warning(self,"Ha ocurrido un error",f"Ha ocurrido el siguiente error: {error}",QMessageBox.StandardButton.Ok,QMessageBox.StandardButton.Ok)
     
+    def preguntar(self,titulo,texto):
+        return QMessageBox.question(self,titulo,texto,QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,QMessageBox.StandardButton.No)
+
+
+######################## Codigo de Login ######################## 
+
+
+# Ventana Login
+class VentanaLogin(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.ui = Ui_login()
+        self.ui.setupUi(self)
+        self.slotsbotones()
+        self.ventana = False
+        self.show()
+
+    # BOTONES
+    
+    
+    def slotsbotones(self):
+        self.ui.BotonLogin.pressed.connect(self.iniciar_sesion)
+
+
+    # Slots
+
+    def iniciar_sesion(self):
+        if self.ventana:
+            return 0
+        nombre = self.ui.Usuario.text()
+        contrasena = texto_a_hash(self.ui.Clave.text())
+        
+        usuario = TablaUsuarios().select(1)[0]
+        
+        if nombre == usuario.nombre and contrasena==usuario._contraseña:
+            self.close()
+            self.ventana = MainWindow()
+            self.ventana.show()
+            
+        else:
+            self.ui.clave_incorrecta.setText("Clave Incorrecta")
+            self.ui.usuario_incorrecto.setText("Usuario Incorrecto")
+
+
+
+
+
+# Ejecutar Interfaz
+
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    window = MainWindow()
+    window = VentanaLogin()
     sys.exit(app.exec())
+    
+    
+    

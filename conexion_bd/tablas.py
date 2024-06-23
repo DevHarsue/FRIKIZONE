@@ -21,6 +21,12 @@ class TablaProductos(TablaHija):
         self.claseFila = Producto
         self.insertar_id = False
         super().__init__()
+    
+    def select_nombre(self,nombre):
+        filas = self.bd.consultar(f"SELECT * FROM productos WHERE producto_nombre LIKE '{nombre}%'")
+        filas = self.crear_objetos(filas)
+        return filas
+        
 
     def venta_diaria_producto(self,id: int,fecha: str) -> tuple:
         """
@@ -48,20 +54,13 @@ class TablaUsuarios(TablaHija):
     def __init__(self) -> None:
         self.nombre_tabla = "Usuarios"
         self.claseFila = Usuario
-        self.insertar_id = True
+        self.insertar_id = False
         super().__init__()
 
 class TablaVentas(TablaHija):
     def __init__(self) -> None:
         self.nombre_tabla = "Ventas"
         self.claseFila = Venta
-        self.insertar_id = False
-        super().__init__()
-
-class TablaVentasDetalles(TablaHija):
-    def __init__(self) -> None:
-        self.nombre_tabla = "Ventas_Detalles"
-        self.claseFila = VentaDetalle
         self.insertar_id = False
         super().__init__()
 

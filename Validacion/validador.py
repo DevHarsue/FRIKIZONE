@@ -5,7 +5,7 @@ from PySide6.QtCore import QRegularExpression
 class Validador:
     def __init__(self):
         self.regex_solo_texto = QRegularExpression(r"^[A-Za-z]+$")
-        self.regex_numero_telefono = QRegularExpression(r"^[0-9\-\+]{20}$")
+        self.regex_numero_telefono = QRegularExpression(r"^[0-9\-\+]{15}$")
         self.regex_cedula = QRegularExpression(r"^[0-9]{9}$")
 
     def solo_texto(self,line):

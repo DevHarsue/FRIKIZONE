@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ventana1LzneYQ.ui'
+## Form generated from reading UI file 'ventana1.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.7.0
+## Created by: Qt User Interface Compiler version 6.7.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -19,7 +19,7 @@ from PySide6.QtWidgets import (QApplication, QFrame, QGridLayout, QLabel,
     QLayout, QLineEdit, QMainWindow, QPushButton,
     QSizePolicy, QTabWidget, QVBoxLayout, QWidget)
 
-class Ui_MainWindow(object):
+class Ui_login(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
@@ -91,71 +91,12 @@ class Ui_MainWindow(object):
         self.gridLayout = QGridLayout(self.layoutWidget)
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setHorizontalSpacing(0)
-        self.gridLayout.setVerticalSpacing(20)
+        self.gridLayout.setVerticalSpacing(15)
         self.gridLayout.setContentsMargins(5, 5, 5, 5)
-        self.widget = QWidget(self.layoutWidget)
-        self.widget.setObjectName(u"widget")
-        self.widget.setMinimumSize(QSize(261, 101))
-        self.widget.setMaximumSize(QSize(16777215, 80))
-        self.widget.setStyleSheet(u"")
-        self.Nombre_Empresa = QLabel(self.widget)
-        self.Nombre_Empresa.setObjectName(u"Nombre_Empresa")
-        self.Nombre_Empresa.setGeometry(QRect(-225, -30, 701, 181))
-        self.Nombre_Empresa.setStyleSheet(u"font: 700 36pt \"Sylfaen\";\n"
-"\n"
-"color: rgb(55, 255, 248);")
-        self.Nombre_empresa2 = QLabel(self.widget)
-        self.Nombre_empresa2.setObjectName(u"Nombre_empresa2")
-        self.Nombre_empresa2.setGeometry(QRect(-200, -10, 671, 161))
-        self.Nombre_empresa2.setAutoFillBackground(False)
-        self.Nombre_empresa2.setStyleSheet(u"font: 36pt \"Sylfaen\";\n"
-"color: rgba(10, 100, 80,0.2);\n"
-"background:transparent;")
-        self.Nombre_empresa2.raise_()
-        self.Nombre_Empresa.raise_()
-
-        self.gridLayout.addWidget(self.widget, 0, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter)
-
-        self.label = QLabel(self.layoutWidget)
-        self.label.setObjectName(u"label")
-        self.label.setMinimumSize(QSize(300, 50))
-        self.label.setMaximumSize(QSize(300, 40))
-        self.label.setStyleSheet(u"font: 600 9pt \"Segoe UI\";\n"
-"color: rgb(255, 2, 2);\n"
-"\n"
-"font: 11pt \"Segoe UI\";")
-
-        self.gridLayout.addWidget(self.label, 5, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter)
-
-        self.BotonLogin = QPushButton(self.layoutWidget)
-        self.BotonLogin.setObjectName(u"BotonLogin")
-        self.BotonLogin.setMinimumSize(QSize(75, 24))
-        self.BotonLogin.setMaximumSize(QSize(75, 24))
-        self.BotonLogin.setCursor(QCursor(Qt.PointingHandCursor))
-        self.BotonLogin.setStyleSheet(u"QPushButton{\n"
-"	border-radius:10px;\n"
-"	color: white;\n"
-"	background-color: rgba(57, 215, 200,0.8);\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"	background-color: rgba(57, 225, 180,0.8);\n"
-"}\n"
-"\n"
-"QPushButton:pressed{\n"
-"	background-color: rgba(57, 210, 168,0.8);\n"
-"}\n"
-"\n"
-"font: 700 9pt \"Segoe UI\";\n"
-"\n"
-"")
-
-        self.gridLayout.addWidget(self.BotonLogin, 3, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter)
-
         self.frame_2 = QFrame(self.layoutWidget)
         self.frame_2.setObjectName(u"frame_2")
         self.frame_2.setMinimumSize(QSize(300, 120))
-        self.frame_2.setMaximumSize(QSize(300, 140))
+        self.frame_2.setMaximumSize(QSize(300, 160))
         self.frame_2.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
         self.frame_2.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame_2.setFrameShadow(QFrame.Shadow.Raised)
@@ -286,13 +227,15 @@ class Ui_MainWindow(object):
         self.usuario_incorrecto.setGeometry(QRect(100, 50, 190, 16))
         self.usuario_incorrecto.setMinimumSize(QSize(190, 16))
         self.usuario_incorrecto.setMaximumSize(QSize(190, 16))
-        self.usuario_incorrecto.setStyleSheet(u"color:red;")
+        self.usuario_incorrecto.setStyleSheet(u"font: 8pt \"Segoe UI\";\n"
+"color:red;")
         self.clave_incorrecta = QLabel(self.frame_2)
         self.clave_incorrecta.setObjectName(u"clave_incorrecta")
         self.clave_incorrecta.setGeometry(QRect(100, 110, 190, 16))
         self.clave_incorrecta.setMinimumSize(QSize(190, 16))
         self.clave_incorrecta.setMaximumSize(QSize(190, 16))
-        self.clave_incorrecta.setStyleSheet(u"color:red;")
+        self.clave_incorrecta.setStyleSheet(u"font: 8pt \"Segoe UI\";\n"
+"color:red;")
 
         self.gridLayout.addWidget(self.frame_2, 2, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter)
 
@@ -304,19 +247,30 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.label_3, 1, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter)
 
-        self.BotonRegistro = QPushButton(self.layoutWidget)
-        self.BotonRegistro.setObjectName(u"BotonRegistro")
-        self.BotonRegistro.setMinimumSize(QSize(75, 24))
-        self.BotonRegistro.setMaximumSize(QSize(75, 24))
-        self.BotonRegistro.setCursor(QCursor(Qt.PointingHandCursor))
-        self.BotonRegistro.setStyleSheet(u"QPushButton{\n"
+        self.label = QLabel(self.layoutWidget)
+        self.label.setObjectName(u"label")
+        self.label.setMinimumSize(QSize(300, 50))
+        self.label.setMaximumSize(QSize(300, 40))
+        self.label.setStyleSheet(u"font: 600 9pt \"Segoe UI\";\n"
+"color: rgb(255, 2, 2);\n"
+"\n"
+"font: 11pt \"Segoe UI\";")
+
+        self.gridLayout.addWidget(self.label, 4, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter)
+
+        self.BotonLogin = QPushButton(self.layoutWidget)
+        self.BotonLogin.setObjectName(u"BotonLogin")
+        self.BotonLogin.setMinimumSize(QSize(75, 24))
+        self.BotonLogin.setMaximumSize(QSize(75, 24))
+        self.BotonLogin.setCursor(QCursor(Qt.PointingHandCursor))
+        self.BotonLogin.setStyleSheet(u"QPushButton{\n"
 "	border-radius:10px;\n"
 "	color: white;\n"
-"	background-color: rgba(170, 235, 255,0.8);\n"
+"	background-color: rgba(57, 215, 200,0.8);\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
-"	background-color: rgba(97, 225, 200,0.8);\n"
+"	background-color: rgba(57, 225, 180,0.8);\n"
 "}\n"
 "\n"
 "QPushButton:pressed{\n"
@@ -327,7 +281,30 @@ class Ui_MainWindow(object):
 "\n"
 "")
 
-        self.gridLayout.addWidget(self.BotonRegistro, 4, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter)
+        self.gridLayout.addWidget(self.BotonLogin, 3, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter)
+
+        self.widget = QWidget(self.layoutWidget)
+        self.widget.setObjectName(u"widget")
+        self.widget.setMinimumSize(QSize(261, 101))
+        self.widget.setMaximumSize(QSize(16777215, 80))
+        self.widget.setStyleSheet(u"")
+        self.Nombre_Empresa = QLabel(self.widget)
+        self.Nombre_Empresa.setObjectName(u"Nombre_Empresa")
+        self.Nombre_Empresa.setGeometry(QRect(-225, -30, 701, 181))
+        self.Nombre_Empresa.setStyleSheet(u"font: 700 36pt \"Sylfaen\";\n"
+"\n"
+"color: rgb(55, 255, 248);")
+        self.Nombre_empresa2 = QLabel(self.widget)
+        self.Nombre_empresa2.setObjectName(u"Nombre_empresa2")
+        self.Nombre_empresa2.setGeometry(QRect(-200, -10, 671, 161))
+        self.Nombre_empresa2.setAutoFillBackground(False)
+        self.Nombre_empresa2.setStyleSheet(u"font: 36pt \"Sylfaen\";\n"
+"color: rgba(10, 100, 80,0.2);\n"
+"background:transparent;")
+        self.Nombre_empresa2.raise_()
+        self.Nombre_Empresa.raise_()
+
+        self.gridLayout.addWidget(self.widget, 0, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter)
 
         self.layoutWidget.raise_()
         self.BotonSalir.raise_()
@@ -336,7 +313,8 @@ class Ui_MainWindow(object):
 
         MainWindow.setCentralWidget(self.centralwidget)
         QWidget.setTabOrder(self.Usuario, self.Clave)
-        QWidget.setTabOrder(self.Clave, self.BotonSalir)
+        QWidget.setTabOrder(self.Clave, self.BotonLogin)
+        QWidget.setTabOrder(self.BotonLogin, self.BotonSalir)
 
         self.retranslateUi(MainWindow)
         self.BotonSalir.pressed.connect(MainWindow.close)
@@ -347,6 +325,17 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.BotonSalir.setText(QCoreApplication.translate("MainWindow", u"Salir", None))
+        self.Clave.setText("")
+        self.Clave.setPlaceholderText(QCoreApplication.translate("MainWindow", u" Ingrese su contrase\u00f1a", None))
+        self.label_5.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"right\">Contrase\u00f1a:</p></body></html>", None))
+        self.Usuario.setText("")
+        self.Usuario.setPlaceholderText(QCoreApplication.translate("MainWindow", u" Ingrese su usuario", None))
+        self.label_4.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"right\">Usuario:</p></body></html>", None))
+        self.usuario_incorrecto.setText("")
+        self.clave_incorrecta.setText("")
+        self.label_3.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">Ingrese sus datos de usuario, por favor.</p></body></html>", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><br/></p></body></html>", None))
+        self.BotonLogin.setText(QCoreApplication.translate("MainWindow", u"Ingresar", None))
 #if QT_CONFIG(tooltip)
         self.widget.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><br/></p></body></html>", None))
 #endif // QT_CONFIG(tooltip)
@@ -367,17 +356,5 @@ class Ui_MainWindow(object):
         self.Nombre_empresa2.setWhatsThis(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><br/></p></body></html>", None))
 #endif // QT_CONFIG(whatsthis)
         self.Nombre_empresa2.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">FRIKIZONE </p></body></html>", None))
-        self.label.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><br/></p></body></html>", None))
-        self.BotonLogin.setText(QCoreApplication.translate("MainWindow", u"Ingresar", None))
-        self.Clave.setText("")
-        self.Clave.setPlaceholderText(QCoreApplication.translate("MainWindow", u" Ingrese su contrase\u00f1a", None))
-        self.label_5.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"right\">Contrase\u00f1a:</p></body></html>", None))
-        self.Usuario.setText("")
-        self.Usuario.setPlaceholderText(QCoreApplication.translate("MainWindow", u" Ingrese su usuario", None))
-        self.label_4.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"right\">Usuario:</p></body></html>", None))
-        self.usuario_incorrecto.setText("")
-        self.clave_incorrecta.setText("")
-        self.label_3.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">Ingrese sus datos de usuario, por favor.</p></body></html>", None))
-        self.BotonRegistro.setText(QCoreApplication.translate("MainWindow", u"Registrarse", None))
     # retranslateUi
 

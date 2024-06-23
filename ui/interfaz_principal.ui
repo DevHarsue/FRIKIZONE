@@ -22,7 +22,7 @@
   <property name="styleSheet">
    <string notr="true">*{
 	font-size: 12px;
-	font-family: Sylfaen;
+	font-family: Rockwell;
 }
 
 #centralwidget{background: url(&quot;images/fondo.png&quot;)}
@@ -61,7 +61,7 @@ QStatusBar{
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout_2">
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
     <item>
      <widget class="QWidget" name="contenedor_principal" native="true">
       <property name="styleSheet">
@@ -88,6 +88,9 @@ QStatusBar{
           </property>
           <item>
            <widget class="QPushButton" name="boton_v_cierre">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
             <property name="text">
              <string>CIERRE</string>
             </property>
@@ -95,6 +98,9 @@ QStatusBar{
           </item>
           <item>
            <widget class="QPushButton" name="boton_v_configuracion">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
             <property name="text">
              <string>CONFIGURACIÓN</string>
             </property>
@@ -290,7 +296,7 @@ QPushButton{
 	background: transparent;
 	border-bottom: 1px solid white;
 	border-top: 1px solid white;
-	min-width: 10em;
+	min-width: 8em;
 }
 
 QPushButton:hover{
@@ -398,7 +404,222 @@ QTableView::item:selected{
          <property name="currentIndex">
           <number>3</number>
          </property>
-         <widget class="QWidget" name="page_2"/>
+         <widget class="QWidget" name="vista_divisas">
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_2">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item alignment="Qt::AlignmentFlag::AlignHCenter">
+            <widget class="QFrame" name="frame_11">
+             <property name="styleSheet">
+              <string notr="true">background:transparent;</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_21">
+              <item alignment="Qt::AlignmentFlag::AlignHCenter">
+               <widget class="QWidget" name="widget_2" native="true">
+                <property name="minimumSize">
+                 <size>
+                  <width>580</width>
+                  <height>417</height>
+                 </size>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_19">
+                 <property name="spacing">
+                  <number>35</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>30</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>50</number>
+                 </property>
+                 <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                  <widget class="QLabel" name="label_31">
+                   <property name="minimumSize">
+                    <size>
+                     <width>320</width>
+                     <height>50</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>320</width>
+                     <height>50</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">font: 26pt &quot;Sylfaen&quot;;
+color: rgb(21, 255, 255);</string>
+                   </property>
+                   <property name="text">
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Actualizar Divisas&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                  <widget class="QFrame" name="frame_13">
+                   <property name="minimumSize">
+                    <size>
+                     <width>250</width>
+                     <height>200</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_20">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>20</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>5</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>20</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>40</number>
+                    </property>
+                    <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                     <widget class="QLabel" name="label_32">
+                      <property name="styleSheet">
+                       <string notr="true">font: 12pt &quot;Sylfaen&quot;;</string>
+                      </property>
+                      <property name="text">
+                       <string>Tipo de Divisa</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                     <widget class="QComboBox" name="comboBox_3">
+                      <property name="minimumSize">
+                       <size>
+                        <width>150</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>160</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">color:white;
+border-bottom: 1px solid white;</string>
+                      </property>
+                      <item>
+                       <property name="text">
+                        <string>COP</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>BS</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>USD</string>
+                       </property>
+                      </item>
+                     </widget>
+                    </item>
+                    <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                     <widget class="QLabel" name="label_33">
+                      <property name="styleSheet">
+                       <string notr="true">font: 12pt &quot;Sylfaen&quot;;</string>
+                      </property>
+                      <property name="text">
+                       <string>Tasa del día</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                     <widget class="QDoubleSpinBox" name="doubleSpinBox_11">
+                      <property name="minimumSize">
+                       <size>
+                        <width>150</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>150</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                  <widget class="QPushButton" name="pushButton_15">
+                   <property name="minimumSize">
+                    <size>
+                     <width>210</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>192</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">font: 12pt &quot;Sylfaen&quot;;</string>
+                   </property>
+                   <property name="text">
+                    <string>ACTUALIZAR</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
          <widget class="QWidget" name="vista_registrar_clientes">
           <layout class="QVBoxLayout" name="verticalLayout_3">
            <item>
@@ -522,15 +743,302 @@ QTableView::item:selected{
            </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="page"/>
+         <widget class="QWidget" name="vista_actualizar_productos">
+          <layout class="QVBoxLayout" name="verticalLayout_15">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QFrame" name="frame_8">
+             <property name="styleSheet">
+              <string notr="true">background:Transparent;</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_16">
+              <item alignment="Qt::AlignmentFlag::AlignHCenter">
+               <widget class="QWidget" name="widget" native="true">
+                <property name="minimumSize">
+                 <size>
+                  <width>580</width>
+                  <height>417</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background: transparent</string>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_17" columnstretch="0">
+                 <property name="leftMargin">
+                  <number>5</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>20</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>5</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>40</number>
+                 </property>
+                 <property name="horizontalSpacing">
+                  <number>0</number>
+                 </property>
+                 <property name="verticalSpacing">
+                  <number>15</number>
+                 </property>
+                 <item row="2" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
+                  <widget class="QPushButton" name="pushButton_12">
+                   <property name="minimumSize">
+                    <size>
+                     <width>210</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>192</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">font: 12pt &quot;Sylfaen&quot;;</string>
+                   </property>
+                   <property name="text">
+                    <string>ACTUALIZAR</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
+                  <widget class="QLabel" name="label_22">
+                   <property name="minimumSize">
+                    <size>
+                     <width>320</width>
+                     <height>50</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>320</width>
+                     <height>50</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">font: 26pt &quot;Sylfaen&quot;;
+color: rgb(21, 255, 255);</string>
+                   </property>
+                   <property name="text">
+                    <string>Actualizar Productos</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
+                  <widget class="QFrame" name="frame_9">
+                   <property name="minimumSize">
+                    <size>
+                     <width>300</width>
+                     <height>200</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>300</width>
+                     <height>250</height>
+                    </size>
+                   </property>
+                   <layout class="QGridLayout" name="gridLayout_18">
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>12</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>12</number>
+                    </property>
+                    <property name="horizontalSpacing">
+                     <number>10</number>
+                    </property>
+                    <property name="verticalSpacing">
+                     <number>0</number>
+                    </property>
+                    <item row="0" column="0" alignment="Qt::AlignmentFlag::AlignLeft">
+                     <widget class="QLabel" name="label_23">
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">font: 12pt &quot;Sylfaen&quot;;</string>
+                      </property>
+                      <property name="text">
+                       <string>Nombre del Producto</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="1" alignment="Qt::AlignmentFlag::AlignLeft">
+                     <widget class="QLineEdit" name="lineEdit_12">
+                      <property name="minimumSize">
+                       <size>
+                        <width>172</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>150</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">font: 9pt &quot;Segoe UI&quot;;</string>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="1">
+                     <widget class="QDoubleSpinBox" name="doubleSpinBox_8">
+                      <property name="minimumSize">
+                       <size>
+                        <width>137</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>150</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true"/>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="0" alignment="Qt::AlignmentFlag::AlignLeft">
+                     <widget class="QLabel" name="label_24">
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">font: 12pt &quot;Sylfaen&quot;;</string>
+                      </property>
+                      <property name="text">
+                       <string>Precio del Producto</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                   <zorder>label_23</zorder>
+                   <zorder>doubleSpinBox_8</zorder>
+                   <zorder>label_24</zorder>
+                   <zorder>lineEdit_12</zorder>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
          <widget class="QWidget" name="vista_facturar">
           <layout class="QVBoxLayout" name="verticalLayout_13">
            <item>
             <layout class="QGridLayout" name="gridLayout_4">
+             <item row="4" column="0" colspan="2">
+              <widget class="QLabel" name="label_total">
+               <property name="text">
+                <string>TOTAL EN DOLARES:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="2">
+              <widget class="QLineEdit" name="line_apellido_facturar">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+               <property name="placeholderText">
+                <string>APELLIDO</string>
+               </property>
+              </widget>
+             </item>
              <item row="2" column="1">
               <widget class="QPushButton" name="boton_buscar_producto_facturar">
+               <property name="minimumSize">
+                <size>
+                 <width>140</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="text">
                 <string>BUSCAR PRODUCTO</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLineEdit" name="line_nombre_facturar">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+               <property name="placeholderText">
+                <string>NOMBRE</string>
                </property>
               </widget>
              </item>
@@ -541,14 +1049,18 @@ QTableView::item:selected{
                </property>
               </widget>
              </item>
-             <item row="0" column="2" alignment="Qt::AlignmentFlag::AlignBottom">
-              <widget class="QPushButton" name="boton_buscar_cliente_facturar">
-               <property name="text">
-                <string>BUSCAR</string>
-               </property>
-               <property name="icon">
-                <iconset theme="system-search"/>
-               </property>
+             <item row="0" column="0">
+              <widget class="QComboBox" name="combo_nacionalidad_facturar">
+               <item>
+                <property name="text">
+                 <string>V</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>E</string>
+                </property>
+               </item>
               </widget>
              </item>
              <item row="5" column="0" colspan="3">
@@ -598,62 +1110,81 @@ QTableView::item:selected{
                </item>
               </layout>
              </item>
-             <item row="6" column="1">
-              <widget class="QPushButton" name="boton_facturar">
+             <item row="0" column="2" alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignBottom">
+              <widget class="QPushButton" name="boton_buscar_cliente_facturar">
                <property name="text">
-                <string>FACTURAR</string>
+                <string>BUSCAR</string>
                </property>
-              </widget>
-             </item>
-             <item row="1" column="0">
-              <widget class="QLineEdit" name="line_nombre_facturar">
-               <property name="enabled">
-                <bool>false</bool>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="placeholderText">
-                <string>NOMBRE</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="0">
-              <widget class="QComboBox" name="combo_nacionalidad_facturar">
-               <item>
-                <property name="text">
-                 <string>V</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>E</string>
-                </property>
-               </item>
-              </widget>
-             </item>
-             <item row="1" column="2">
-              <widget class="QLineEdit" name="line_apellido_facturar">
-               <property name="enabled">
-                <bool>false</bool>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="placeholderText">
-                <string>APELLIDO</string>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="0" colspan="2">
-              <widget class="QLabel" name="label_total">
-               <property name="text">
-                <string>TOTAL EN DOLARES:</string>
+               <property name="icon">
+                <iconset theme="system-search"/>
                </property>
               </widget>
              </item>
              <item row="3" column="0" colspan="3">
-              <widget class="QListWidget" name="list_productos_facturar"/>
+              <widget class="QTableWidget" name="table_productos_facturar">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="horizontalScrollBarPolicy">
+                <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+               </property>
+               <property name="editTriggers">
+                <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+               </property>
+               <attribute name="horizontalHeaderCascadingSectionResizes">
+                <bool>false</bool>
+               </attribute>
+               <attribute name="horizontalHeaderDefaultSectionSize">
+                <number>110</number>
+               </attribute>
+               <attribute name="horizontalHeaderStretchLastSection">
+                <bool>true</bool>
+               </attribute>
+               <attribute name="verticalHeaderVisible">
+                <bool>false</bool>
+               </attribute>
+               <column>
+                <property name="text">
+                 <string>ID</string>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string>PRODUCTO</string>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string>PRECIO</string>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string>CANTIDAD</string>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string>SUBTOTAL</string>
+                </property>
+               </column>
+              </widget>
+             </item>
+             <item row="6" column="1">
+              <widget class="QPushButton" name="boton_facturar">
+               <property name="minimumSize">
+                <size>
+                 <width>140</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="text">
+                <string>FACTURAR</string>
+               </property>
+              </widget>
              </item>
             </layout>
            </item>
@@ -678,9 +1209,12 @@ QTableView::item:selected{
               <widget class="QComboBox" name="combo_buscar_bproducto">
                <property name="minimumSize">
                 <size>
-                 <width>64</width>
+                 <width>56</width>
                  <height>0</height>
                 </size>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
                </property>
                <property name="styleSheet">
                 <string notr="true">min-width: 4em;</string>
@@ -702,18 +1236,8 @@ QTableView::item:selected{
                </item>
               </widget>
              </item>
-             <item row="0" column="2">
-              <widget class="QPushButton" name="boton_buscar_bproducto">
-               <property name="text">
-                <string>BUSCAR</string>
-               </property>
-               <property name="icon">
-                <iconset theme="system-search"/>
-               </property>
-              </widget>
-             </item>
              <item row="1" column="0" colspan="3">
-              <widget class="QTableWidget" name="list_productos">
+              <widget class="QTableWidget" name="table_productos">
                <property name="horizontalScrollBarPolicy">
                 <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
                </property>
@@ -729,11 +1253,14 @@ QTableView::item:selected{
                <property name="rowCount">
                 <number>0</number>
                </property>
+               <property name="columnCount">
+                <number>4</number>
+               </property>
                <attribute name="horizontalHeaderCascadingSectionResizes">
                 <bool>false</bool>
                </attribute>
                <attribute name="horizontalHeaderDefaultSectionSize">
-                <number>192</number>
+                <number>130</number>
                </attribute>
                <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
                 <bool>false</bool>
@@ -744,6 +1271,11 @@ QTableView::item:selected{
                <attribute name="verticalHeaderVisible">
                 <bool>false</bool>
                </attribute>
+               <column>
+                <property name="text">
+                 <string>ID</string>
+                </property>
+               </column>
                <column>
                 <property name="text">
                  <string>NOMBRE</string>
@@ -759,8 +1291,6 @@ QTableView::item:selected{
                  <string>PRECIO</string>
                 </property>
                </column>
-               <column/>
-               <column/>
               </widget>
              </item>
             </layout>
@@ -794,6 +1324,9 @@ QTableView::item:selected{
              </item>
              <item row="8" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
               <widget class="QPushButton" name="pushButton_3">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="text">
                 <string>IMPRIMIR</string>
                </property>
@@ -808,6 +1341,9 @@ QTableView::item:selected{
              </item>
              <item row="1" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
               <widget class="QPushButton" name="pushButton">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="text">
                 <string>GENERAR</string>
                </property>
@@ -857,6 +1393,9 @@ QTableView::item:selected{
             <layout class="QVBoxLayout" name="verticalLayout_5">
              <item alignment="Qt::AlignmentFlag::AlignHCenter">
               <widget class="QPushButton" name="pushButton_2">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="text">
                 <string>CAMBIAR USUARIOS</string>
                </property>
@@ -923,6 +1462,9 @@ QTableView::item:selected{
                   <property name="enabled">
                    <bool>false</bool>
                   </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
                   <property name="text">
                    <string>ACEPTAR</string>
                   </property>
@@ -962,7 +1504,7 @@ QTableView::item:selected{
               <widget class="QLineEdit" name="line_nombre_rproducto">
                <property name="minimumSize">
                 <size>
-                 <width>184</width>
+                 <width>162</width>
                  <height>0</height>
                 </size>
                </property>

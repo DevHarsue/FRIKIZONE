@@ -1,13 +1,13 @@
 import sys
 from PySide6.QtWidgets import QApplication, QMainWindow
-from interfaz.login.ui_ventana1 import Ui_MainWindow
-from interfaz.login.ui_ventana4 import Ui_MainWindow as w2
-from interfaz.interfaz_principal import Ui_MainWindow as w
+from interfaz.login.ui_ventana1 import Ui_login
+from interfaz.login.ui_ventana4 import Ui_register
+from interfaz.interfaz_principal import Ui_MainWindow
 
 class VentanaPrincipal(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.ui = Ui_MainWindow()
+        self.ui = Ui_login()
         self.ui.setupUi(self)
         self.slotsbotones()
 
@@ -19,27 +19,27 @@ class VentanaPrincipal(QMainWindow):
 
     # Slots
     def iniciar_sesion(self):    
-        self.hide()
+        self.close()
         self.ventana = Ventana_principal()
         self.ventana.show()
 
     def registrarse(self):
-        self.hide()
+        self.close()
         self.ventana2 = Ventana_registro()
-        self.ventana2.show
+        self.ventana2.show()
 
 
     # VENTANAS
 class Ventana_principal(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.ventana = w()
+        self.ventana = Ui_MainWindow()
         self.ventana.setupUi(self)
 
 class Ventana_registro(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.ventana = w2()
+        self.ventana = Ui_register()
         self.ventana.setupUi(self)
 
 
