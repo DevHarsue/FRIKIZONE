@@ -134,6 +134,9 @@ class CierreMensualPDF(FPDF):
         super().__init__()
         self.fecha_cierre = fecha_cierre
         self.datos_mensuales = datos_mensuales
+        self.total_bolivares = sum(dato['total_bolivares'] for dato in self.datos_mensuales)
+        self.total_pesos = sum(dato['total_pesos'] for dato in self.datos_mensuales)
+        self.total_dolares = sum(dato['total_dolares'] for dato in self.datos_mensuales)
         
         self.add_page()
         self.set_auto_page_break(auto=True, margin=15)
@@ -141,6 +144,7 @@ class CierreMensualPDF(FPDF):
         self.add_title()
         self.add_closure_info()
         self.add_totals()
+        self.add_final_totals()  # Asegurarse de que se llame aquí para que se ejecute automáticamente
 
     def add_logo(self):
         logo_path = 'logo.png'
@@ -154,7 +158,7 @@ class CierreMensualPDF(FPDF):
         self.cell(0, 10, 'FRIKIZONE', 0, 1, 'C')
         self.set_font('Arial', 'B', 20)
         self.cell(0, 10, 'Cierre Mensual', 0, 1, 'C')
-        self.cell(0, 10, f'Fecha: {self.fecha_cierre}', 0, 1, 'C')
+        
 
     def add_closure_info(self):
         self.ln()
@@ -176,7 +180,15 @@ class CierreMensualPDF(FPDF):
             self.cell(50, 10, f"{dato['total_bolivares']:.2f}", 1)
             self.cell(50, 10, f"{dato['total_pesos']:.2f}", 1)
             self.cell(50, 10, f"{dato['total_dolares']:.2f}", 1)
-            self.ln()     
+            self.ln() 
+    
+    def add_final_totals(self):
+        self.set_font('Arial', 'B', 12)
+        self.cell(40, 10, 'Total', 1)
+        self.cell(50, 10, f"BS:{self.total_bolivares:.2f}", 1)
+        self.cell(50, 10, f"COP:{self.total_pesos:.2f}", 1)
+        self.cell(50, 10, f"${self.total_dolares:.2f}", 1)  
+
 
 class ProductoMasVendidosPDF(FPDF):
     def __init__(self, fecha_reporte, productos):
@@ -287,6 +299,10 @@ clientes = [
 datos_mensuales = [
     {'fecha': '01/06/2024', 'total_bolivares': 1000.00, 'total_pesos': 5000.00, 'total_dolares': 200.00},
     {'fecha': '02/06/2024', 'total_bolivares': 1500.00, 'total_pesos': 6000.00, 'total_dolares': 300.00},
+    {'fecha': '04/06/2024', 'total_bolivares': 780.00, 'total_pesos': 20000.00, 'total_dolares': 20.00},
+    
+
+    
     # Agrega más datos según sea necesario
 ]
 
