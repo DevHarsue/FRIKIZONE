@@ -1,9 +1,10 @@
 from Validacion.validador import Validador
 from conexion_bd.tablas import TablaClientes,TablaDivisas
 from PySide6.QtWidgets import QMessageBox,QTableWidgetItem
+from submain import MainWindow
 
 class VistaFacturar:
-    def __init__(self,ventana) -> None:
+    def __init__(self,ventana: MainWindow) -> None:
         self.ventana = ventana
         self.ui = ventana.ui
         self.ui.boton_buscar_cliente_facturar.pressed.connect(self.buscar_paciente)
@@ -28,8 +29,9 @@ class VistaFacturar:
             self.ui.line_nombre_facturar.setText(cliente.nombre)
             self.ui.line_apellido_facturar.setText(cliente.apellido)
         else:
-            respuesta = self.ventana.preguntar("Cliente No encontrado","¿Desea registrar cliente?")
-            if respuesta == QMessageBox.StandardButton.Yes:
+            self.ventana.preguntar("Cliente No encontrado","¿Desea registrar cliente?")
+            respuesta = self.ventana.respuesta
+            if respuesta == True:
                 self.ui.stacked_widget.setCurrentWidget(self.ui.vista_registrar_clientes)
                 self.ui.line_cedula_rcliente.setText(cedula)
                 self.ui.combo_nacionalidad_rcliente.setCurrentIndex(self.ui.combo_nacionalidad_facturar.currentIndex())

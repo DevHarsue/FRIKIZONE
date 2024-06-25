@@ -3,9 +3,10 @@ from conexion_bd.tablas import TablaClientes
 from Validacion.validador import Validador
 from PySide6.QtWidgets import QMessageBox
 from Validacion.validador import Validador
+from submain import MainWindow
 
 class VistaRegistrarClientes:
-    def __init__(self,ventana) -> None:
+    def __init__(self,ventana: MainWindow) -> None:
         self.ventana = ventana
         self.ui = ventana.ui
         self.vista_registrar_clientes()
@@ -62,6 +63,9 @@ class VistaRegistrarClientes:
             
     def registrar_cliente(self):
         cedula = self.ui.line_cedula_rcliente.text()
+        if cedula=="" or len(cedula)<7:
+            self.ventana.mostrar_mensaje("Cedula Invalida","Cedula invalida")
+            return 0
         nombre = self.ui.line_nombre_rcliente.text()
         apellido = self.ui.line_apellido_rcliente.text()
         nacionalidad = self.ui.combo_nacionalidad_rcliente.currentText()

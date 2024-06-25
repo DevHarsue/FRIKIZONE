@@ -527,7 +527,7 @@ color: rgb(21, 255, 255);</string>
                      <widget class="QComboBox" name="comboBox_3">
                       <property name="minimumSize">
                        <size>
-                        <width>150</width>
+                        <width>28</width>
                         <height>40</height>
                        </size>
                       </property>
@@ -575,7 +575,7 @@ border-bottom: 1px solid white;</string>
                      <widget class="QDoubleSpinBox" name="doubleSpinBox_11">
                       <property name="minimumSize">
                        <size>
-                        <width>150</width>
+                        <width>137</width>
                         <height>40</height>
                        </size>
                       </property>
@@ -1123,7 +1123,7 @@ color: rgb(21, 255, 255);</string>
              <item row="3" column="0" colspan="3">
               <widget class="QTableWidget" name="table_productos_facturar">
                <property name="enabled">
-                <bool>false</bool>
+                <bool>true</bool>
                </property>
                <property name="horizontalScrollBarPolicy">
                 <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>

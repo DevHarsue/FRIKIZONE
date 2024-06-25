@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'dialogo.ui'
+## Form generated from reading UI file 'question.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.7.1
 ##
@@ -15,22 +15,21 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QAbstractButton, QApplication, QDialog, QDialogButtonBox,
-    QGridLayout, QLabel, QSizePolicy, QSpinBox,
-    QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QDialog, QGridLayout, QLabel,
+    QPushButton, QSizePolicy, QVBoxLayout, QWidget)
 
-class Ui_Cantidad(object):
-    def setupUi(self, Cantidad):
-        if not Cantidad.objectName():
-            Cantidad.setObjectName(u"Cantidad")
-        Cantidad.resize(370, 80)
-        Cantidad.setMaximumSize(QSize(370, 80))
-        Cantidad.setStyleSheet(u"*{\n"
+class Ui_Question(object):
+    def setupUi(self, Question):
+        if not Question.objectName():
+            Question.setObjectName(u"Question")
+        Question.resize(370, 78)
+        Question.setMaximumSize(QSize(370, 80))
+        Question.setStyleSheet(u"*{\n"
 "	font-size: 12px;\n"
 "	font-family: Rockwell;\n"
 "}\n"
 "\n"
-"#Cantidad{background: url(\"images/fondo_messagebox.png\")}\n"
+"#Question{background: url(\"images/fondo_messagebox.png\")}\n"
 "#centralwidget{\n"
 "	background: rgba(0,0,0,240)\n"
 "}\n"
@@ -98,43 +97,44 @@ class Ui_Cantidad(object):
 "	subcontrol-position: top;\n"
 "	subcontrol-origin: margin;\n"
 "}")
-        self.verticalLayout = QVBoxLayout(Cantidad)
+        self.verticalLayout = QVBoxLayout(Question)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.centralwidget = QWidget(Cantidad)
+        self.centralwidget = QWidget(Question)
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout = QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName(u"gridLayout")
-        self.spinBox = QSpinBox(self.centralwidget)
-        self.spinBox.setObjectName(u"spinBox")
-        self.spinBox.setCursor(QCursor(Qt.PointingHandCursor))
+        self.pushButton = QPushButton(self.centralwidget)
+        self.pushButton.setObjectName(u"pushButton")
+        self.pushButton.setCursor(QCursor(Qt.PointingHandCursor))
 
-        self.gridLayout.addWidget(self.spinBox, 1, 0, 1, 1)
+        self.gridLayout.addWidget(self.pushButton, 1, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignVCenter)
+
+        self.pushButton_2 = QPushButton(self.centralwidget)
+        self.pushButton_2.setObjectName(u"pushButton_2")
+        self.pushButton_2.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.gridLayout.addWidget(self.pushButton_2, 1, 1, 1, 1)
 
         self.label = QLabel(self.centralwidget)
         self.label.setObjectName(u"label")
-        self.label.setCursor(QCursor(Qt.PointingHandCursor))
+        self.label.setCursor(QCursor(Qt.ArrowCursor))
 
-        self.gridLayout.addWidget(self.label, 0, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter)
-
-        self.buttonBox = QDialogButtonBox(self.centralwidget)
-        self.buttonBox.setObjectName(u"buttonBox")
-        self.buttonBox.setCursor(QCursor(Qt.PointingHandCursor))
-        self.buttonBox.setOrientation(Qt.Orientation.Vertical)
-        self.buttonBox.setStandardButtons(QDialogButtonBox.StandardButton.Cancel|QDialogButtonBox.StandardButton.Ok)
-
-        self.gridLayout.addWidget(self.buttonBox, 0, 1, 2, 1)
+        self.gridLayout.addWidget(self.label, 0, 0, 1, 2, Qt.AlignmentFlag.AlignHCenter)
 
 
         self.verticalLayout.addWidget(self.centralwidget)
 
+        QWidget.setTabOrder(self.pushButton_2, self.pushButton)
 
-        self.retranslateUi(Cantidad)
+        self.retranslateUi(Question)
 
-        QMetaObject.connectSlotsByName(Cantidad)
+        QMetaObject.connectSlotsByName(Question)
     # setupUi
 
-    def retranslateUi(self, Cantidad):
-        Cantidad.setWindowTitle(QCoreApplication.translate("Cantidad", u"SELECCIONE CANTIDAD", None))
-        self.label.setText(QCoreApplication.translate("Cantidad", u"Cantidad:", None))
+    def retranslateUi(self, Question):
+        Question.setWindowTitle(QCoreApplication.translate("Question", u"title", None))
+        self.pushButton.setText(QCoreApplication.translate("Question", u"SI", None))
+        self.pushButton_2.setText(QCoreApplication.translate("Question", u"NO", None))
+        self.label.setText(QCoreApplication.translate("Question", u"xds", None))
     # retranslateUi
 

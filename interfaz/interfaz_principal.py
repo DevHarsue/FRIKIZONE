@@ -373,7 +373,7 @@ class Ui_MainWindow(object):
         self.comboBox_3.addItem("")
         self.comboBox_3.addItem("")
         self.comboBox_3.setObjectName(u"comboBox_3")
-        self.comboBox_3.setMinimumSize(QSize(150, 40))
+        self.comboBox_3.setMinimumSize(QSize(28, 40))
         self.comboBox_3.setMaximumSize(QSize(160, 40))
         self.comboBox_3.setCursor(QCursor(Qt.PointingHandCursor))
         self.comboBox_3.setStyleSheet(u"color:white;\n"
@@ -389,7 +389,7 @@ class Ui_MainWindow(object):
 
         self.doubleSpinBox_11 = QDoubleSpinBox(self.frame_13)
         self.doubleSpinBox_11.setObjectName(u"doubleSpinBox_11")
-        self.doubleSpinBox_11.setMinimumSize(QSize(150, 40))
+        self.doubleSpinBox_11.setMinimumSize(QSize(137, 40))
         self.doubleSpinBox_11.setMaximumSize(QSize(150, 40))
 
         self.verticalLayout_20.addWidget(self.doubleSpinBox_11, 0, Qt.AlignmentFlag.AlignHCenter)
@@ -682,7 +682,7 @@ class Ui_MainWindow(object):
         __qtablewidgetitem4 = QTableWidgetItem()
         self.table_productos_facturar.setHorizontalHeaderItem(4, __qtablewidgetitem4)
         self.table_productos_facturar.setObjectName(u"table_productos_facturar")
-        self.table_productos_facturar.setEnabled(False)
+        self.table_productos_facturar.setEnabled(True)
         self.table_productos_facturar.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.table_productos_facturar.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
         self.table_productos_facturar.horizontalHeader().setCascadingSectionResizes(False)

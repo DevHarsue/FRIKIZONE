@@ -1,6 +1,6 @@
 from conexion_bd.tablas import TablaProductos
 from PySide6.QtWidgets import QDialog,QTableWidgetItem
-from interfaz.seleccionar_numero import Ui_Dialog
+from interfaz.seleccionar_numero import Ui_Cantidad
 
 class VistaProductos:
     def __init__(self,ventana) -> None:
@@ -10,6 +10,7 @@ class VistaProductos:
         self.ui.combo_buscar_bproducto.currentIndexChanged.connect(self.cambiar_place_holder)
         self.ui.table_productos.itemPressed.connect(self.item_clickeado)
         self.compra = False
+        self.buscar_producto()
     
     def buscar_producto(self):
         while self.ui.table_productos.rowCount() > 0:
@@ -48,17 +49,19 @@ class VistaProductos:
         if self.compra:
             self.dialogo = NumberInputDialog(self)
             self.dialogo.show()
+        
+            
     
 
 class NumberInputDialog(QDialog):
     def __init__(self,ventana):
         super().__init__()
+        self.setModal(True)
         self.ventana = ventana
-        self.ui = Ui_Dialog()
+        self.ui = Ui_Cantidad()
         self.ui.setupUi(self)
-        self.cantidad = 0
         self.ui.buttonBox.accepted.connect(self.dar_cantidad)
-        self.ui.buttonBox.rejected.connect(self.no_producto)
+        self.ui.buttonBox.rejected.connect(self.close)
     
     def dar_cantidad(self):
         self.ventana.cantidad = self.ui.spinBox.value()
@@ -67,7 +70,10 @@ class NumberInputDialog(QDialog):
             return 0
         self.ventana.ui.stacked_widget.setCurrentWidget(self.ventana.ui.vista_facturar)
         self.ventana.ventana.vista_facturar.meter_producto()
-
+        self.close()
+        self.ventana.compra = False
+        
     def no_producto(self):
         self.ventana.ventana.mostrar_mensaje("Cantidad Invalida","La cantidad tiene que ser mayor a 0")
+        self.close()
 
