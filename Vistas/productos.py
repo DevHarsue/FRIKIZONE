@@ -1,13 +1,15 @@
 from conexion_bd.tablas import TablaProductos
 from PySide6.QtWidgets import QDialog,QTableWidgetItem
 from interfaz.seleccionar_numero import Ui_Cantidad
+from submain import MainWindow
 
 class VistaProductos:
-    def __init__(self,ventana) -> None:
+    def __init__(self,ventana: MainWindow) -> None:
         self.ventana = ventana
         self.ui = ventana.ui
         self.ui.line_bproducto.textChanged.connect(self.buscar_producto)
         self.ui.combo_buscar_bproducto.currentIndexChanged.connect(self.cambiar_place_holder)
+        self.ui.table_productos.itemEntered.connect(self.item_clickeado)
         self.ui.table_productos.itemPressed.connect(self.item_clickeado)
         self.compra = False
         self.buscar_producto()
@@ -20,11 +22,9 @@ class VistaProductos:
         if texto_combo == "ID":
             try:
                 id_producto = int(producto)
-            except:
-                self.ventana.mostrar_mensaje("ID invalido","Introduzca un numero")
+                producto = TablaProductos().select(id_producto)
+            except Exception as e:
                 return 0
-            
-            producto = TablaProductos().select(id_producto)
             
         elif texto_combo == "NOMBRE":
             producto = TablaProductos().select_nombre(producto)

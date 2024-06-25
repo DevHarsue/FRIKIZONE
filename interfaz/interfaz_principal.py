@@ -113,7 +113,7 @@ class Ui_MainWindow(object):
         self.logo.setObjectName(u"logo")
         self.logo.setEnabled(True)
         self.logo.setMaximumSize(QSize(120, 120))
-        self.logo.setPixmap(QPixmap(u"../images/logo.png"))
+        self.logo.setPixmap(QPixmap(u"images/logo.png"))
         self.logo.setScaledContents(True)
 
         self.verticalLayout_4.addWidget(self.logo, 0, Qt.AlignmentFlag.AlignRight)
@@ -505,15 +505,6 @@ class Ui_MainWindow(object):
         self.gridLayout_17.setHorizontalSpacing(0)
         self.gridLayout_17.setVerticalSpacing(15)
         self.gridLayout_17.setContentsMargins(5, 20, 5, 40)
-        self.pushButton_12 = QPushButton(self.widget)
-        self.pushButton_12.setObjectName(u"pushButton_12")
-        self.pushButton_12.setMinimumSize(QSize(210, 30))
-        self.pushButton_12.setMaximumSize(QSize(192, 30))
-        self.pushButton_12.setCursor(QCursor(Qt.PointingHandCursor))
-        self.pushButton_12.setStyleSheet(u"font: 12pt \"Sylfaen\";")
-
-        self.gridLayout_17.addWidget(self.pushButton_12, 2, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter)
-
         self.label_22 = QLabel(self.widget)
         self.label_22.setObjectName(u"label_22")
         self.label_22.setMinimumSize(QSize(320, 50))
@@ -522,6 +513,15 @@ class Ui_MainWindow(object):
 "color: rgb(21, 255, 255);")
 
         self.gridLayout_17.addWidget(self.label_22, 0, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter)
+
+        self.pushButton_12 = QPushButton(self.widget)
+        self.pushButton_12.setObjectName(u"pushButton_12")
+        self.pushButton_12.setMinimumSize(QSize(210, 30))
+        self.pushButton_12.setMaximumSize(QSize(192, 30))
+        self.pushButton_12.setCursor(QCursor(Qt.PointingHandCursor))
+        self.pushButton_12.setStyleSheet(u"font: 12pt \"Sylfaen\";")
+
+        self.gridLayout_17.addWidget(self.pushButton_12, 3, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter)
 
         self.frame_9 = QFrame(self.widget)
         self.frame_9.setObjectName(u"frame_9")
@@ -569,7 +569,7 @@ class Ui_MainWindow(object):
         self.label_24.raise_()
         self.lineEdit_12.raise_()
 
-        self.gridLayout_17.addWidget(self.frame_9, 1, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter)
+        self.gridLayout_17.addWidget(self.frame_9, 1, 0, 1, 1)
 
 
         self.verticalLayout_16.addWidget(self.widget, 0, Qt.AlignmentFlag.AlignHCenter)
@@ -624,39 +624,59 @@ class Ui_MainWindow(object):
 
         self.gridLayout_5 = QGridLayout()
         self.gridLayout_5.setObjectName(u"gridLayout_5")
-        self.label_bs_facturar = QLabel(self.vista_facturar)
-        self.label_bs_facturar.setObjectName(u"label_bs_facturar")
+        self.label_cop_facturar = QLabel(self.vista_facturar)
+        self.label_cop_facturar.setObjectName(u"label_cop_facturar")
 
-        self.gridLayout_5.addWidget(self.label_bs_facturar, 1, 1, 1, 1)
+        self.gridLayout_5.addWidget(self.label_cop_facturar, 1, 4, 1, 1)
 
-        self.double_dolares_facturar = QDoubleSpinBox(self.vista_facturar)
-        self.double_dolares_facturar.setObjectName(u"double_dolares_facturar")
+        self.label_dolar = QLabel(self.vista_facturar)
+        self.label_dolar.setObjectName(u"label_dolar")
+        self.label_dolar.setCursor(QCursor(Qt.PointingHandCursor))
 
-        self.gridLayout_5.addWidget(self.double_dolares_facturar, 0, 0, 1, 1)
+        self.gridLayout_5.addWidget(self.label_dolar, 1, 1, 1, 1)
 
         self.label_dolar_facturar = QLabel(self.vista_facturar)
         self.label_dolar_facturar.setObjectName(u"label_dolar_facturar")
 
         self.gridLayout_5.addWidget(self.label_dolar_facturar, 1, 0, 1, 1)
 
-        self.label_cop_facturar = QLabel(self.vista_facturar)
-        self.label_cop_facturar.setObjectName(u"label_cop_facturar")
+        self.label_bs_facturar = QLabel(self.vista_facturar)
+        self.label_bs_facturar.setObjectName(u"label_bs_facturar")
 
-        self.gridLayout_5.addWidget(self.label_cop_facturar, 1, 2, 1, 1)
+        self.gridLayout_5.addWidget(self.label_bs_facturar, 1, 2, 1, 1)
+
+        self.double_dolares_facturar = QDoubleSpinBox(self.vista_facturar)
+        self.double_dolares_facturar.setObjectName(u"double_dolares_facturar")
+        self.double_dolares_facturar.setMaximum(999999999.990000009536743)
+
+        self.gridLayout_5.addWidget(self.double_dolares_facturar, 0, 0, 1, 2)
+
+        self.label_bs = QLabel(self.vista_facturar)
+        self.label_bs.setObjectName(u"label_bs")
+        self.label_bs.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.gridLayout_5.addWidget(self.label_bs, 1, 3, 1, 1)
+
+        self.label_cop = QLabel(self.vista_facturar)
+        self.label_cop.setObjectName(u"label_cop")
+        self.label_cop.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.gridLayout_5.addWidget(self.label_cop, 1, 5, 1, 1)
 
         self.double_bs_facturar = QDoubleSpinBox(self.vista_facturar)
         self.double_bs_facturar.setObjectName(u"double_bs_facturar")
+        self.double_bs_facturar.setMaximum(999999999.990000009536743)
 
-        self.gridLayout_5.addWidget(self.double_bs_facturar, 0, 1, 1, 1)
+        self.gridLayout_5.addWidget(self.double_bs_facturar, 0, 2, 1, 2)
 
         self.spin_cop_facturar = QSpinBox(self.vista_facturar)
         self.spin_cop_facturar.setObjectName(u"spin_cop_facturar")
         self.spin_cop_facturar.setMinimum(0)
-        self.spin_cop_facturar.setMaximum(100000000)
+        self.spin_cop_facturar.setMaximum(999999999)
         self.spin_cop_facturar.setSingleStep(1000)
         self.spin_cop_facturar.setDisplayIntegerBase(10)
 
-        self.gridLayout_5.addWidget(self.spin_cop_facturar, 0, 2, 1, 1)
+        self.gridLayout_5.addWidget(self.spin_cop_facturar, 0, 4, 1, 2)
 
 
         self.gridLayout_4.addLayout(self.gridLayout_5, 5, 0, 1, 3)
@@ -719,7 +739,6 @@ class Ui_MainWindow(object):
         self.gridLayout_2.addWidget(self.line_bproducto, 0, 1, 1, 1)
 
         self.combo_buscar_bproducto = QComboBox(self.vista_productos)
-        self.combo_buscar_bproducto.addItem("")
         self.combo_buscar_bproducto.addItem("")
         self.combo_buscar_bproducto.addItem("")
         self.combo_buscar_bproducto.setObjectName(u"combo_buscar_bproducto")
@@ -993,8 +1012,8 @@ class Ui_MainWindow(object):
         self.line_cedula_rcliente.setPlaceholderText(QCoreApplication.translate("MainWindow", u"CEDULA", None))
         self.line_telefono_rcliente.setPlaceholderText(QCoreApplication.translate("MainWindow", u"TELEFONO", None))
         self.boton_registrar_rcliente.setText(QCoreApplication.translate("MainWindow", u"REGISTRAR", None))
-        self.pushButton_12.setText(QCoreApplication.translate("MainWindow", u"ACTUALIZAR", None))
         self.label_22.setText(QCoreApplication.translate("MainWindow", u"Actualizar Productos", None))
+        self.pushButton_12.setText(QCoreApplication.translate("MainWindow", u"ACTUALIZAR", None))
         self.label_23.setText(QCoreApplication.translate("MainWindow", u"Nombre del Producto", None))
         self.lineEdit_12.setText("")
         self.label_24.setText(QCoreApplication.translate("MainWindow", u"Precio del Producto", None))
@@ -1008,9 +1027,12 @@ class Ui_MainWindow(object):
         self.combo_nacionalidad_facturar.setItemText(0, QCoreApplication.translate("MainWindow", u"V", None))
         self.combo_nacionalidad_facturar.setItemText(1, QCoreApplication.translate("MainWindow", u"E", None))
 
-        self.label_bs_facturar.setText(QCoreApplication.translate("MainWindow", u"Valor BS:", None))
-        self.label_dolar_facturar.setText(QCoreApplication.translate("MainWindow", u"Valor $:", None))
         self.label_cop_facturar.setText(QCoreApplication.translate("MainWindow", u"Valor COP:", None))
+        self.label_dolar.setText(QCoreApplication.translate("MainWindow", u"0", None))
+        self.label_dolar_facturar.setText(QCoreApplication.translate("MainWindow", u"Valor $:", None))
+        self.label_bs_facturar.setText(QCoreApplication.translate("MainWindow", u"Valor BS:", None))
+        self.label_bs.setText(QCoreApplication.translate("MainWindow", u"0", None))
+        self.label_cop.setText(QCoreApplication.translate("MainWindow", u"0", None))
         self.boton_buscar_cliente_facturar.setText(QCoreApplication.translate("MainWindow", u"BUSCAR", None))
         ___qtablewidgetitem = self.table_productos_facturar.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"ID", None));
@@ -1025,8 +1047,7 @@ class Ui_MainWindow(object):
         self.boton_facturar.setText(QCoreApplication.translate("MainWindow", u"FACTURAR", None))
         self.line_bproducto.setPlaceholderText(QCoreApplication.translate("MainWindow", u"NOMBRE", None))
         self.combo_buscar_bproducto.setItemText(0, QCoreApplication.translate("MainWindow", u"NOMBRE", None))
-        self.combo_buscar_bproducto.setItemText(1, QCoreApplication.translate("MainWindow", u"PRECIO", None))
-        self.combo_buscar_bproducto.setItemText(2, QCoreApplication.translate("MainWindow", u"ID", None))
+        self.combo_buscar_bproducto.setItemText(1, QCoreApplication.translate("MainWindow", u"ID", None))
 
         ___qtablewidgetitem5 = self.table_productos.horizontalHeaderItem(0)
         ___qtablewidgetitem5.setText(QCoreApplication.translate("MainWindow", u"ID", None));

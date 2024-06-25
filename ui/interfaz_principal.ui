@@ -802,7 +802,30 @@ border-bottom: 1px solid white;</string>
                  <property name="verticalSpacing">
                   <number>15</number>
                  </property>
-                 <item row="2" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
+                 <item row="0" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
+                  <widget class="QLabel" name="label_22">
+                   <property name="minimumSize">
+                    <size>
+                     <width>320</width>
+                     <height>50</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>320</width>
+                     <height>50</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">font: 26pt &quot;Sylfaen&quot;;
+color: rgb(21, 255, 255);</string>
+                   </property>
+                   <property name="text">
+                    <string>Actualizar Productos</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
                   <widget class="QPushButton" name="pushButton_12">
                    <property name="minimumSize">
                     <size>
@@ -827,30 +850,7 @@ border-bottom: 1px solid white;</string>
                    </property>
                   </widget>
                  </item>
-                 <item row="0" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
-                  <widget class="QLabel" name="label_22">
-                   <property name="minimumSize">
-                    <size>
-                     <width>320</width>
-                     <height>50</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>320</width>
-                     <height>50</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">font: 26pt &quot;Sylfaen&quot;;
-color: rgb(21, 255, 255);</string>
-                   </property>
-                   <property name="text">
-                    <string>Actualizar Productos</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="1" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
+                 <item row="1" column="0">
                   <widget class="QFrame" name="frame_9">
                    <property name="minimumSize">
                     <size>
@@ -1065,15 +1065,22 @@ color: rgb(21, 255, 255);</string>
              </item>
              <item row="5" column="0" colspan="3">
               <layout class="QGridLayout" name="gridLayout_5">
-               <item row="1" column="1">
-                <widget class="QLabel" name="label_bs_facturar">
+               <item row="1" column="4">
+                <widget class="QLabel" name="label_cop_facturar">
                  <property name="text">
-                  <string>Valor BS:</string>
+                  <string>Valor COP:</string>
                  </property>
                 </widget>
                </item>
-               <item row="0" column="0">
-                <widget class="QDoubleSpinBox" name="double_dolares_facturar"/>
+               <item row="1" column="1">
+                <widget class="QLabel" name="label_dolar">
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <property name="text">
+                  <string>0</string>
+                 </property>
+                </widget>
                </item>
                <item row="1" column="0">
                 <widget class="QLabel" name="label_dolar_facturar">
@@ -1083,22 +1090,53 @@ color: rgb(21, 255, 255);</string>
                 </widget>
                </item>
                <item row="1" column="2">
-                <widget class="QLabel" name="label_cop_facturar">
+                <widget class="QLabel" name="label_bs_facturar">
                  <property name="text">
-                  <string>Valor COP:</string>
+                  <string>Valor BS:</string>
                  </property>
                 </widget>
                </item>
-               <item row="0" column="1">
-                <widget class="QDoubleSpinBox" name="double_bs_facturar"/>
+               <item row="0" column="0" colspan="2">
+                <widget class="QDoubleSpinBox" name="double_dolares_facturar">
+                 <property name="maximum">
+                  <double>999999999.990000009536743</double>
+                 </property>
+                </widget>
                </item>
-               <item row="0" column="2">
+               <item row="1" column="3">
+                <widget class="QLabel" name="label_bs">
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <property name="text">
+                  <string>0</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="5">
+                <widget class="QLabel" name="label_cop">
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <property name="text">
+                  <string>0</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="2" colspan="2">
+                <widget class="QDoubleSpinBox" name="double_bs_facturar">
+                 <property name="maximum">
+                  <double>999999999.990000009536743</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="4" colspan="2">
                 <widget class="QSpinBox" name="spin_cop_facturar">
                  <property name="minimum">
                   <number>0</number>
                  </property>
                  <property name="maximum">
-                  <number>100000000</number>
+                  <number>999999999</number>
                  </property>
                  <property name="singleStep">
                   <number>1000</number>
@@ -1222,11 +1260,6 @@ color: rgb(21, 255, 255);</string>
                <item>
                 <property name="text">
                  <string>NOMBRE</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>PRECIO</string>
                 </property>
                </item>
                <item>

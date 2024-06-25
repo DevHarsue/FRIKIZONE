@@ -50,7 +50,7 @@ class VentanaLogin(QMainWindow):
         window.vista_facturar = VistaFacturar(window)
         window.vista_cierre = VistaCierre(window)
         window.vista_configuracion = VistaConfiguracion(window)
-
+    
 
 # Ejecutar Interfaz
 if __name__ == '__main__':

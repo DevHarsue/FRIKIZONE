@@ -16,6 +16,15 @@ class VistaFacturar:
         self.ui.spin_cop_facturar.textChanged.connect(self.calcular)
         self.ui.double_dolares_facturar.textChanged.connect(self.calcular)
         self.total = 0
+        self.ui.label_bs.mousePressEvent = self.cargar_bs
+        self.ui.label_dolar.mousePressEvent = self.cargar_dolar
+        self.ui.label_cop.mousePressEvent = self.cargar_cop
+        self.ui.double_bs_facturar.valueChanged.connect(self.calcular_restante)
+        self.ui.double_dolares_facturar.valueChanged.connect(self.calcular_restante)
+        self.ui.spin_cop_facturar.valueChanged.connect(self.calcular_restante)
+        self.tasa_bolivares = float(TablaDivisas().select(1)[0].relacion)
+        self.tasa_cop = float(TablaDivisas().select(2)[0].relacion)
+        
     
     def buscar_paciente(self):
         cedula = self.ui.line_cedula_facturar.text()
@@ -58,23 +67,81 @@ class VistaFacturar:
         datos.append(self.ventana.vista_productos.cantidad)
         datos.append(float(datos[-1])*float(datos[-2]))
         
+        for x in range(self.ui.table_productos_facturar.rowCount()):
+            if self.ui.table_productos_facturar.item(x,0).text() == datos[0]:
+                cantidad = int(self.ui.table_productos_facturar.item(x,3).text())+self.ventana.vista_productos.cantidad
+                self.ui.table_productos_facturar.setItem(x,3,QTableWidgetItem(str(cantidad)))
+                self.ui.table_productos_facturar.setItem(x,4,QTableWidgetItem(str(cantidad*float(datos[-3]))))
+                self.calcular()
+                return 0
+        
         self.ui.table_productos_facturar.insertRow(self.ui.table_productos_facturar.rowCount())
         row = self.ui.table_productos_facturar.rowCount()-1
         for i,x in enumerate(datos):
             self.ui.table_productos_facturar.setItem(row,i,QTableWidgetItem(str(x)))
         
-        self.ui.table_productos_facturar.setItem(row,i,QTableWidgetItem(str(x)))
-        
-        self.total+=float(datos[-1]) if datos[-1]!="" else 0
-        
-        self.ui.label_total.setText("TOTAL EN DOLARES: "+str(self.total))
         self.calcular()
+        self.calcular_restante()
         
     def calcular(self):
-        pass
-        # tasa_bolivares = float(TablaDivisas().select(1)[0].relacion)
-        # tasa_cop = float(TablaDivisas().select(2)[0].relacion)
-        # self.ui.label_dolar_facturar("Valor $: "+str(self.total))
-        # self.ui.label_bolivar_facturar("Valor BS: "+str(self.total*tasa_bolivares))
-        # self.ui.label_cop_facturar("Valor COP: "+str(self.total*tasa_cop))
-            
+        row = self.ui.table_productos_facturar.rowCount()
+        total = 0
+        for x in range(row):
+            total +=float(self.ui.table_productos_facturar.item(x,4).text())
+        
+        self.ui.label_total.setText("TOTAL EN DOLARES: "+str(total))
+        self.ui.label_dolar.setText(str(total))
+        self.ui.label_bs.setText(str(total*self.tasa_bolivares))
+        self.ui.label_cop.setText(str(int(total*self.tasa_cop)))
+    
+    def cargar_bs(self,e):
+        valor = self.ui.label_bs.text()
+        self.ui.double_bs_facturar.setValue(float(valor))
+    def cargar_dolar(self,e):
+        valor = self.ui.label_dolar.text()
+        self.ui.double_dolares_facturar.setValue(float(valor))
+    def cargar_cop(self,e):
+        valor = self.ui.label_cop.text()
+        self.ui.spin_cop_facturar.setValue(float(valor))
+    
+    def calcular_restante(self):
+        bs = float(self.ui.label_bs.text())
+        dolar = float(self.ui.label_dolar.text())
+        cop = int(self.ui.label_cop.text())
+        
+        ingresado_bs = self.ui.double_bs_facturar.value()
+        ingresado_dolar = self.ui.double_dolares_facturar.value()
+        ingresado_cop = self.ui.spin_cop_facturar.value()
+
+        if ingresado_bs > bs:
+            self.ui.double_bs_facturar.setValue(bs)
+            ingresado_bs = bs
+        if ingresado_dolar > dolar:
+            self.ui.double_dolares_facturar.setValue(dolar)
+            ingresado_dolar = dolar
+        if ingresado_cop > cop:
+            self.ui.spin_cop_facturar.setValue(cop)
+            ingresado_cop = cop
+        
+        restante_dolar = dolar-ingresado_dolar
+        restante_bs = bs-ingresado_bs
+        restante_cop = cop-ingresado_cop
+        print(restante_bs,restante_dolar,restante_cop)
+        
+        if restante_dolar != dolar:
+            restante_bs-=ingresado_dolar*self.tasa_bolivares
+            restante_cop-=ingresado_dolar*self.tasa_cop
+        
+        if restante_bs != bs:
+            restante_dolar-=ingresado_bs/self.tasa_bolivares
+            restante_cop-=(ingresado_bs/self.tasa_bolivares)*self.tasa_cop
+        
+        if restante_cop != cop:
+            restante_bs-=(ingresado_cop/self.tasa_cop)*self.tasa_bolivares
+            restante_dolar-=ingresado_cop/self.tasa_cop
+        
+        
+        self.ui.label_bs.setText(str(round(restante_bs,2)))
+        self.ui.label_dolar.setText(str(round(restante_dolar,2)))
+        self.ui.label_cop.setText(str(int(round(restante_cop,2))))
+        
