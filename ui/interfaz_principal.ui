@@ -17,7 +17,11 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>FRIKIZONE</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../images/zone.ico</normaloff>../images/zone.ico</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">*{
@@ -1606,7 +1610,6 @@ color: rgb(21, 255, 255);</string>
     </item>
    </layout>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <tabstops>
   <tabstop>boton_v_facturar</tabstop>

@@ -35,7 +35,7 @@
    <bool>false</bool>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Login</string>
   </property>
   <property name="layoutDirection">
    <enum>Qt::LayoutDirection::RightToLeft</enum>

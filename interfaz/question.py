@@ -22,8 +22,11 @@ class Ui_Question(object):
     def setupUi(self, Question):
         if not Question.objectName():
             Question.setObjectName(u"Question")
-        Question.resize(370, 78)
+        Question.resize(370, 79)
         Question.setMaximumSize(QSize(370, 80))
+        icon = QIcon()
+        icon.addFile(u"images/zone.ico", QSize(), QIcon.Normal, QIcon.Off)
+        Question.setWindowIcon(icon)
         Question.setStyleSheet(u"*{\n"
 "	font-size: 12px;\n"
 "	font-family: Rockwell;\n"

@@ -19,8 +19,8 @@ from PySide6.QtWidgets import (QAbstractItemView, QApplication, QCheckBox, QComb
     QDateEdit, QDoubleSpinBox, QFrame, QGridLayout,
     QHBoxLayout, QHeaderView, QLabel, QLineEdit,
     QMainWindow, QPushButton, QSizePolicy, QSpacerItem,
-    QSpinBox, QStackedWidget, QStatusBar, QTableWidget,
-    QTableWidgetItem, QTextEdit, QVBoxLayout, QWidget)
+    QSpinBox, QStackedWidget, QTableWidget, QTableWidgetItem,
+    QTextEdit, QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -28,6 +28,9 @@ class Ui_MainWindow(object):
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(800, 600)
         MainWindow.setMinimumSize(QSize(800, 600))
+        icon = QIcon()
+        icon.addFile(u"images/zone.ico", QSize(), QIcon.Normal, QIcon.Off)
+        MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet(u"*{\n"
 "	font-size: 12px;\n"
 "	font-family: Rockwell;\n"
@@ -683,8 +686,8 @@ class Ui_MainWindow(object):
 
         self.boton_buscar_cliente_facturar = QPushButton(self.vista_facturar)
         self.boton_buscar_cliente_facturar.setObjectName(u"boton_buscar_cliente_facturar")
-        icon = QIcon(QIcon.fromTheme(u"system-search"))
-        self.boton_buscar_cliente_facturar.setIcon(icon)
+        icon1 = QIcon(QIcon.fromTheme(u"system-search"))
+        self.boton_buscar_cliente_facturar.setIcon(icon1)
 
         self.gridLayout_4.addWidget(self.boton_buscar_cliente_facturar, 0, 2, 1, 1, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignBottom)
 
@@ -953,9 +956,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addWidget(self.contenedor_principal)
 
         MainWindow.setCentralWidget(self.centralwidget)
-        self.statusbar = QStatusBar(MainWindow)
-        self.statusbar.setObjectName(u"statusbar")
-        MainWindow.setStatusBar(self.statusbar)
         QWidget.setTabOrder(self.boton_v_facturar, self.boton_v_productos)
         QWidget.setTabOrder(self.boton_v_productos, self.line_nombre_rproducto)
         QWidget.setTabOrder(self.line_nombre_rproducto, self.text_descripcion_rproducto)
@@ -981,7 +981,7 @@ class Ui_MainWindow(object):
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"FRIKIZONE", None))
         self.boton_v_cierre.setText(QCoreApplication.translate("MainWindow", u"CIERRE", None))
         self.boton_v_configuracion.setText(QCoreApplication.translate("MainWindow", u"CONFIGURACI\u00d3N", None))
         self.boton_v_cerrar_sesion.setText(QCoreApplication.translate("MainWindow", u"CERRAR SESI\u00d3N", None))

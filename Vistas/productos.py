@@ -9,7 +9,7 @@ class VistaProductos:
         self.ui = ventana.ui
         self.ui.line_bproducto.textChanged.connect(self.buscar_producto)
         self.ui.combo_buscar_bproducto.currentIndexChanged.connect(self.cambiar_place_holder)
-        self.ui.table_productos.itemEntered.connect(self.item_clickeado)
+        self.ui.table_productos.itemActivated.connect(self.item_clickeado)
         self.ui.table_productos.itemPressed.connect(self.item_clickeado)
         self.compra = False
         self.buscar_producto()

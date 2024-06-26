@@ -56,6 +56,26 @@ class Venta(ObjetoPadre):
     
     def __repr__(self):
         return f'Venta("{self.id}",{self.fecha},{self.cliente_id},{self.usuario_id})'
+
+class VentaIngreso(ObjetoPadre):
+    def __init__(self,id: int,venta_id: int,divisa_id: int,cantidad: float):
+        self.id = id
+        self.venta_id = venta_id
+        self.divisa_id = divisa_id
+        self.cantidad = cantidad
+    
+    def __repr__(self):
+        return f'VentaIngreso("{self.id}",{self.venta_id},{self.divisa_id},{self.cantidad})'
+
+class VentaProducto(ObjetoPadre):
+    def __init__(self,id: int,venta_id: int,producto_id: int,cantidad: float):
+        self.id = id
+        self.venta_id = venta_id
+        self.producto_id = producto_id
+        self.cantidad = cantidad
+    
+    def __repr__(self):
+        return f'VentaProducto("{self.id}",{self.venta_id},{self.producto_id},{self.cantidad})'
     
 class Divisa(ObjetoPadre):
     def __init__(self,id: int,nombre: str,relacion: float):
@@ -75,5 +95,5 @@ class TotalDiario(ObjetoPadre):
         self.total = total
     
     def __repr__(self):
-        return f'TotalDiario("{self.id}",{self.fecha},{self.divisa_id},{self.total}'
+        return f'TotalDiario("{self.id}",{self.fecha},{self.divisa_id},{self.total})'
         

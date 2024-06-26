@@ -24,6 +24,9 @@ class Ui_Message(object):
             Message.setObjectName(u"Message")
         Message.resize(370, 80)
         Message.setMaximumSize(QSize(370, 80))
+        icon = QIcon()
+        icon.addFile(u"images/zone.ico", QSize(), QIcon.Normal, QIcon.Off)
+        Message.setWindowIcon(icon)
         Message.setStyleSheet(u"*{\n"
 "	font-size: 12px;\n"
 "	font-family: Rockwell;\n"

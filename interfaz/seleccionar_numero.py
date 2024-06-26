@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'dialogo.ui'
+## Form generated from reading UI file 'seleccionar_numero.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.7.1
 ##
@@ -25,6 +25,9 @@ class Ui_Cantidad(object):
             Cantidad.setObjectName(u"Cantidad")
         Cantidad.resize(370, 80)
         Cantidad.setMaximumSize(QSize(370, 80))
+        icon = QIcon()
+        icon.addFile(u"images/zone.ico", QSize(), QIcon.Normal, QIcon.Off)
+        Cantidad.setWindowIcon(icon)
         Cantidad.setStyleSheet(u"*{\n"
 "	font-size: 12px;\n"
 "	font-family: Rockwell;\n"

@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QMainWindow,QMessageBox,QDialog
+from PySide6.QtWidgets import QMainWindow,QDialog
 from PySide6.QtCore import Signal
 from interfaz.interfaz_principal import Ui_MainWindow
 from interfaz.message import Ui_Message
@@ -6,8 +6,9 @@ from interfaz.question import Ui_Question
 
 # Ventana Principal
 class MainWindow(QMainWindow):
-    def __init__(self):
+    def __init__(self,usuario_id):
         QMainWindow.__init__(self)
+        self.usuario_id = usuario_id
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.crear_logica()
@@ -38,10 +39,8 @@ class MainWindow(QMainWindow):
         self.mensaje.mostrar(titulo,mensaje)
     def mostrar_error(self,error):
         self.mensaje.mostrar("Error",f"Ha ocurrido el siguiente error:\n{error}")
-    
     def preguntar(self,titulo,texto):
         self.pregunta.mostrar(titulo,texto)
-        # return QMessageBox.question(self,titulo,texto,QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,QMessageBox.StandardButton.No)
 
     def responder(self,respuesta):
         if not respuesta:
@@ -61,7 +60,7 @@ class Mensaje(QDialog):
         self.ui.pushButton.setDefault(True)
         self.setWindowTitle(titulo)
         self.ui.label.setText(mensaje)
-        self.show()
+        self.exec_()
 
 class Preguntar(QDialog):
     respuesta = Signal(bool)

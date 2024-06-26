@@ -35,7 +35,7 @@ class VentanaLogin(QMainWindow):
         
         if nombre == usuario.nombre and contrasena==usuario._contraseña:
             self.close()
-            self.ventana = MainWindow()
+            self.ventana = MainWindow(usuario.id)
             self.funcionalidades_main(self.ventana)
             self.ventana.show()
             
@@ -50,7 +50,7 @@ class VentanaLogin(QMainWindow):
         window.vista_facturar = VistaFacturar(window)
         window.vista_cierre = VistaCierre(window)
         window.vista_configuracion = VistaConfiguracion(window)
-    
+
 
 # Ejecutar Interfaz
 if __name__ == '__main__':

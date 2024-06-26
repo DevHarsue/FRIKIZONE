@@ -19,6 +19,10 @@
   <property name="windowTitle">
    <string>SELECCIONE CANTIDAD</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../images/zone.ico</normaloff>../images/zone.ico</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true">*{
 	font-size: 12px;
