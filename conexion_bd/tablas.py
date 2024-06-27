@@ -66,7 +66,9 @@ class TablaVentasProductos(TablaHija):
         self.claseFila = VentaProducto
         self.insertar_id = False
         super().__init__()
-        
+    
+    def delete_por_producto(self,producto_id):
+        return self.bd.ejecutar(f"DELETE FROM ventas_productos WHERE producto_id = {producto_id};")
 class TablaTotalesDiarios(TablaHija):
     def __init__(self) -> None:
         self.nombre_tabla = "Totales_Diarios"

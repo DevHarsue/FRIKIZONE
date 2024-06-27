@@ -16,11 +16,11 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QAbstractItemView, QApplication, QCheckBox, QComboBox,
-    QDateEdit, QDoubleSpinBox, QFrame, QGridLayout,
-    QHBoxLayout, QHeaderView, QLabel, QLineEdit,
-    QMainWindow, QPushButton, QSizePolicy, QSpacerItem,
-    QSpinBox, QStackedWidget, QTableWidget, QTableWidgetItem,
-    QTextEdit, QVBoxLayout, QWidget)
+    QDateEdit, QDoubleSpinBox, QGridLayout, QHBoxLayout,
+    QHeaderView, QLabel, QLineEdit, QMainWindow,
+    QPushButton, QSizePolicy, QSpacerItem, QSpinBox,
+    QStackedWidget, QTableWidget, QTableWidgetItem, QTextEdit,
+    QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -29,7 +29,7 @@ class Ui_MainWindow(object):
         MainWindow.resize(800, 600)
         MainWindow.setMinimumSize(QSize(800, 600))
         icon = QIcon()
-        icon.addFile(u"images/zone.ico", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u"../images/zone.ico", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet(u"*{\n"
 "	font-size: 12px;\n"
@@ -116,7 +116,7 @@ class Ui_MainWindow(object):
         self.logo.setObjectName(u"logo")
         self.logo.setEnabled(True)
         self.logo.setMaximumSize(QSize(120, 120))
-        self.logo.setPixmap(QPixmap(u"images/logo.png"))
+        self.logo.setPixmap(QPixmap(u"../images/logo.png"))
         self.logo.setScaledContents(True)
 
         self.verticalLayout_4.addWidget(self.logo, 0, Qt.AlignmentFlag.AlignRight)
@@ -142,6 +142,11 @@ class Ui_MainWindow(object):
         self.boton_v_productos.setLayoutDirection(Qt.LayoutDirection.RightToLeft)
 
         self.verticalLayout.addWidget(self.boton_v_productos)
+
+        self.boton_v_divisas = QPushButton(self.widget_lateral)
+        self.boton_v_divisas.setObjectName(u"boton_v_divisas")
+
+        self.verticalLayout.addWidget(self.boton_v_divisas)
 
         self.boton_v_registrar_clientes = QPushButton(self.widget_lateral)
         self.boton_v_registrar_clientes.setObjectName(u"boton_v_registrar_clientes")
@@ -334,85 +339,44 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.setSpacing(0)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.frame_11 = QFrame(self.vista_divisas)
-        self.frame_11.setObjectName(u"frame_11")
-        self.frame_11.setStyleSheet(u"background:transparent;")
-        self.frame_11.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_11.setFrameShadow(QFrame.Shadow.Raised)
-        self.verticalLayout_21 = QVBoxLayout(self.frame_11)
-        self.verticalLayout_21.setObjectName(u"verticalLayout_21")
-        self.widget_2 = QWidget(self.frame_11)
-        self.widget_2.setObjectName(u"widget_2")
-        self.widget_2.setMinimumSize(QSize(580, 417))
-        self.verticalLayout_19 = QVBoxLayout(self.widget_2)
-        self.verticalLayout_19.setSpacing(35)
-        self.verticalLayout_19.setObjectName(u"verticalLayout_19")
-        self.verticalLayout_19.setContentsMargins(0, 30, 0, 50)
-        self.label_31 = QLabel(self.widget_2)
-        self.label_31.setObjectName(u"label_31")
-        self.label_31.setMinimumSize(QSize(320, 50))
-        self.label_31.setMaximumSize(QSize(320, 50))
-        self.label_31.setStyleSheet(u"font: 26pt \"Sylfaen\";\n"
-"color: rgb(21, 255, 255);")
+        self.gridLayout_7 = QGridLayout()
+        self.gridLayout_7.setObjectName(u"gridLayout_7")
+        self.gridLayout_7.setVerticalSpacing(14)
+        self.gridLayout_7.setContentsMargins(-1, 16, -1, 16)
+        self.combo_divisa_adivisa = QComboBox(self.vista_divisas)
+        self.combo_divisa_adivisa.addItem("")
+        self.combo_divisa_adivisa.addItem("")
+        self.combo_divisa_adivisa.setObjectName(u"combo_divisa_adivisa")
+        self.combo_divisa_adivisa.setCursor(QCursor(Qt.PointingHandCursor))
+        self.combo_divisa_adivisa.setStyleSheet(u"min-width: 8em;")
 
-        self.verticalLayout_19.addWidget(self.label_31, 0, Qt.AlignmentFlag.AlignHCenter)
+        self.gridLayout_7.addWidget(self.combo_divisa_adivisa, 1, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter)
 
-        self.frame_13 = QFrame(self.widget_2)
-        self.frame_13.setObjectName(u"frame_13")
-        self.frame_13.setMinimumSize(QSize(250, 200))
-        self.frame_13.setMaximumSize(QSize(16777215, 16777215))
-        self.verticalLayout_20 = QVBoxLayout(self.frame_13)
-        self.verticalLayout_20.setSpacing(0)
-        self.verticalLayout_20.setObjectName(u"verticalLayout_20")
-        self.verticalLayout_20.setContentsMargins(20, 5, 20, 40)
-        self.label_32 = QLabel(self.frame_13)
-        self.label_32.setObjectName(u"label_32")
-        self.label_32.setStyleSheet(u"font: 12pt \"Sylfaen\";")
+        self.label_2 = QLabel(self.vista_divisas)
+        self.label_2.setObjectName(u"label_2")
+        self.label_2.setStyleSheet(u"font-size: 14px;")
 
-        self.verticalLayout_20.addWidget(self.label_32, 0, Qt.AlignmentFlag.AlignHCenter)
+        self.gridLayout_7.addWidget(self.label_2, 0, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter)
 
-        self.comboBox_3 = QComboBox(self.frame_13)
-        self.comboBox_3.addItem("")
-        self.comboBox_3.addItem("")
-        self.comboBox_3.addItem("")
-        self.comboBox_3.setObjectName(u"comboBox_3")
-        self.comboBox_3.setMinimumSize(QSize(28, 40))
-        self.comboBox_3.setMaximumSize(QSize(160, 40))
-        self.comboBox_3.setCursor(QCursor(Qt.PointingHandCursor))
-        self.comboBox_3.setStyleSheet(u"color:white;\n"
-"border-bottom: 1px solid white;")
+        self.boton_actualizar_adivisa = QPushButton(self.vista_divisas)
+        self.boton_actualizar_adivisa.setObjectName(u"boton_actualizar_adivisa")
+        self.boton_actualizar_adivisa.setCursor(QCursor(Qt.PointingHandCursor))
 
-        self.verticalLayout_20.addWidget(self.comboBox_3, 0, Qt.AlignmentFlag.AlignHCenter)
+        self.gridLayout_7.addWidget(self.boton_actualizar_adivisa, 3, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter)
 
-        self.label_33 = QLabel(self.frame_13)
-        self.label_33.setObjectName(u"label_33")
-        self.label_33.setStyleSheet(u"font: 12pt \"Sylfaen\";")
+        self.double_valor_adivisa = QDoubleSpinBox(self.vista_divisas)
+        self.double_valor_adivisa.setObjectName(u"double_valor_adivisa")
+        self.double_valor_adivisa.setCursor(QCursor(Qt.PointingHandCursor))
+        self.double_valor_adivisa.setMaximum(9999999999.000000000000000)
 
-        self.verticalLayout_20.addWidget(self.label_33, 0, Qt.AlignmentFlag.AlignHCenter)
+        self.gridLayout_7.addWidget(self.double_valor_adivisa, 2, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter)
 
-        self.doubleSpinBox_11 = QDoubleSpinBox(self.frame_13)
-        self.doubleSpinBox_11.setObjectName(u"doubleSpinBox_11")
-        self.doubleSpinBox_11.setMinimumSize(QSize(137, 40))
-        self.doubleSpinBox_11.setMaximumSize(QSize(150, 40))
+        self.verticalSpacer_4 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
-        self.verticalLayout_20.addWidget(self.doubleSpinBox_11, 0, Qt.AlignmentFlag.AlignHCenter)
+        self.gridLayout_7.addItem(self.verticalSpacer_4, 4, 0, 1, 1)
 
 
-        self.verticalLayout_19.addWidget(self.frame_13, 0, Qt.AlignmentFlag.AlignHCenter)
-
-        self.pushButton_15 = QPushButton(self.widget_2)
-        self.pushButton_15.setObjectName(u"pushButton_15")
-        self.pushButton_15.setMinimumSize(QSize(210, 30))
-        self.pushButton_15.setMaximumSize(QSize(192, 30))
-        self.pushButton_15.setStyleSheet(u"font: 12pt \"Sylfaen\";")
-
-        self.verticalLayout_19.addWidget(self.pushButton_15, 0, Qt.AlignmentFlag.AlignHCenter)
-
-
-        self.verticalLayout_21.addWidget(self.widget_2, 0, Qt.AlignmentFlag.AlignHCenter)
-
-
-        self.verticalLayout_2.addWidget(self.frame_11, 0, Qt.AlignmentFlag.AlignHCenter)
+        self.verticalLayout_2.addLayout(self.gridLayout_7)
 
         self.stacked_widget.addWidget(self.vista_divisas)
         self.vista_registrar_clientes = QWidget()
@@ -492,93 +456,59 @@ class Ui_MainWindow(object):
         self.verticalLayout_15.setSpacing(0)
         self.verticalLayout_15.setObjectName(u"verticalLayout_15")
         self.verticalLayout_15.setContentsMargins(0, 0, 0, 0)
-        self.frame_8 = QFrame(self.vista_actualizar_productos)
-        self.frame_8.setObjectName(u"frame_8")
-        self.frame_8.setStyleSheet(u"background:Transparent;")
-        self.frame_8.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_8.setFrameShadow(QFrame.Shadow.Raised)
-        self.verticalLayout_16 = QVBoxLayout(self.frame_8)
-        self.verticalLayout_16.setObjectName(u"verticalLayout_16")
-        self.widget = QWidget(self.frame_8)
-        self.widget.setObjectName(u"widget")
-        self.widget.setMinimumSize(QSize(580, 417))
-        self.widget.setStyleSheet(u"background: transparent")
-        self.gridLayout_17 = QGridLayout(self.widget)
-        self.gridLayout_17.setObjectName(u"gridLayout_17")
-        self.gridLayout_17.setHorizontalSpacing(0)
-        self.gridLayout_17.setVerticalSpacing(15)
-        self.gridLayout_17.setContentsMargins(5, 20, 5, 40)
-        self.label_22 = QLabel(self.widget)
-        self.label_22.setObjectName(u"label_22")
-        self.label_22.setMinimumSize(QSize(320, 50))
-        self.label_22.setMaximumSize(QSize(320, 50))
-        self.label_22.setStyleSheet(u"font: 26pt \"Sylfaen\";\n"
-"color: rgb(21, 255, 255);")
+        self.gridLayout_3 = QGridLayout()
+        self.gridLayout_3.setObjectName(u"gridLayout_3")
+        self.gridLayout_3.setVerticalSpacing(16)
+        self.gridLayout_3.setContentsMargins(16, 16, 16, 16)
+        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
-        self.gridLayout_17.addWidget(self.label_22, 0, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter)
+        self.gridLayout_3.addItem(self.verticalSpacer_2, 7, 0, 1, 1)
 
-        self.pushButton_12 = QPushButton(self.widget)
-        self.pushButton_12.setObjectName(u"pushButton_12")
-        self.pushButton_12.setMinimumSize(QSize(210, 30))
-        self.pushButton_12.setMaximumSize(QSize(192, 30))
-        self.pushButton_12.setCursor(QCursor(Qt.PointingHandCursor))
-        self.pushButton_12.setStyleSheet(u"font: 12pt \"Sylfaen\";")
+        self.boton_actualizar_aproducto = QPushButton(self.vista_actualizar_productos)
+        self.boton_actualizar_aproducto.setObjectName(u"boton_actualizar_aproducto")
+        self.boton_actualizar_aproducto.setCursor(QCursor(Qt.PointingHandCursor))
 
-        self.gridLayout_17.addWidget(self.pushButton_12, 3, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter)
+        self.gridLayout_3.addWidget(self.boton_actualizar_aproducto, 5, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter)
 
-        self.frame_9 = QFrame(self.widget)
-        self.frame_9.setObjectName(u"frame_9")
-        self.frame_9.setMinimumSize(QSize(300, 200))
-        self.frame_9.setMaximumSize(QSize(300, 250))
-        self.gridLayout_18 = QGridLayout(self.frame_9)
-        self.gridLayout_18.setObjectName(u"gridLayout_18")
-        self.gridLayout_18.setHorizontalSpacing(10)
-        self.gridLayout_18.setVerticalSpacing(0)
-        self.gridLayout_18.setContentsMargins(0, 12, 0, 12)
-        self.label_23 = QLabel(self.frame_9)
-        self.label_23.setObjectName(u"label_23")
-        self.label_23.setMinimumSize(QSize(0, 40))
-        self.label_23.setMaximumSize(QSize(16777215, 40))
-        self.label_23.setStyleSheet(u"font: 12pt \"Sylfaen\";")
+        self.label = QLabel(self.vista_actualizar_productos)
+        self.label.setObjectName(u"label")
+        self.label.setStyleSheet(u"font-size: 14px;")
 
-        self.gridLayout_18.addWidget(self.label_23, 0, 0, 1, 1, Qt.AlignmentFlag.AlignLeft)
+        self.gridLayout_3.addWidget(self.label, 1, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter)
 
-        self.lineEdit_12 = QLineEdit(self.frame_9)
-        self.lineEdit_12.setObjectName(u"lineEdit_12")
-        self.lineEdit_12.setMinimumSize(QSize(172, 40))
-        self.lineEdit_12.setMaximumSize(QSize(150, 40))
-        self.lineEdit_12.setStyleSheet(u"font: 9pt \"Segoe UI\";")
+        self.line_nombre_aproducto = QLineEdit(self.vista_actualizar_productos)
+        self.line_nombre_aproducto.setObjectName(u"line_nombre_aproducto")
+        self.line_nombre_aproducto.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        self.gridLayout_18.addWidget(self.lineEdit_12, 0, 1, 1, 1, Qt.AlignmentFlag.AlignLeft)
+        self.gridLayout_3.addWidget(self.line_nombre_aproducto, 2, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter)
 
-        self.doubleSpinBox_8 = QDoubleSpinBox(self.frame_9)
-        self.doubleSpinBox_8.setObjectName(u"doubleSpinBox_8")
-        self.doubleSpinBox_8.setMinimumSize(QSize(137, 40))
-        self.doubleSpinBox_8.setMaximumSize(QSize(150, 40))
-        self.doubleSpinBox_8.setStyleSheet(u"")
+        self.text_descripcion_aproducto = QTextEdit(self.vista_actualizar_productos)
+        self.text_descripcion_aproducto.setObjectName(u"text_descripcion_aproducto")
+        self.text_descripcion_aproducto.setTabChangesFocus(True)
 
-        self.gridLayout_18.addWidget(self.doubleSpinBox_8, 1, 1, 1, 1)
+        self.gridLayout_3.addWidget(self.text_descripcion_aproducto, 3, 0, 1, 1)
 
-        self.label_24 = QLabel(self.frame_9)
-        self.label_24.setObjectName(u"label_24")
-        self.label_24.setMinimumSize(QSize(0, 40))
-        self.label_24.setMaximumSize(QSize(16777215, 40))
-        self.label_24.setStyleSheet(u"font: 12pt \"Sylfaen\";")
+        self.boton_volver_aproducto = QPushButton(self.vista_actualizar_productos)
+        self.boton_volver_aproducto.setObjectName(u"boton_volver_aproducto")
+        self.boton_volver_aproducto.setCursor(QCursor(Qt.PointingHandCursor))
+        self.boton_volver_aproducto.setStyleSheet(u"margin-left: 1em;")
 
-        self.gridLayout_18.addWidget(self.label_24, 1, 0, 1, 1, Qt.AlignmentFlag.AlignLeft)
+        self.gridLayout_3.addWidget(self.boton_volver_aproducto, 0, 0, 1, 1, Qt.AlignmentFlag.AlignLeft)
 
-        self.label_23.raise_()
-        self.doubleSpinBox_8.raise_()
-        self.label_24.raise_()
-        self.lineEdit_12.raise_()
+        self.double_precio_aproducto = QDoubleSpinBox(self.vista_actualizar_productos)
+        self.double_precio_aproducto.setObjectName(u"double_precio_aproducto")
+        self.double_precio_aproducto.setCursor(QCursor(Qt.PointingHandCursor))
+        self.double_precio_aproducto.setMaximum(9999999999.000000000000000)
 
-        self.gridLayout_17.addWidget(self.frame_9, 1, 0, 1, 1)
+        self.gridLayout_3.addWidget(self.double_precio_aproducto, 4, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter)
+
+        self.boton_borrar_aproducto = QPushButton(self.vista_actualizar_productos)
+        self.boton_borrar_aproducto.setObjectName(u"boton_borrar_aproducto")
+
+        self.gridLayout_3.addWidget(self.boton_borrar_aproducto, 6, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter)
 
 
-        self.verticalLayout_16.addWidget(self.widget, 0, Qt.AlignmentFlag.AlignHCenter)
-
-
-        self.verticalLayout_15.addWidget(self.frame_8)
+        self.verticalLayout_15.addLayout(self.gridLayout_3)
 
         self.stacked_widget.addWidget(self.vista_actualizar_productos)
         self.vista_facturar = QWidget()
@@ -935,6 +865,7 @@ class Ui_MainWindow(object):
         self.double_precio_rproducto.setObjectName(u"double_precio_rproducto")
         self.double_precio_rproducto.setCursor(QCursor(Qt.ArrowCursor))
         self.double_precio_rproducto.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+        self.double_precio_rproducto.setMaximum(9999999999.000000000000000)
 
         self.layout_registrar_productos.addWidget(self.double_precio_rproducto, 0, Qt.AlignmentFlag.AlignHCenter)
 
@@ -943,6 +874,10 @@ class Ui_MainWindow(object):
         self.boton_registrar_rproducto.setCursor(QCursor(Qt.PointingHandCursor))
 
         self.layout_registrar_productos.addWidget(self.boton_registrar_rproducto, 0, Qt.AlignmentFlag.AlignHCenter)
+
+        self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.layout_registrar_productos.addItem(self.verticalSpacer_3)
 
 
         self.verticalLayout_6.addLayout(self.layout_registrar_productos)
@@ -974,7 +909,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stacked_widget.setCurrentIndex(3)
+        self.stacked_widget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -988,18 +923,16 @@ class Ui_MainWindow(object):
         self.logo.setText("")
         self.boton_v_facturar.setText(QCoreApplication.translate("MainWindow", u"FACTURAR", None))
         self.boton_v_productos.setText(QCoreApplication.translate("MainWindow", u"PRODUCTOS", None))
+        self.boton_v_divisas.setText(QCoreApplication.translate("MainWindow", u"DIVISAS", None))
         self.boton_v_registrar_clientes.setText(QCoreApplication.translate("MainWindow", u"REGISTRAR\n"
 "CLIENTES", None))
         self.boton_v_registar_productos.setText(QCoreApplication.translate("MainWindow", u"REGISTRAR\n"
 "PRODUCTOS", None))
-        self.label_31.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">Actualizar Divisas</p></body></html>", None))
-        self.label_32.setText(QCoreApplication.translate("MainWindow", u"Tipo de Divisa", None))
-        self.comboBox_3.setItemText(0, QCoreApplication.translate("MainWindow", u"COP", None))
-        self.comboBox_3.setItemText(1, QCoreApplication.translate("MainWindow", u"BS", None))
-        self.comboBox_3.setItemText(2, QCoreApplication.translate("MainWindow", u"USD", None))
+        self.combo_divisa_adivisa.setItemText(0, QCoreApplication.translate("MainWindow", u"BOLIVAR", None))
+        self.combo_divisa_adivisa.setItemText(1, QCoreApplication.translate("MainWindow", u"COP", None))
 
-        self.label_33.setText(QCoreApplication.translate("MainWindow", u"Tasa del d\u00eda", None))
-        self.pushButton_15.setText(QCoreApplication.translate("MainWindow", u"ACTUALIZAR", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"ACTUALIZAR DIVISAS", None))
+        self.boton_actualizar_adivisa.setText(QCoreApplication.translate("MainWindow", u"ACTUALIZAR", None))
         self.text_descripcion_rcliente.setPlaceholderText(QCoreApplication.translate("MainWindow", u"DIRECCI\u00d3N (OPCIONAL)", None))
         self.line_apellido_rcliente.setPlaceholderText(QCoreApplication.translate("MainWindow", u"APELLIDO", None))
         self.check_editar_rcliente.setText(QCoreApplication.translate("MainWindow", u"EDITAR", None))
@@ -1012,11 +945,12 @@ class Ui_MainWindow(object):
         self.line_cedula_rcliente.setPlaceholderText(QCoreApplication.translate("MainWindow", u"CEDULA", None))
         self.line_telefono_rcliente.setPlaceholderText(QCoreApplication.translate("MainWindow", u"TELEFONO", None))
         self.boton_registrar_rcliente.setText(QCoreApplication.translate("MainWindow", u"REGISTRAR", None))
-        self.label_22.setText(QCoreApplication.translate("MainWindow", u"Actualizar Productos", None))
-        self.pushButton_12.setText(QCoreApplication.translate("MainWindow", u"ACTUALIZAR", None))
-        self.label_23.setText(QCoreApplication.translate("MainWindow", u"Nombre del Producto", None))
-        self.lineEdit_12.setText("")
-        self.label_24.setText(QCoreApplication.translate("MainWindow", u"Precio del Producto", None))
+        self.boton_actualizar_aproducto.setText(QCoreApplication.translate("MainWindow", u"ACTUALIZAR", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"ACTUALIZAR PRODUCTO", None))
+        self.line_nombre_aproducto.setPlaceholderText(QCoreApplication.translate("MainWindow", u"NOMBRE PRODUCTO", None))
+        self.text_descripcion_aproducto.setPlaceholderText(QCoreApplication.translate("MainWindow", u"DESCRIPCI\u00d3N DEL PRODUCTO", None))
+        self.boton_volver_aproducto.setText(QCoreApplication.translate("MainWindow", u"VOLVER", None))
+        self.boton_borrar_aproducto.setText(QCoreApplication.translate("MainWindow", u"BORRAR PRODUCTO", None))
         self.label_total.setText(QCoreApplication.translate("MainWindow", u"TOTAL EN DOLARES:", None))
         self.line_apellido_facturar.setText("")
         self.line_apellido_facturar.setPlaceholderText(QCoreApplication.translate("MainWindow", u"APELLIDO", None))

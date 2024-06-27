@@ -197,7 +197,7 @@ class VistaFacturar:
         bs = float(self.ui.label_bs.text())
         cop = float(self.ui.label_cop.text())
 
-        if dolar==0 and bs==0 and cop==0 and self.ui.table_productos_facturar.rowCount>0:
+        if dolar==0 and bs==0 and cop==0 and self.ui.table_productos_facturar.rowCount()>0:
             self.ui.boton_facturar.setEnabled(True)
         else:
             self.ui.boton_facturar.setDisabled(True)

@@ -49,7 +49,12 @@ class VistaProductos:
         if self.compra:
             self.dialogo = NumberInputDialog(self)
             self.dialogo.show()
-        
+        else:
+            self.ventana.preguntar("EDITAR PRODUCTO","Desea editar el producto?")
+            if not self.ventana.respuesta:
+                return
+            self.ui.stacked_widget.setCurrentWidget(self.ui.vista_actualizar_productos)
+            self.ventana.vista_actualizar_productos.cargar_producto()
             
     
 

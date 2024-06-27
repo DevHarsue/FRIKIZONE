@@ -208,6 +208,13 @@ QStatusBar{
            </widget>
           </item>
           <item>
+           <widget class="QPushButton" name="boton_v_divisas">
+            <property name="text">
+             <string>DIVISAS</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QPushButton" name="boton_v_registrar_clientes">
             <property name="cursor">
              <cursorShape>PointingHandCursor</cursorShape>
@@ -406,7 +413,7 @@ QTableView::item:selected{
 </string>
          </property>
          <property name="currentIndex">
-          <number>3</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="vista_divisas">
           <property name="styleSheet">
@@ -428,199 +435,81 @@ QTableView::item:selected{
            <property name="bottomMargin">
             <number>0</number>
            </property>
-           <item alignment="Qt::AlignmentFlag::AlignHCenter">
-            <widget class="QFrame" name="frame_11">
-             <property name="styleSheet">
-              <string notr="true">background:transparent;</string>
+           <item>
+            <layout class="QGridLayout" name="gridLayout_7">
+             <property name="topMargin">
+              <number>16</number>
              </property>
-             <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
+             <property name="bottomMargin">
+              <number>16</number>
              </property>
-             <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
+             <property name="verticalSpacing">
+              <number>14</number>
              </property>
-             <layout class="QVBoxLayout" name="verticalLayout_21">
-              <item alignment="Qt::AlignmentFlag::AlignHCenter">
-               <widget class="QWidget" name="widget_2" native="true">
-                <property name="minimumSize">
-                 <size>
-                  <width>580</width>
-                  <height>417</height>
-                 </size>
+             <item row="1" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
+              <widget class="QComboBox" name="combo_divisa_adivisa">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">min-width: 8em;</string>
+               </property>
+               <item>
+                <property name="text">
+                 <string>BOLIVAR</string>
                 </property>
-                <layout class="QVBoxLayout" name="verticalLayout_19">
-                 <property name="spacing">
-                  <number>35</number>
-                 </property>
-                 <property name="leftMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>30</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>50</number>
-                 </property>
-                 <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                  <widget class="QLabel" name="label_31">
-                   <property name="minimumSize">
-                    <size>
-                     <width>320</width>
-                     <height>50</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>320</width>
-                     <height>50</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">font: 26pt &quot;Sylfaen&quot;;
-color: rgb(21, 255, 255);</string>
-                   </property>
-                   <property name="text">
-                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Actualizar Divisas&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                  <widget class="QFrame" name="frame_13">
-                   <property name="minimumSize">
-                    <size>
-                     <width>250</width>
-                     <height>200</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>16777215</height>
-                    </size>
-                   </property>
-                   <layout class="QVBoxLayout" name="verticalLayout_20">
-                    <property name="spacing">
-                     <number>0</number>
-                    </property>
-                    <property name="leftMargin">
-                     <number>20</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>5</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>20</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>40</number>
-                    </property>
-                    <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                     <widget class="QLabel" name="label_32">
-                      <property name="styleSheet">
-                       <string notr="true">font: 12pt &quot;Sylfaen&quot;;</string>
-                      </property>
-                      <property name="text">
-                       <string>Tipo de Divisa</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                     <widget class="QComboBox" name="comboBox_3">
-                      <property name="minimumSize">
-                       <size>
-                        <width>28</width>
-                        <height>40</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>160</width>
-                        <height>40</height>
-                       </size>
-                      </property>
-                      <property name="cursor">
-                       <cursorShape>PointingHandCursor</cursorShape>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">color:white;
-border-bottom: 1px solid white;</string>
-                      </property>
-                      <item>
-                       <property name="text">
-                        <string>COP</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string>BS</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string>USD</string>
-                       </property>
-                      </item>
-                     </widget>
-                    </item>
-                    <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                     <widget class="QLabel" name="label_33">
-                      <property name="styleSheet">
-                       <string notr="true">font: 12pt &quot;Sylfaen&quot;;</string>
-                      </property>
-                      <property name="text">
-                       <string>Tasa del día</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                     <widget class="QDoubleSpinBox" name="doubleSpinBox_11">
-                      <property name="minimumSize">
-                       <size>
-                        <width>137</width>
-                        <height>40</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>150</width>
-                        <height>40</height>
-                       </size>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                  <widget class="QPushButton" name="pushButton_15">
-                   <property name="minimumSize">
-                    <size>
-                     <width>210</width>
-                     <height>30</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>192</width>
-                     <height>30</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">font: 12pt &quot;Sylfaen&quot;;</string>
-                   </property>
-                   <property name="text">
-                    <string>ACTUALIZAR</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-             </layout>
-            </widget>
+               </item>
+               <item>
+                <property name="text">
+                 <string>COP</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item row="0" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
+              <widget class="QLabel" name="label_2">
+               <property name="styleSheet">
+                <string notr="true">font-size: 14px;</string>
+               </property>
+               <property name="text">
+                <string>ACTUALIZAR DIVISAS</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
+              <widget class="QPushButton" name="boton_actualizar_adivisa">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="text">
+                <string>ACTUALIZAR</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
+              <widget class="QDoubleSpinBox" name="double_valor_adivisa">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="maximum">
+                <double>9999999999.000000000000000</double>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="0">
+              <spacer name="verticalSpacer_4">
+               <property name="orientation">
+                <enum>Qt::Orientation::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
            </item>
           </layout>
          </widget>
@@ -765,225 +654,106 @@ border-bottom: 1px solid white;</string>
             <number>0</number>
            </property>
            <item>
-            <widget class="QFrame" name="frame_8">
-             <property name="styleSheet">
-              <string notr="true">background:Transparent;</string>
+            <layout class="QGridLayout" name="gridLayout_3">
+             <property name="leftMargin">
+              <number>16</number>
              </property>
-             <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
+             <property name="topMargin">
+              <number>16</number>
              </property>
-             <property name="frameShadow">
-              <enum>QFrame::Shadow::Raised</enum>
+             <property name="rightMargin">
+              <number>16</number>
              </property>
-             <layout class="QVBoxLayout" name="verticalLayout_16">
-              <item alignment="Qt::AlignmentFlag::AlignHCenter">
-               <widget class="QWidget" name="widget" native="true">
-                <property name="minimumSize">
-                 <size>
-                  <width>580</width>
-                  <height>417</height>
-                 </size>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">background: transparent</string>
-                </property>
-                <layout class="QGridLayout" name="gridLayout_17" columnstretch="0">
-                 <property name="leftMargin">
-                  <number>5</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>20</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>5</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>40</number>
-                 </property>
-                 <property name="horizontalSpacing">
-                  <number>0</number>
-                 </property>
-                 <property name="verticalSpacing">
-                  <number>15</number>
-                 </property>
-                 <item row="0" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
-                  <widget class="QLabel" name="label_22">
-                   <property name="minimumSize">
-                    <size>
-                     <width>320</width>
-                     <height>50</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>320</width>
-                     <height>50</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">font: 26pt &quot;Sylfaen&quot;;
-color: rgb(21, 255, 255);</string>
-                   </property>
-                   <property name="text">
-                    <string>Actualizar Productos</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="3" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
-                  <widget class="QPushButton" name="pushButton_12">
-                   <property name="minimumSize">
-                    <size>
-                     <width>210</width>
-                     <height>30</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>192</width>
-                     <height>30</height>
-                    </size>
-                   </property>
-                   <property name="cursor">
-                    <cursorShape>PointingHandCursor</cursorShape>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">font: 12pt &quot;Sylfaen&quot;;</string>
-                   </property>
-                   <property name="text">
-                    <string>ACTUALIZAR</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="1" column="0">
-                  <widget class="QFrame" name="frame_9">
-                   <property name="minimumSize">
-                    <size>
-                     <width>300</width>
-                     <height>200</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>300</width>
-                     <height>250</height>
-                    </size>
-                   </property>
-                   <layout class="QGridLayout" name="gridLayout_18">
-                    <property name="leftMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>12</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>12</number>
-                    </property>
-                    <property name="horizontalSpacing">
-                     <number>10</number>
-                    </property>
-                    <property name="verticalSpacing">
-                     <number>0</number>
-                    </property>
-                    <item row="0" column="0" alignment="Qt::AlignmentFlag::AlignLeft">
-                     <widget class="QLabel" name="label_23">
-                      <property name="minimumSize">
-                       <size>
-                        <width>0</width>
-                        <height>40</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>16777215</width>
-                        <height>40</height>
-                       </size>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">font: 12pt &quot;Sylfaen&quot;;</string>
-                      </property>
-                      <property name="text">
-                       <string>Nombre del Producto</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="0" column="1" alignment="Qt::AlignmentFlag::AlignLeft">
-                     <widget class="QLineEdit" name="lineEdit_12">
-                      <property name="minimumSize">
-                       <size>
-                        <width>172</width>
-                        <height>40</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>150</width>
-                        <height>40</height>
-                       </size>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">font: 9pt &quot;Segoe UI&quot;;</string>
-                      </property>
-                      <property name="text">
-                       <string/>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="1" column="1">
-                     <widget class="QDoubleSpinBox" name="doubleSpinBox_8">
-                      <property name="minimumSize">
-                       <size>
-                        <width>137</width>
-                        <height>40</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>150</width>
-                        <height>40</height>
-                       </size>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true"/>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="1" column="0" alignment="Qt::AlignmentFlag::AlignLeft">
-                     <widget class="QLabel" name="label_24">
-                      <property name="minimumSize">
-                       <size>
-                        <width>0</width>
-                        <height>40</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>16777215</width>
-                        <height>40</height>
-                       </size>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">font: 12pt &quot;Sylfaen&quot;;</string>
-                      </property>
-                      <property name="text">
-                       <string>Precio del Producto</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                   <zorder>label_23</zorder>
-                   <zorder>doubleSpinBox_8</zorder>
-                   <zorder>label_24</zorder>
-                   <zorder>lineEdit_12</zorder>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-             </layout>
-            </widget>
+             <property name="bottomMargin">
+              <number>16</number>
+             </property>
+             <property name="verticalSpacing">
+              <number>16</number>
+             </property>
+             <item row="7" column="0">
+              <spacer name="verticalSpacer_2">
+               <property name="orientation">
+                <enum>Qt::Orientation::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item row="5" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
+              <widget class="QPushButton" name="boton_actualizar_aproducto">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="text">
+                <string>ACTUALIZAR</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
+              <widget class="QLabel" name="label">
+               <property name="styleSheet">
+                <string notr="true">font-size: 14px;</string>
+               </property>
+               <property name="text">
+                <string>ACTUALIZAR PRODUCTO</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
+              <widget class="QLineEdit" name="line_nombre_aproducto">
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+               <property name="placeholderText">
+                <string>NOMBRE PRODUCTO</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QTextEdit" name="text_descripcion_aproducto">
+               <property name="tabChangesFocus">
+                <bool>true</bool>
+               </property>
+               <property name="placeholderText">
+                <string>DESCRIPCIÓN DEL PRODUCTO</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0" alignment="Qt::AlignmentFlag::AlignLeft">
+              <widget class="QPushButton" name="boton_volver_aproducto">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">margin-left: 1em;</string>
+               </property>
+               <property name="text">
+                <string>VOLVER</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
+              <widget class="QDoubleSpinBox" name="double_precio_aproducto">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="maximum">
+                <double>9999999999.000000000000000</double>
+               </property>
+              </widget>
+             </item>
+             <item row="6" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
+              <widget class="QPushButton" name="boton_borrar_aproducto">
+               <property name="text">
+                <string>BORRAR PRODUCTO</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </item>
           </layout>
          </widget>
@@ -1587,6 +1357,9 @@ color: rgb(21, 255, 255);</string>
                <property name="alignment">
                 <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
+               <property name="maximum">
+                <double>9999999999.000000000000000</double>
+               </property>
               </widget>
              </item>
              <item alignment="Qt::AlignmentFlag::AlignHCenter">
@@ -1598,6 +1371,19 @@ color: rgb(21, 255, 255);</string>
                 <string>REGISTRAR</string>
                </property>
               </widget>
+             </item>
+             <item>
+              <spacer name="verticalSpacer_3">
+               <property name="orientation">
+                <enum>Qt::Orientation::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
              </item>
             </layout>
            </item>

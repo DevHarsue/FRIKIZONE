@@ -25,6 +25,7 @@ class VistaRegistrarProductos:
             tabla = TablaProductos()
             tabla.insert(nombre,descripcion,precio)
             self.ventana.mostrar_mensaje("Producto registrado","El producto se ha registrado correctamente")
+            self.ventana.vista_productos.buscar_producto()
             self.reiniciar()
             self.ui.stacked_widget.setCurrentWidget(self.ui.vista_facturar)
         except Exception as e:

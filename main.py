@@ -3,7 +3,9 @@ from Vistas.registrar_productos import VistaRegistrarProductos
 from Vistas.productos import VistaProductos
 from Vistas.facturar import VistaFacturar
 from Vistas.cierre import VistaCierre
+from Vistas.actualizar_producto import VistaActualizarProducto
 from Vistas.configuracion import VistaConfiguracion
+from Vistas.divisas import VistaDivisas
 from interfaz.login.ui_ventana1 import Ui_login
 from conexion_bd.tablas import TablaUsuarios
 from Validacion.hash import texto_a_hash
@@ -50,6 +52,8 @@ class VentanaLogin(QMainWindow):
         window.vista_facturar = VistaFacturar(window)
         window.vista_cierre = VistaCierre(window)
         window.vista_configuracion = VistaConfiguracion(window)
+        window.vista_actualizar_productos = VistaActualizarProducto(window)
+        window.vista_divisas = VistaDivisas(window)
 
 
 # Ejecutar Interfaz
