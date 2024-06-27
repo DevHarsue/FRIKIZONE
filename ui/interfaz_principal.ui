@@ -413,7 +413,7 @@ QTableView::item:selected{
 </string>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>3</number>
          </property>
          <widget class="QWidget" name="vista_divisas">
           <property name="styleSheet">

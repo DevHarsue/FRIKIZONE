@@ -149,12 +149,11 @@ class VistaFacturar:
     def calcular_dolar(self):
         ingresado_bs = self.ui.double_bs_facturar.value()
         ingresado_cop = self.ui.spin_cop_facturar.value()
-        dolar = self.total-((ingresado_bs/self.tasa_bolivares)+ingresado_cop/self.tasa_cop)
+        dolar = self.total-round((ingresado_bs/self.tasa_bolivares)+ingresado_cop/self.tasa_cop,2)
         ingresado_dolar = self.ui.double_dolares_facturar.value()
         if ingresado_dolar > dolar:
             self.ui.double_dolares_facturar.setValue(dolar)
             ingresado_dolar = dolar
-            
         restante_dolar =round(dolar-ingresado_dolar,2)
         self.ui.label_dolar.setText(str(round(restante_dolar,2)))
         self.ui.label_bs.setText(str(round(restante_dolar*self.tasa_bolivares,2)))
@@ -165,7 +164,7 @@ class VistaFacturar:
     def calcular_bs(self):
         ingresado_dolar = self.ui.double_dolares_facturar.value()
         ingresado_cop = self.ui.spin_cop_facturar.value()
-        bs = round(self.total-(ingresado_dolar+ingresado_cop/self.tasa_cop),2)*self.tasa_bolivares
+        bs = (self.total-round((ingresado_dolar+ingresado_cop/self.tasa_cop),2))*self.tasa_bolivares
         ingresado_bs = self.ui.double_bs_facturar.value()
         if ingresado_bs > bs:
             self.ui.double_bs_facturar.setValue(bs)
@@ -180,7 +179,7 @@ class VistaFacturar:
     def calcular_cop(self):
         ingresado_bs = self.ui.double_bs_facturar.value()
         ingresado_dolar = self.ui.double_dolares_facturar.value()
-        cop = round((self.total-(ingresado_dolar+ingresado_bs/self.tasa_bolivares))*self.tasa_cop,-2)
+        cop = round((self.total-round((ingresado_dolar+ingresado_bs/self.tasa_bolivares),2))*self.tasa_cop,-1)
         ingresado_cop = self.ui.spin_cop_facturar.value()
         if ingresado_cop > cop:
             self.ui.spin_cop_facturar.setValue(cop)
