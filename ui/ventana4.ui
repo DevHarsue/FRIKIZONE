@@ -612,8 +612,8 @@ QPushButton:pressed{
   <tabstop>pushButton</tabstop>
  </tabstops>
  <resources>
-  <include location="../../images/imagenes.qrc"/>
-  <include location="../../images/imagenes.qrc"/>
+  <include location="../images/imagenes.qrc"/>
+  <include location="../images/imagenes.qrc"/>
  </resources>
  <connections/>
 </ui>
