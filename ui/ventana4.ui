@@ -38,6 +38,29 @@ QFrame{
 
 QlineEdit{
 	background:red;
+}
+
+QComboBox{
+	background: transparent;
+	border: none;
+	min-width: 2em;
+	color: rgb(0, 255, 255);
+}
+
+QComboBox:focus{
+	border: 1px dashed white;
+}
+
+QComboBox QAbstractItemView{
+	background:rgba(57, 215, 200,0.8);
+	border: none;
+	color: rgb(255, 255, 255);
+}
+
+QComboBox QAbstractItemView::item:selected {
+	border: none;
+	border-left: 2px solid rgb(0, 85, 255);	
+	outline: none;
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -146,8 +169,7 @@ color:rgb(85, 255, 255);</string>
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">background:transparent;
-</string>
+             <string notr="true"/>
             </property>
             <property name="frameShape">
              <enum>QFrame::Shape::StyledPanel</enum>
@@ -171,41 +193,27 @@ color:rgb(85, 255, 255);</string>
              <property name="spacing">
               <number>6</number>
              </property>
-             <item row="3" column="0" colspan="2">
-              <widget class="QLineEdit" name="lineEdit_2">
-               <property name="minimumSize">
-                <size>
-                 <width>300</width>
-                 <height>22</height>
-                </size>
-               </property>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_2">
                <property name="maximumSize">
                 <size>
-                 <width>300</width>
-                 <height>16777215</height>
+                 <width>200</width>
+                 <height>50</height>
                 </size>
                </property>
-               <property name="font">
-                <font>
-                 <strikeout>false</strikeout>
-                </font>
-               </property>
                <property name="styleSheet">
-                <string notr="true">QLineEdit{
-	color:rgb(85, 255, 255);
-	background:rgba(10,12,30,0.8);
-	border-style:none;
-	border-radius:8px
+                <string notr="true">QLabel{
+	color:rgba(85, 255, 255,1)
 }
 </string>
                </property>
                <property name="text">
-                <string/>
+                <string>Nombre (Usuario):</string>
                </property>
               </widget>
              </item>
-             <item row="9" column="0" colspan="2">
-              <widget class="QLineEdit" name="lineEdit_5">
+             <item row="4" column="0" colspan="2">
+              <widget class="QLineEdit" name="lineEdit_4">
                <property name="minimumSize">
                 <size>
                  <width>300</width>
@@ -241,39 +249,25 @@ color:rgb(85, 255, 255);</string>
               </widget>
              </item>
              <item row="5" column="0" colspan="2">
-              <widget class="QLineEdit" name="lineEdit_3">
-               <property name="minimumSize">
-                <size>
-                 <width>300</width>
-                 <height>22</height>
-                </size>
-               </property>
+              <widget class="QLabel" name="label_6">
                <property name="maximumSize">
                 <size>
-                 <width>300</width>
-                 <height>16777215</height>
+                 <width>200</width>
+                 <height>50</height>
                 </size>
                </property>
-               <property name="font">
-                <font>
-                 <strikeout>false</strikeout>
-                </font>
-               </property>
                <property name="styleSheet">
-                <string notr="true">QLineEdit{
-	color:rgb(85, 255, 255);
-	background:rgba(10,12,30,0.8);
-	border-style:none;
-	border-radius:8px
+                <string notr="true">QLabel{
+	color:rgba(85, 255, 255,1)
 }
 </string>
                </property>
                <property name="text">
-                <string/>
+                <string>Confirmar Contraseña:</string>
                </property>
               </widget>
              </item>
-             <item row="1" column="0" colspan="2">
+             <item row="2" column="0" colspan="2">
               <widget class="QLineEdit" name="lineEdit">
                <property name="minimumSize">
                 <size>
@@ -306,133 +300,41 @@ color:rgb(85, 255, 255);</string>
                </property>
               </widget>
              </item>
-             <item row="4" column="0">
-              <widget class="QLabel" name="label_4">
+             <item row="0" column="0">
+              <widget class="QComboBox" name="comboBox">
+               <property name="minimumSize">
+                <size>
+                 <width>32</width>
+                 <height>20</height>
+                </size>
+               </property>
                <property name="maximumSize">
                 <size>
-                 <width>200</width>
-                 <height>50</height>
+                 <width>16777215</width>
+                 <height>20</height>
                 </size>
                </property>
                <property name="styleSheet">
-                <string notr="true">QLabel{
-	color:rgba(85, 255, 255,1)
-}
-</string>
+                <string notr="true"/>
                </property>
-               <property name="text">
-                <string>Número de Teléfono:</string>
-               </property>
-              </widget>
-             </item>
-             <item row="8" column="0" colspan="2">
-              <widget class="QLabel" name="label_6">
-               <property name="maximumSize">
-                <size>
-                 <width>200</width>
-                 <height>50</height>
-                </size>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QLabel{
-	color:rgba(85, 255, 255,1)
-}
-</string>
-               </property>
-               <property name="text">
-                <string>Confirmar Contraseña:</string>
-               </property>
-              </widget>
-             </item>
-             <item row="6" column="0">
-              <widget class="QLabel" name="label_5">
-               <property name="maximumSize">
-                <size>
-                 <width>200</width>
-                 <height>50</height>
-                </size>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QLabel{
-	color:rgba(85, 255, 255,1)
-}
-</string>
-               </property>
-               <property name="text">
-                <string>Contraseña:</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="0">
-              <layout class="QGridLayout" name="gridLayout_2">
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="topMargin">
-                <number>10</number>
-               </property>
-               <property name="bottomMargin">
-                <number>10</number>
-               </property>
-               <item row="0" column="0">
-                <widget class="QLabel" name="label_3">
-                 <property name="maximumSize">
-                  <size>
-                   <width>200</width>
-                   <height>50</height>
-                  </size>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QLabel{
-	color:rgba(85, 255, 255,1)
-}
-</string>
-                 </property>
-                 <property name="text">
-                  <string>Número de Cédula:</string>
-                 </property>
-                </widget>
+               <item>
+                <property name="text">
+                 <string>SUPERADMIN</string>
+                </property>
                </item>
-               <item row="0" column="1">
-                <widget class="QComboBox" name="comboBox">
-                 <property name="minimumSize">
-                  <size>
-                   <width>38</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>16777215</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">#comboBox{	
-	background-color: transparent;
-	color:rgba(85, 255, 255,1);
-}</string>
-                 </property>
-                 <item>
-                  <property name="text">
-                   <string>V</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>E</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>J</string>
-                  </property>
-                 </item>
-                </widget>
+               <item>
+                <property name="text">
+                 <string>ADMIN</string>
+                </property>
                </item>
-              </layout>
+               <item>
+                <property name="text">
+                 <string>USER</string>
+                </property>
+               </item>
+              </widget>
              </item>
-             <item row="10" column="1" alignment="Qt::AlignmentFlag::AlignRight">
+             <item row="7" column="1" alignment="Qt::AlignmentFlag::AlignRight">
               <widget class="QFrame" name="frame_3">
                <property name="minimumSize">
                 <size>
@@ -498,8 +400,8 @@ QPushButton:pressed{
                </widget>
               </widget>
              </item>
-             <item row="0" column="0">
-              <widget class="QLabel" name="label_2">
+             <item row="3" column="0">
+              <widget class="QLabel" name="label_5">
                <property name="maximumSize">
                 <size>
                  <width>200</width>
@@ -513,12 +415,12 @@ QPushButton:pressed{
 </string>
                </property>
                <property name="text">
-                <string>Nombre (Usuario):</string>
+                <string>Contraseña:</string>
                </property>
               </widget>
              </item>
-             <item row="7" column="0" colspan="2">
-              <widget class="QLineEdit" name="lineEdit_4">
+             <item row="6" column="0" colspan="2">
+              <widget class="QLineEdit" name="lineEdit_5">
                <property name="minimumSize">
                 <size>
                  <width>300</width>
@@ -604,9 +506,6 @@ QPushButton:pressed{
  </widget>
  <tabstops>
   <tabstop>lineEdit</tabstop>
-  <tabstop>comboBox</tabstop>
-  <tabstop>lineEdit_2</tabstop>
-  <tabstop>lineEdit_3</tabstop>
   <tabstop>lineEdit_4</tabstop>
   <tabstop>lineEdit_5</tabstop>
   <tabstop>pushButton</tabstop>
