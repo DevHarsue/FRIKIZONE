@@ -43,7 +43,7 @@
 
 #widget_superior QPushButton{
 	border: none;
-	border-right: 1px solid white;
+	border-left: 1px solid white;
 }
 
 #widget_lateral QPushButton:hover, #widget_superior QPushButton:hover{
@@ -71,175 +71,8 @@ QStatusBar{
       <property name="styleSheet">
        <string notr="true"/>
       </property>
-      <layout class="QGridLayout" name="gridLayout" columnstretch="0,0,1">
-       <item row="0" column="0" colspan="2" alignment="Qt::AlignmentFlag::AlignRight">
-        <widget class="QWidget" name="widget_superior" native="true">
-         <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0,0">
-          <property name="spacing">
-           <number>0</number>
-          </property>
-          <property name="leftMargin">
-           <number>10</number>
-          </property>
-          <property name="topMargin">
-           <number>0</number>
-          </property>
-          <property name="rightMargin">
-           <number>0</number>
-          </property>
-          <property name="bottomMargin">
-           <number>0</number>
-          </property>
-          <item>
-           <widget class="QPushButton" name="boton_v_cierre">
-            <property name="cursor">
-             <cursorShape>PointingHandCursor</cursorShape>
-            </property>
-            <property name="text">
-             <string>CIERRE</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="boton_v_configuracion">
-            <property name="cursor">
-             <cursorShape>PointingHandCursor</cursorShape>
-            </property>
-            <property name="text">
-             <string>CONFIGURACIÓN</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="boton_v_cerrar_sesion">
-            <property name="cursor">
-             <cursorShape>PointingHandCursor</cursorShape>
-            </property>
-            <property name="text">
-             <string>CERRAR SESIÓN</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item row="0" column="2">
-        <widget class="QWidget" name="contenedor_logo" native="true">
-         <layout class="QVBoxLayout" name="verticalLayout_4">
-          <property name="spacing">
-           <number>0</number>
-          </property>
-          <property name="leftMargin">
-           <number>0</number>
-          </property>
-          <property name="topMargin">
-           <number>0</number>
-          </property>
-          <property name="rightMargin">
-           <number>0</number>
-          </property>
-          <property name="bottomMargin">
-           <number>0</number>
-          </property>
-          <item alignment="Qt::AlignmentFlag::AlignRight">
-           <widget class="QLabel" name="logo">
-            <property name="enabled">
-             <bool>true</bool>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>120</width>
-              <height>120</height>
-             </size>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="pixmap">
-             <pixmap>../images/logo.png</pixmap>
-            </property>
-            <property name="scaledContents">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item row="1" column="0" alignment="Qt::AlignmentFlag::AlignTop">
-        <widget class="QWidget" name="widget_lateral" native="true">
-         <layout class="QVBoxLayout" name="verticalLayout">
-          <property name="spacing">
-           <number>0</number>
-          </property>
-          <property name="leftMargin">
-           <number>8</number>
-          </property>
-          <property name="topMargin">
-           <number>0</number>
-          </property>
-          <property name="rightMargin">
-           <number>8</number>
-          </property>
-          <property name="bottomMargin">
-           <number>8</number>
-          </property>
-          <item>
-           <widget class="QPushButton" name="boton_v_facturar">
-            <property name="cursor">
-             <cursorShape>PointingHandCursor</cursorShape>
-            </property>
-            <property name="text">
-             <string>FACTURAR</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="boton_v_productos">
-            <property name="cursor">
-             <cursorShape>PointingHandCursor</cursorShape>
-            </property>
-            <property name="layoutDirection">
-             <enum>Qt::LayoutDirection::RightToLeft</enum>
-            </property>
-            <property name="text">
-             <string>PRODUCTOS</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="boton_v_divisas">
-            <property name="text">
-             <string>DIVISAS</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="boton_v_registrar_clientes">
-            <property name="cursor">
-             <cursorShape>PointingHandCursor</cursorShape>
-            </property>
-            <property name="text">
-             <string>REGISTRAR
-CLIENTES</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="boton_v_registar_productos">
-            <property name="cursor">
-             <cursorShape>PointingHandCursor</cursorShape>
-            </property>
-            <property name="text">
-             <string>REGISTRAR
-PRODUCTOS</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item row="1" column="1" colspan="2">
+      <layout class="QGridLayout" name="gridLayout" columnstretch="0,0,1,0">
+       <item row="1" column="1" colspan="3">
         <widget class="QStackedWidget" name="stacked_widget">
          <property name="minimumSize">
           <size>
@@ -287,7 +120,7 @@ QLineEdit:focus{
 	border-color: rgb(0, 255, 255);
 }
 
-QLineEdit:disabled{
+QLineEdit:disabled,QTextEdit:disabled{
 	color: rgb(0, 0, 255);
 }
 
@@ -413,7 +246,7 @@ QTableView::item:selected{
 </string>
          </property>
          <property name="currentIndex">
-          <number>6</number>
+          <number>8</number>
          </property>
          <widget class="QWidget" name="vista_divisas">
           <property name="styleSheet">
@@ -517,70 +350,7 @@ QTableView::item:selected{
           <layout class="QVBoxLayout" name="verticalLayout_3">
            <item>
             <layout class="QGridLayout" name="layout_registrar_clientes">
-             <item row="6" column="1" colspan="2">
-              <widget class="QTextEdit" name="text_descripcion_rcliente">
-               <property name="tabChangesFocus">
-                <bool>true</bool>
-               </property>
-               <property name="placeholderText">
-                <string>DIRECCIÓN (OPCIONAL)</string>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="2">
-              <widget class="QLineEdit" name="line_apellido_rcliente">
-               <property name="cursorPosition">
-                <number>0</number>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignmentFlag::AlignCenter</set>
-               </property>
-               <property name="placeholderText">
-                <string>APELLIDO</string>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="0">
-              <widget class="QCheckBox" name="check_editar_rcliente">
-               <property name="cursor">
-                <cursorShape>PointingHandCursor</cursorShape>
-               </property>
-               <property name="text">
-                <string>EDITAR</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="0">
-              <widget class="QComboBox" name="combo_nacionalidad_rcliente">
-               <property name="cursor">
-                <cursorShape>PointingHandCursor</cursorShape>
-               </property>
-               <item>
-                <property name="text">
-                 <string>V</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>E</string>
-                </property>
-               </item>
-              </widget>
-             </item>
-             <item row="1" column="1" colspan="2" alignment="Qt::AlignmentFlag::AlignHCenter">
-              <widget class="QPushButton" name="boton_buscar_rcliente">
-               <property name="enabled">
-                <bool>true</bool>
-               </property>
-               <property name="cursor">
-                <cursorShape>PointingHandCursor</cursorShape>
-               </property>
-               <property name="text">
-                <string>BUSCAR CLIENTE CNE</string>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="1">
+             <item row="5" column="0">
               <widget class="QLineEdit" name="line_nombre_rcliente">
                <property name="enabled">
                 <bool>true</bool>
@@ -596,23 +366,30 @@ QTableView::item:selected{
                </property>
               </widget>
              </item>
-             <item row="0" column="1" colspan="2" alignment="Qt::AlignmentFlag::AlignHCenter">
-              <widget class="QLineEdit" name="line_cedula_rcliente">
+             <item row="9" column="0" colspan="2" alignment="Qt::AlignmentFlag::AlignHCenter">
+              <widget class="QPushButton" name="boton_registrar_rcliente">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="text">
-                <string/>
-               </property>
-               <property name="cursorPosition">
-                <number>0</number>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignmentFlag::AlignCenter</set>
-               </property>
-               <property name="placeholderText">
-                <string>CEDULA</string>
+                <string>REGISTRAR</string>
                </property>
               </widget>
              </item>
-             <item row="7" column="1" colspan="2" alignment="Qt::AlignmentFlag::AlignHCenter">
+             <item row="1" column="0" colspan="2" alignment="Qt::AlignmentFlag::AlignHCenter">
+              <widget class="QPushButton" name="boton_buscar_rcliente">
+               <property name="enabled">
+                <bool>true</bool>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="text">
+                <string>BUSCAR CLIENTE CNE</string>
+               </property>
+              </widget>
+             </item>
+             <item row="8" column="0" colspan="2" alignment="Qt::AlignmentFlag::AlignHCenter">
               <widget class="QLineEdit" name="line_telefono_rcliente">
                <property name="alignment">
                 <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -622,13 +399,73 @@ QTableView::item:selected{
                </property>
               </widget>
              </item>
-             <item row="8" column="1" colspan="2" alignment="Qt::AlignmentFlag::AlignHCenter">
-              <widget class="QPushButton" name="boton_registrar_rcliente">
+             <item row="7" column="0" colspan="2">
+              <widget class="QTextEdit" name="text_descripcion_rcliente">
+               <property name="tabChangesFocus">
+                <bool>true</bool>
+               </property>
+               <property name="placeholderText">
+                <string>DIRECCIÓN (OPCIONAL)</string>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="1">
+              <widget class="QLineEdit" name="line_apellido_rcliente">
+               <property name="cursorPosition">
+                <number>0</number>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+               <property name="placeholderText">
+                <string>APELLIDO</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0" colspan="2">
+              <layout class="QHBoxLayout" name="horizontalLayout_3">
+               <item alignment="Qt::AlignmentFlag::AlignLeft">
+                <widget class="QComboBox" name="combo_nacionalidad_rcliente">
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <item>
+                  <property name="text">
+                   <string>V</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>E</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="line_cedula_rcliente">
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="cursorPosition">
+                  <number>0</number>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignmentFlag::AlignCenter</set>
+                 </property>
+                 <property name="placeholderText">
+                  <string>CEDULA</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="2" column="0" colspan="2" alignment="Qt::AlignmentFlag::AlignHCenter">
+              <widget class="QCheckBox" name="check_editar_rcliente">
                <property name="cursor">
                 <cursorShape>PointingHandCursor</cursorShape>
                </property>
                <property name="text">
-                <string>REGISTRAR</string>
+                <string>EDITAR</string>
                </property>
               </widget>
              </item>
@@ -748,6 +585,9 @@ QTableView::item:selected{
              </item>
              <item row="6" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
               <widget class="QPushButton" name="boton_borrar_aproducto">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="text">
                 <string>BORRAR PRODUCTO</string>
                </property>
@@ -796,6 +636,9 @@ QTableView::item:selected{
                </item>
                <item row="0" column="0" colspan="2">
                 <widget class="QDoubleSpinBox" name="double_dolares_facturar">
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
                  <property name="maximum">
                   <double>999999999.990000009536743</double>
                  </property>
@@ -823,6 +666,9 @@ QTableView::item:selected{
                </item>
                <item row="0" column="2" colspan="2">
                 <widget class="QDoubleSpinBox" name="double_bs_facturar">
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
                  <property name="maximum">
                   <double>999999999.990000009536743</double>
                  </property>
@@ -830,6 +676,9 @@ QTableView::item:selected{
                </item>
                <item row="0" column="4" colspan="2">
                 <widget class="QSpinBox" name="spin_cop_facturar">
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
                  <property name="minimum">
                   <number>0</number>
                  </property>
@@ -976,6 +825,9 @@ QTableView::item:selected{
              </item>
              <item row="0" column="0">
               <widget class="QComboBox" name="combo_nacionalidad_facturar">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <item>
                 <property name="text">
                  <string>V</string>
@@ -988,13 +840,19 @@ QTableView::item:selected{
                </item>
               </widget>
              </item>
-             <item row="0" column="2" alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignBottom">
+             <item row="0" column="2" alignment="Qt::AlignmentFlag::AlignBottom">
               <widget class="QPushButton" name="boton_buscar_cliente_facturar">
+               <property name="minimumSize">
+                <size>
+                 <width>140</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="text">
                 <string>BUSCAR</string>
-               </property>
-               <property name="icon">
-                <iconset theme="system-search"/>
                </property>
               </widget>
              </item>
@@ -1127,6 +985,9 @@ QTableView::item:selected{
                <property name="enabled">
                 <bool>false</bool>
                </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="text">
                 <string>REHACER CIERRE</string>
                </property>
@@ -1134,8 +995,14 @@ QTableView::item:selected{
              </item>
              <item row="0" column="0" colspan="2" alignment="Qt::AlignmentFlag::AlignHCenter">
               <widget class="QDateEdit" name="date_cierre">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="calendarPopup">
                 <bool>true</bool>
+               </property>
+               <property name="timeSpec">
+                <enum>Qt::TimeSpec::UTC</enum>
                </property>
                <property name="date">
                 <date>
@@ -1301,6 +1168,9 @@ QTableView::item:selected{
              </item>
              <item alignment="Qt::AlignmentFlag::AlignHCenter">
               <widget class="QPushButton" name="boton_configurar_bd">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="text">
                 <string>CONFIGURAR BASE DE DATOS</string>
                </property>
@@ -1308,6 +1178,9 @@ QTableView::item:selected{
              </item>
              <item alignment="Qt::AlignmentFlag::AlignHCenter">
               <widget class="QPushButton" name="boton_registrar_usuarios">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="text">
                 <string>REGISTRAR USUARIOS</string>
                </property>
@@ -1340,7 +1213,148 @@ QTableView::item:selected{
            </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="page_3"/>
+         <widget class="QWidget" name="vista_editar_clientes">
+          <layout class="QVBoxLayout" name="verticalLayout_8">
+           <item>
+            <layout class="QGridLayout" name="layout_registrar_clientes_2">
+             <item row="8" column="0" colspan="2" alignment="Qt::AlignmentFlag::AlignHCenter">
+              <widget class="QPushButton" name="boton_actualizar_ecliente">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="text">
+                <string>ACTUALIZAR</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="0">
+              <widget class="QLineEdit" name="line_nombre_ecliente">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="cursorPosition">
+                <number>0</number>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+               <property name="placeholderText">
+                <string>NOMBRE</string>
+               </property>
+              </widget>
+             </item>
+             <item row="7" column="0" colspan="2" alignment="Qt::AlignmentFlag::AlignHCenter">
+              <widget class="QLineEdit" name="line_telefono_ecliente">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+               <property name="placeholderText">
+                <string>TELEFONO</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="1">
+              <widget class="QLineEdit" name="line_apellido_ecliente">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="cursorPosition">
+                <number>0</number>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+               <property name="placeholderText">
+                <string>APELLIDO</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0" colspan="2">
+              <layout class="QHBoxLayout" name="horizontalLayout_4">
+               <item alignment="Qt::AlignmentFlag::AlignLeft">
+                <widget class="QComboBox" name="combo_nacionalidad_ecliente">
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <item>
+                  <property name="text">
+                   <string>V</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>E</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="line_cedula_ecliente">
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="cursorPosition">
+                  <number>0</number>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignmentFlag::AlignCenter</set>
+                 </property>
+                 <property name="placeholderText">
+                  <string>CEDULA</string>
+                 </property>
+                </widget>
+               </item>
+               <item alignment="Qt::AlignmentFlag::AlignVCenter">
+                <widget class="QPushButton" name="boton_buscar_ecliente">
+                 <property name="enabled">
+                  <bool>true</bool>
+                 </property>
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <property name="text">
+                  <string>BUSCAR</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="6" column="0" colspan="2">
+              <widget class="QTextEdit" name="text_descripcion_ecliente">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="tabChangesFocus">
+                <bool>true</bool>
+               </property>
+               <property name="placeholderText">
+                <string>DIRECCIÓN (OPCIONAL)</string>
+               </property>
+              </widget>
+             </item>
+             <item row="9" column="0" colspan="2" alignment="Qt::AlignmentFlag::AlignHCenter">
+              <widget class="QPushButton" name="boton_borrar_ecliente">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="text">
+                <string>BORRAR</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
          <widget class="QWidget" name="vista_registrar_productos">
           <layout class="QVBoxLayout" name="verticalLayout_6">
            <property name="leftMargin">
@@ -1408,7 +1422,7 @@ QTableView::item:selected{
              <item alignment="Qt::AlignmentFlag::AlignHCenter">
               <widget class="QDoubleSpinBox" name="double_precio_rproducto">
                <property name="cursor">
-                <cursorShape>ArrowCursor</cursorShape>
+                <cursorShape>PointingHandCursor</cursorShape>
                </property>
                <property name="alignment">
                 <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
@@ -1447,6 +1461,229 @@ QTableView::item:selected{
          </widget>
         </widget>
        </item>
+       <item row="0" column="0">
+        <widget class="QWidget" name="contenedor_logo" native="true">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>120</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item alignment="Qt::AlignmentFlag::AlignHCenter">
+           <widget class="QLabel" name="logo">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>120</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>120</width>
+              <height>120</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap>../images/logo.png</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>true</bool>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="1" column="0" alignment="Qt::AlignmentFlag::AlignTop">
+        <widget class="QWidget" name="widget_lateral" native="true">
+         <property name="styleSheet">
+          <string notr="true">min-width:10em;</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>8</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>8</number>
+          </property>
+          <property name="bottomMargin">
+           <number>8</number>
+          </property>
+          <item>
+           <widget class="QPushButton" name="boton_v_facturar">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>FACTURAR</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="boton_v_productos">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::LayoutDirection::RightToLeft</enum>
+            </property>
+            <property name="text">
+             <string>PRODUCTOS</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="boton_v_divisas">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>DIVISAS</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="boton_v_registar_productos">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>REGISTRAR
+PRODUCTOS</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="boton_v_registrar_clientes">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>REGISTRAR
+CLIENTES</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="boton_v_editar_clientes">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>EDITAR
+CLIENTES</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="boton_v_editar_facturas">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>EDITAR
+FACTURAS</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QWidget" name="widget_superior" native="true">
+         <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0,0,0">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>10</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QPushButton" name="boton_v_cierre">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>CIERRE</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="boton_v_data">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>DATA</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="boton_v_configuracion">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>CONFIGURACIÓN</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="boton_v_cerrar_sesion">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>CERRAR SESIÓN</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
       </layout>
      </widget>
     </item>
@@ -1463,10 +1700,7 @@ QTableView::item:selected{
   <tabstop>boton_v_configuracion</tabstop>
   <tabstop>line_telefono_rcliente</tabstop>
   <tabstop>boton_registrar_rcliente</tabstop>
-  <tabstop>combo_nacionalidad_rcliente</tabstop>
-  <tabstop>line_cedula_rcliente</tabstop>
   <tabstop>boton_buscar_rcliente</tabstop>
-  <tabstop>check_editar_rcliente</tabstop>
   <tabstop>text_descripcion_rcliente</tabstop>
   <tabstop>line_apellido_rcliente</tabstop>
   <tabstop>line_nombre_rcliente</tabstop>

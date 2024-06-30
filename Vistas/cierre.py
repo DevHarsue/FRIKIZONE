@@ -1,5 +1,5 @@
 from submain import MainWindow
-from conexion_bd.tablas import TablaTotalesDiarios,TablaVentas,TablaVentasIngresos
+from conexion_bd.tablas import TablaTotalesDiarios,TablaVentas,TablaVentasIngresos,TablaClientes
 from PySide6.QtCore import QDate
 from PySide6.QtWidgets import QTableWidgetItem
 from utilidades.funciones_utiles import obtener_fecha
@@ -17,6 +17,7 @@ class VistaCierre:
         self.ui.date_cierre.dateChanged.connect(self.reiniciar)
         self.tabla = TablaTotalesDiarios()
         self.tabla_ventas = TablaVentas()
+        self.tabla_clientes = TablaClientes()
         fecha = obtener_fecha().split("-")
         self.ui.date_cierre.setDate(QDate(int(fecha[0]),int(fecha[1]),int(fecha[2])))
         
@@ -52,12 +53,13 @@ class VistaCierre:
         for i,venta in enumerate(self.ventas):
             self.ventana.ui.table_facturas_cierre.insertRow(self.ventana.ui.table_facturas_cierre.rowCount())
             self.ventana.ui.table_facturas_cierre.setItem(i,0,QTableWidgetItem(str(venta.id)))
-            self.ventana.ui.table_facturas_cierre.setItem(i,1,QTableWidgetItem(str(venta.cliente_id)))
+            cliente = self.tabla_clientes.select(venta.cliente_id)[0]
+            self.ventana.ui.table_facturas_cierre.setItem(i,1,QTableWidgetItem(f"{cliente.nacionalidad}-{cliente.cedula}"))
             total = tabla.select_venta(venta.id)
             self.ventana.ui.table_facturas_cierre.setItem(i,2,QTableWidgetItem(str(total[0].cantidad)))
             self.ventana.ui.table_facturas_cierre.setItem(i,3,QTableWidgetItem(str(total[1].cantidad)))
             self.ventana.ui.table_facturas_cierre.setItem(i,4,QTableWidgetItem(str(total[2].cantidad)))
-            self.datos_imprimir.append({"ID":venta.id,"CEDULA":venta.cliente_id,"BS":total[0].cantidad,"COP":total[1].cantidad,"DOLAR":total[2].cantidad})
+            self.datos_imprimir.append({"ID":venta.id,"CEDULA":f"{cliente.nacionalidad}-{cliente.cedula}","BS":total[0].cantidad,"COP":total[1].cantidad,"DOLAR":total[2].cantidad})
             bs+=total[0].cantidad
             cop+=total[1].cantidad
             dolar+=total[2].cantidad

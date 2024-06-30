@@ -240,5 +240,3 @@ class ProductoMenosVendidosPDF(FPDF):
 #     productos=productos_menos_vendidos
 # )
 # producto_menos_vendidos.output(f'productos_menos_vendidos_{producto_menos_vendidos.fecha_reporte.replace("/", "-")}.pdf')            
-                 
-                                 

@@ -39,11 +39,12 @@ class VistaRegistrarClientes:
             self.ventana.mostrar_mensaje("Cedula invalidad","Porfavor ingresa un numero de cedula valido")
             return 0
         
-        persona = self.tablaClientes.select(int(cedula))
+        nacionalidad = self.ui.combo_nacionalidad_rcliente.currentText()
+        persona = self.tablaClientes.select_cedula(nacionalidad,int(cedula))
         if not bool(persona):
             self.ui.line_apellido_rcliente.setText("Cargando del CNE...")
             self.ui.line_nombre_rcliente.setText("Cargando del CNE...")
-            self.hilo_CNE = HiloCNE(self.ui.combo_nacionalidad_rcliente.currentText(),cedula)
+            self.hilo_CNE = HiloCNE(nacionalidad,cedula)
             self.hilo_CNE.persona.connect(self.mostrar_cliente_cne)
             self.hilo_CNE.error.connect(self.ventana.mostrar_error)
             self.hilo_CNE.terminar.connect(self.definir_estado)

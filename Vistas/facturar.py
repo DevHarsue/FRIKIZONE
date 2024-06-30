@@ -15,6 +15,7 @@ class VistaFacturar:
         self.ui.boton_buscar_cliente_facturar.pressed.connect(self.buscar_cliente)
         self.ui.boton_facturar.pressed.connect(self.facturar)
         self.ui.line_cedula_facturar.textChanged.connect(self.reiniciar_cliente)
+        self.ui.combo_nacionalidad_facturar.currentIndexChanged.connect(self.reiniciar_cliente)
         self.ui.boton_buscar_producto_facturar.pressed.connect(self.seleccionar_producto)
         Validador().cedulas(self.ui.line_cedula_facturar)
         self.total = 0
@@ -37,7 +38,8 @@ class VistaFacturar:
             self.ventana.mostrar_mensaje("Cedula invalidad","Porfavor ingresa un numero de cedula valido")
             return 0
         
-        self.cliente = TablaClientes().select(int(cedula))
+        nacionalidad = self.ui.combo_nacionalidad_facturar.currentText()
+        self.cliente = TablaClientes().select_cedula(nacionalidad,int(cedula))
         if bool(self.cliente):
             self.cliente = self.cliente[0]
             self.ui.line_nombre_facturar.setText(self.cliente.nombre)
@@ -91,7 +93,7 @@ class VistaFacturar:
             tabla.insert(venta.id,producto[0],producto[1])
         self.ventana.mostrar_mensaje("Venta Realizada","Venta Realizada Correctamente")
         
-        pdf = FacturaPDF(venta.id,obtener_fecha(),f"{self.cliente.nombre} {self.cliente.apellido}",self.cliente.telefono,self.cliente.direccion,imprimir,self.total,self.total_sin_iva,self.ui.double_dolares_facturar.value(),self.ui.double_bs_facturar.value(),self.ui.spin_cop_facturar.value())
+        pdf = FacturaPDF(venta.id,obtener_fecha(),f"{self.cliente.nacionalidad}-{self.cliente.cedula}",f"{self.cliente.nombre} {self.cliente.apellido}",self.cliente.telefono,self.cliente.direccion,imprimir,self.total,self.total_sin_iva,self.ui.double_dolares_facturar.value(),self.ui.double_bs_facturar.value(),self.ui.spin_cop_facturar.value())
         documentos_path = str(os.path.expanduser("~\\Documents"))
         try:
             os.makedirs(documentos_path+"\\FRIKIZONE")

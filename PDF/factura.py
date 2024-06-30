@@ -2,10 +2,11 @@ from fpdf import FPDF
 import os
 
 class FacturaPDF(FPDF):
-    def __init__(self, numero_factura,fecha_factura, nombre_cliente, contacto_cliente, direccion_cliente, productos,total,total_sin_iva,total_dolares,total_bs,total_cop):
+    def __init__(self, numero_factura,fecha_factura, cedula, nombre_cliente, contacto_cliente, direccion_cliente, productos,total,total_sin_iva,total_dolares,total_bs,total_cop):
         super().__init__()
         self.numero_factura = numero_factura
         self.fecha_factura = fecha_factura
+        self.cedula = cedula
         self.nombre_cliente = nombre_cliente
         self.contacto_cliente = contacto_cliente
         self.direccion_cliente = direccion_cliente
@@ -49,6 +50,7 @@ class FacturaPDF(FPDF):
         self.set_font('Arial', 'B', 12)
         self.cell(0, 10, 'FACTURA A:', 0, 1, 'L')
         self.set_font('Arial', '', 12)
+        self.cell(0, 10, f'Cedula: {self.cedula}', 0, 1, 'L')
         self.cell(0, 10, f'Nombre: {self.nombre_cliente}', 0, 1, 'L')
         self.cell(0, 10, f'Contacto: {self.contacto_cliente}', 0, 1, 'L')
         self.cell(0, 10, f'Dirección: {self.direccion_cliente}', 0, 1, 'L')

@@ -5,8 +5,13 @@ class TablaClientes(TablaHija):
     def __init__(self) -> None:
         self.nombre_tabla = "Clientes"
         self.claseFila = Cliente
-        self.insertar_id = True
+        self.insertar_id = False
         super().__init__()
+    
+    def select_cedula(self,nacionalidad,cedula):
+        filas = self.bd.consultar(f"SELECT * FROM {self.nombre_tabla} WHERE cliente_nacionalidad = '{nacionalidad}' AND cliente_cedula='{cedula}';")
+        filas = self.crear_objetos(filas)
+        return filas
         
 class TablaDivisas(TablaHija):
     def __init__(self) -> None:
@@ -49,6 +54,11 @@ class TablaVentas(TablaHija):
         filas = self.bd.consultar(f"SELECT * FROM ventas WHERE venta_fecha='{fecha}';")
         filas = self.crear_objetos(filas)
         return filas
+    
+    def select_cliente(self,id):
+        filas = self.bd.consultar(f"SELECT * FROM ventas WHERE cliente_id='{id}';")
+        filas = self.crear_objetos(filas)
+        return filas
 
 class TablaVentasIngresos(TablaHija):
     def __init__(self) -> None:
@@ -61,6 +71,9 @@ class TablaVentasIngresos(TablaHija):
         filas = self.bd.consultar(f"SELECT * FROM ventas_ingresos WHERE venta_id='{id}';")
         filas = self.crear_objetos(filas)
         return filas
+    
+    def delete_venta(self,id):
+        return self.bd.ejecutar(f"DELETE FROM ventas_ingresos WHERE venta_id='{id}'")
 
 class TablaVentasProductos(TablaHija):
     def __init__(self) -> None:
@@ -71,6 +84,10 @@ class TablaVentasProductos(TablaHija):
     
     def delete_por_producto(self,producto_id):
         return self.bd.ejecutar(f"DELETE FROM ventas_productos WHERE producto_id = {producto_id};")
+    
+    def delete_venta(self,id):
+        return self.bd.ejecutar(f"DELETE FROM ventas_productos WHERE venta_id='{id}'")
+    
 class TablaTotalesDiarios(TablaHija):
     def __init__(self) -> None:
         self.nombre_tabla = "Totales_Diarios"

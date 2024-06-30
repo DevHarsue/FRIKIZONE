@@ -30,6 +30,7 @@ class MainWindow(QMainWindow):
         self.ui.boton_v_configuracion.pressed.connect(lambda: self.ui.stacked_widget.setCurrentWidget(self.ui.vista_configuracion))
         self.ui.boton_v_registar_productos.pressed.connect(lambda: self.ui.stacked_widget.setCurrentWidget(self.ui.vista_registrar_productos))
         self.ui.boton_v_divisas.pressed.connect(lambda: self.ui.stacked_widget.setCurrentWidget(self.ui.vista_divisas))
+        self.ui.boton_v_editar_clientes.pressed.connect(lambda: self.ui.stacked_widget.setCurrentWidget(self.ui.vista_editar_clientes))
         # self.ui.boton_v_cerrar_sesion.pressed.connect()
     
     def cambiar_vista_producto(self):
