@@ -60,6 +60,13 @@ CREATE TABLE IF NOT EXISTS `totales_diarios` (
   CONSTRAINT `FK_diarios_divisas` FOREIGN KEY (`divisa_id`) REFERENCES `divisas` (`divisa_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
+INSERT INTO `totales_diarios` (`total_diario_id`, `total_diario_fecha`, `divisa_id`, `total_diario_cantidad`) VALUES
+	(1, '2024-06-30', 1, 2660.40),
+	(2, '2024-06-30', 2, 167200.00),
+	(3, '2024-06-30', 3, 27.98),
+	(7, '2024-06-29', 1, 514.80),
+	(8, '2024-06-29', 2, 8000.00),
+	(9, '2024-06-29', 3, 13.00);
 
 CREATE TABLE IF NOT EXISTS `usuarios` (
   `usuario_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -85,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `ventas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 INSERT INTO `ventas` (`venta_id`, `venta_fecha`, `cliente_id`, `usuario_id`) VALUES
-	(38, '2024-06-30', 4, 1),
+	(38, '2024-06-29', 4, 1),
 	(39, '2024-06-30', 3, 1),
 	(40, '2024-06-30', 3, 1),
 	(41, '2024-06-30', 3, 1),
@@ -157,7 +164,7 @@ INSERT INTO `ventas_productos` (`venta_producto_id`, `venta_id`, `producto_id`, 
 	(54, 41, 7, 3),
 	(55, 41, 5, 4),
 	(56, 42, 5, 6),
-	(57, 42, 8, 3),
+	(57, 42, 8, 18),
 	(58, 42, 7, 3),
 	(59, 43, 8, 4),
 	(60, 44, 7, 5),
@@ -212,6 +219,18 @@ BEGIN
 SELECT divisa_id,SUM(venta_ingreso_cantidad) total FROM 
 ventas v JOIN ventas_ingresos vi ON v.venta_id=vi.venta_id
 WHERE v.venta_fecha> CONCAT(año,"-",mes,"-00") AND v.venta_fecha <= CONCAT(año,"-",mes,"-31")
+GROUP BY divisa_id;
+END//
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE `calcular_mes_totales_diarios`(
+	IN `año` VARCHAR(4),
+	IN `mes` VARCHAR(2)
+)
+BEGIN
+SELECT divisa_id,sum(total_diario_cantidad) total FROM totales_diarios
+WHERE total_diario_fecha>= CONCAT(año,"-",mes,"-00") AND total_diario_fecha <= CONCAT(año,"-",mes,"-31")
 GROUP BY divisa_id;
 END//
 DELIMITER ;

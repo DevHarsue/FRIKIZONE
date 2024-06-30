@@ -37,6 +37,9 @@ class TablaProductos(TablaHija):
         filas = self.bd.consultar(f"SELECT * FROM productos WHERE producto_nombre LIKE '{nombre}%'")
         filas = self.crear_objetos(filas)
         return filas
+
+    def calcular_mes(self,año,mes):
+        return self.bd.consultar(f"CALL calcular_producto_mes('{año}','{mes}');")
         
 class TablaUsuarios(TablaHija):
     def __init__(self) -> None:
@@ -106,5 +109,16 @@ class TablaTotalesDiarios(TablaHija):
         filas = self.crear_objetos(filas)
         return filas
     
+    def select_mes(self,año,mes):
+        filas = self.bd.consultar(f"SELECT * FROM totales_diarios WHERE total_diario_fecha>='{año}-{mes}-00' AND total_diario_fecha <= '{año}-{mes}-31';")
+        filas = self.crear_objetos(filas)
+        return filas
+    
     def calcular_diario(self,fecha):
         return self.bd.consultar(f"CALL calcular_diario('{fecha}');")
+    
+    def calcular_mes_totales(self,año,mes):
+        return self.bd.consultar(f"CALL calcular_mes_totales_diarios('{año}','{mes}');")
+    
+    def calcular_mes_ingresos(self,año,mes):
+        return self.bd.consultar(f"CALL calcular_mes('{año}','{mes}');")

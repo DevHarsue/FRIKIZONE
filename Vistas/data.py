@@ -3,6 +3,8 @@ from utilidades.funciones_utiles import obtener_fecha
 from conexion_bd.tablas import TablaClientes,TablaProductos,TablaTotalesDiarios
 from PySide6.QtCore import QDate
 from PDF.clientes import ClientesPDF
+from PDF.cierre_mensual import CierreMensualPDF
+from PDF.productos import ProductosPDF
 import os
 import webbrowser
 
@@ -67,7 +69,32 @@ class VistaData:
                 z.append(veces)
                 clientes_ordenados.append(tuple(z))
             self.imprimir_clientes(clientes_ordenados)
-    
+        elif self.informe_mes:
+            tabla = TablaTotalesDiarios()
+            totales_ingresos = tabla.calcular_mes_ingresos(fecha[0],fecha[1])
+            totales_cierres = tabla.calcular_mes_totales(fecha[0],fecha[1])
+            if totales_cierres!=totales_ingresos:
+                self.ventana.preguntar("Algunos dias no han sido cerrados","¿Desea generar total del mes aun sin cerrar algunos dias?")
+                if not self.ventana.respuesta:
+                    return 0
+            if not bool(totales_cierres):
+                self.ventana.mostrar_mensaje("Sin Informacion","No hay informacion para la fecha dada")
+                return 0
+            totales_diarios = tabla.select_mes(fecha[0],fecha[1])
+            fechas = set()
+            for x in totales_diarios:
+                fechas.add(x.fecha)
+            fechas = list(fechas)
+            totales_imprimir = []
+            for x in fechas:
+                z = list(filter(lambda y: y.fecha==x,totales_diarios))
+                totales_imprimir.append((x,z[0].total,z[1].total,z[2].total))
+            
+            self.imprimir_totales(totales_imprimir,totales_cierres)
+        elif self.informe_producto:
+            productos = TablaProductos().calcular_mes(fecha[0],fecha[1])
+            self.imprimir_productos(productos)
+                            
     def imprimir_clientes(self,clientes):
         fecha = self.ui.date_mensual.date().toString("yyyy-MM").split("-")
         pdf = ClientesPDF(fecha[0],fecha[1],clientes)
@@ -79,3 +106,30 @@ class VistaData:
         path = f"{documentos_path}\\FRIKIZONE\\clientes_frecuentes_{fecha[0]}-{fecha[1]}.pdf"
         pdf.output(path)
         webbrowser.open_new(path)
+        self.ui.stacked_widget.setCurrentWidget(self.ui.vista_data)
+    
+    def imprimir_totales(self,totales,cierre):
+        fecha = self.ui.date_mensual.date().toString("yyyy-MM").split("-")
+        pdf = CierreMensualPDF(fecha[0],fecha[1],totales,cierre)
+        documentos_path = str(os.path.expanduser("~\\Documents"))
+        try:
+            os.makedirs(documentos_path+"\\FRIKIZONE")
+        except FileExistsError:
+            pass
+        path = f"{documentos_path}\\FRIKIZONE\\cierre_mensual_{fecha[0]}-{fecha[1]}.pdf"
+        pdf.output(path)
+        webbrowser.open_new(path)
+        self.ui.stacked_widget.setCurrentWidget(self.ui.vista_data)
+        
+    def imprimir_productos(self,imprimir):
+        fecha = self.ui.date_mensual.date().toString("yyyy-MM").split("-")
+        pdf = ProductosPDF(fecha[0],fecha[1],imprimir)
+        documentos_path = str(os.path.expanduser("~\\Documents"))
+        try:
+            os.makedirs(documentos_path+"\\FRIKIZONE")
+        except FileExistsError:
+            pass
+        path = f"{documentos_path}\\FRIKIZONE\\productos_{fecha[0]}-{fecha[1]}.pdf"
+        pdf.output(path)
+        webbrowser.open_new(path)
+        self.ui.stacked_widget.setCurrentWidget(self.ui.vista_data)
