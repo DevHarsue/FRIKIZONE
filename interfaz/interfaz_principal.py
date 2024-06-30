@@ -301,38 +301,17 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.layout_registrar_clientes = QGridLayout()
         self.layout_registrar_clientes.setObjectName(u"layout_registrar_clientes")
-        self.line_nombre_rcliente = QLineEdit(self.vista_registrar_clientes)
-        self.line_nombre_rcliente.setObjectName(u"line_nombre_rcliente")
-        self.line_nombre_rcliente.setEnabled(True)
-        self.line_nombre_rcliente.setCursorPosition(0)
-        self.line_nombre_rcliente.setAlignment(Qt.AlignmentFlag.AlignCenter)
-
-        self.layout_registrar_clientes.addWidget(self.line_nombre_rcliente, 5, 0, 1, 1)
-
-        self.boton_registrar_rcliente = QPushButton(self.vista_registrar_clientes)
-        self.boton_registrar_rcliente.setObjectName(u"boton_registrar_rcliente")
-        self.boton_registrar_rcliente.setCursor(QCursor(Qt.PointingHandCursor))
-
-        self.layout_registrar_clientes.addWidget(self.boton_registrar_rcliente, 9, 0, 1, 2, Qt.AlignmentFlag.AlignHCenter)
-
-        self.boton_buscar_rcliente = QPushButton(self.vista_registrar_clientes)
-        self.boton_buscar_rcliente.setObjectName(u"boton_buscar_rcliente")
-        self.boton_buscar_rcliente.setEnabled(True)
-        self.boton_buscar_rcliente.setCursor(QCursor(Qt.PointingHandCursor))
-
-        self.layout_registrar_clientes.addWidget(self.boton_buscar_rcliente, 1, 0, 1, 2, Qt.AlignmentFlag.AlignHCenter)
-
         self.line_telefono_rcliente = QLineEdit(self.vista_registrar_clientes)
         self.line_telefono_rcliente.setObjectName(u"line_telefono_rcliente")
         self.line_telefono_rcliente.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.layout_registrar_clientes.addWidget(self.line_telefono_rcliente, 8, 0, 1, 2, Qt.AlignmentFlag.AlignHCenter)
 
-        self.text_descripcion_rcliente = QTextEdit(self.vista_registrar_clientes)
-        self.text_descripcion_rcliente.setObjectName(u"text_descripcion_rcliente")
-        self.text_descripcion_rcliente.setTabChangesFocus(True)
+        self.boton_registrar_rcliente = QPushButton(self.vista_registrar_clientes)
+        self.boton_registrar_rcliente.setObjectName(u"boton_registrar_rcliente")
+        self.boton_registrar_rcliente.setCursor(QCursor(Qt.PointingHandCursor))
 
-        self.layout_registrar_clientes.addWidget(self.text_descripcion_rcliente, 7, 0, 1, 2)
+        self.layout_registrar_clientes.addWidget(self.boton_registrar_rcliente, 9, 0, 1, 2, Qt.AlignmentFlag.AlignHCenter)
 
         self.line_apellido_rcliente = QLineEdit(self.vista_registrar_clientes)
         self.line_apellido_rcliente.setObjectName(u"line_apellido_rcliente")
@@ -354,18 +333,39 @@ class Ui_MainWindow(object):
         self.line_cedula_rcliente = QLineEdit(self.vista_registrar_clientes)
         self.line_cedula_rcliente.setObjectName(u"line_cedula_rcliente")
         self.line_cedula_rcliente.setCursorPosition(0)
-        self.line_cedula_rcliente.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.line_cedula_rcliente.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
         self.horizontalLayout_3.addWidget(self.line_cedula_rcliente)
 
 
         self.layout_registrar_clientes.addLayout(self.horizontalLayout_3, 0, 0, 1, 2)
 
+        self.line_nombre_rcliente = QLineEdit(self.vista_registrar_clientes)
+        self.line_nombre_rcliente.setObjectName(u"line_nombre_rcliente")
+        self.line_nombre_rcliente.setEnabled(True)
+        self.line_nombre_rcliente.setCursorPosition(0)
+        self.line_nombre_rcliente.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.layout_registrar_clientes.addWidget(self.line_nombre_rcliente, 5, 0, 1, 1)
+
+        self.text_descripcion_rcliente = QTextEdit(self.vista_registrar_clientes)
+        self.text_descripcion_rcliente.setObjectName(u"text_descripcion_rcliente")
+        self.text_descripcion_rcliente.setTabChangesFocus(True)
+
+        self.layout_registrar_clientes.addWidget(self.text_descripcion_rcliente, 7, 0, 1, 2)
+
         self.check_editar_rcliente = QCheckBox(self.vista_registrar_clientes)
         self.check_editar_rcliente.setObjectName(u"check_editar_rcliente")
         self.check_editar_rcliente.setCursor(QCursor(Qt.PointingHandCursor))
 
         self.layout_registrar_clientes.addWidget(self.check_editar_rcliente, 2, 0, 1, 2, Qt.AlignmentFlag.AlignHCenter)
+
+        self.boton_buscar_rcliente = QPushButton(self.vista_registrar_clientes)
+        self.boton_buscar_rcliente.setObjectName(u"boton_buscar_rcliente")
+        self.boton_buscar_rcliente.setEnabled(True)
+        self.boton_buscar_rcliente.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.layout_registrar_clientes.addWidget(self.boton_buscar_rcliente, 1, 0, 1, 2, Qt.AlignmentFlag.AlignHCenter)
 
 
         self.verticalLayout_3.addLayout(self.layout_registrar_clientes)
@@ -592,9 +592,67 @@ class Ui_MainWindow(object):
         self.verticalLayout_13.addLayout(self.gridLayout_4)
 
         self.stacked_widget.addWidget(self.vista_facturar)
-        self.page_4 = QWidget()
-        self.page_4.setObjectName(u"page_4")
-        self.stacked_widget.addWidget(self.page_4)
+        self.vista_mensual = QWidget()
+        self.vista_mensual.setObjectName(u"vista_mensual")
+        self.verticalLayout_12 = QVBoxLayout(self.vista_mensual)
+        self.verticalLayout_12.setObjectName(u"verticalLayout_12")
+        self.verticalSpacer_8 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_12.addItem(self.verticalSpacer_8)
+
+        self.date_mensual = QDateEdit(self.vista_mensual)
+        self.date_mensual.setObjectName(u"date_mensual")
+        self.date_mensual.setCalendarPopup(True)
+
+        self.verticalLayout_12.addWidget(self.date_mensual, 0, Qt.AlignmentFlag.AlignHCenter)
+
+        self.boton_generar_informe = QPushButton(self.vista_mensual)
+        self.boton_generar_informe.setObjectName(u"boton_generar_informe")
+
+        self.verticalLayout_12.addWidget(self.boton_generar_informe, 0, Qt.AlignmentFlag.AlignHCenter)
+
+        self.verticalSpacer_9 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_12.addItem(self.verticalSpacer_9)
+
+        self.stacked_widget.addWidget(self.vista_mensual)
+        self.vista_data = QWidget()
+        self.vista_data.setObjectName(u"vista_data")
+        self.vista_data.setStyleSheet(u"QPushButton{\n"
+"	min-width: 12em;\n"
+"}")
+        self.verticalLayout_10 = QVBoxLayout(self.vista_data)
+        self.verticalLayout_10.setObjectName(u"verticalLayout_10")
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_10.addItem(self.verticalSpacer)
+
+        self.label_6 = QLabel(self.vista_data)
+        self.label_6.setObjectName(u"label_6")
+        self.label_6.setStyleSheet(u"font-size:18px;")
+
+        self.verticalLayout_10.addWidget(self.label_6, 0, Qt.AlignmentFlag.AlignHCenter)
+
+        self.boton_mensual_data = QPushButton(self.vista_data)
+        self.boton_mensual_data.setObjectName(u"boton_mensual_data")
+
+        self.verticalLayout_10.addWidget(self.boton_mensual_data, 0, Qt.AlignmentFlag.AlignHCenter)
+
+        self.boton_producto_data = QPushButton(self.vista_data)
+        self.boton_producto_data.setObjectName(u"boton_producto_data")
+
+        self.verticalLayout_10.addWidget(self.boton_producto_data, 0, Qt.AlignmentFlag.AlignHCenter)
+
+        self.boton_cliente_data = QPushButton(self.vista_data)
+        self.boton_cliente_data.setObjectName(u"boton_cliente_data")
+
+        self.verticalLayout_10.addWidget(self.boton_cliente_data, 0, Qt.AlignmentFlag.AlignHCenter)
+
+        self.verticalSpacer_7 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_10.addItem(self.verticalSpacer_7)
+
+        self.stacked_widget.addWidget(self.vista_data)
         self.vista_productos = QWidget()
         self.vista_productos.setObjectName(u"vista_productos")
         self.verticalLayout_9 = QVBoxLayout(self.vista_productos)
@@ -832,7 +890,7 @@ class Ui_MainWindow(object):
         self.line_cedula_ecliente = QLineEdit(self.vista_editar_clientes)
         self.line_cedula_ecliente.setObjectName(u"line_cedula_ecliente")
         self.line_cedula_ecliente.setCursorPosition(0)
-        self.line_cedula_ecliente.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.line_cedula_ecliente.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
         self.horizontalLayout_4.addWidget(self.line_cedula_ecliente)
 
@@ -983,12 +1041,6 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addWidget(self.boton_v_editar_clientes)
 
-        self.boton_v_editar_facturas = QPushButton(self.widget_lateral)
-        self.boton_v_editar_facturas.setObjectName(u"boton_v_editar_facturas")
-        self.boton_v_editar_facturas.setCursor(QCursor(Qt.PointingHandCursor))
-
-        self.verticalLayout.addWidget(self.boton_v_editar_facturas)
-
 
         self.gridLayout.addWidget(self.widget_lateral, 1, 0, 1, 1, Qt.AlignmentFlag.AlignTop)
 
@@ -1045,7 +1097,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stacked_widget.setCurrentIndex(8)
+        self.stacked_widget.setCurrentIndex(4)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -1058,18 +1110,18 @@ class Ui_MainWindow(object):
 
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"ACTUALIZAR DIVISAS", None))
         self.boton_actualizar_adivisa.setText(QCoreApplication.translate("MainWindow", u"ACTUALIZAR", None))
-        self.line_nombre_rcliente.setPlaceholderText(QCoreApplication.translate("MainWindow", u"NOMBRE", None))
-        self.boton_registrar_rcliente.setText(QCoreApplication.translate("MainWindow", u"REGISTRAR", None))
-        self.boton_buscar_rcliente.setText(QCoreApplication.translate("MainWindow", u"BUSCAR CLIENTE CNE", None))
         self.line_telefono_rcliente.setPlaceholderText(QCoreApplication.translate("MainWindow", u"TELEFONO", None))
-        self.text_descripcion_rcliente.setPlaceholderText(QCoreApplication.translate("MainWindow", u"DIRECCI\u00d3N (OPCIONAL)", None))
+        self.boton_registrar_rcliente.setText(QCoreApplication.translate("MainWindow", u"REGISTRAR", None))
         self.line_apellido_rcliente.setPlaceholderText(QCoreApplication.translate("MainWindow", u"APELLIDO", None))
         self.combo_nacionalidad_rcliente.setItemText(0, QCoreApplication.translate("MainWindow", u"V", None))
         self.combo_nacionalidad_rcliente.setItemText(1, QCoreApplication.translate("MainWindow", u"E", None))
 
         self.line_cedula_rcliente.setText("")
         self.line_cedula_rcliente.setPlaceholderText(QCoreApplication.translate("MainWindow", u"CEDULA", None))
+        self.line_nombre_rcliente.setPlaceholderText(QCoreApplication.translate("MainWindow", u"NOMBRE", None))
+        self.text_descripcion_rcliente.setPlaceholderText(QCoreApplication.translate("MainWindow", u"DIRECCI\u00d3N (OPCIONAL)", None))
         self.check_editar_rcliente.setText(QCoreApplication.translate("MainWindow", u"EDITAR", None))
+        self.boton_buscar_rcliente.setText(QCoreApplication.translate("MainWindow", u"BUSCAR CLIENTE CNE", None))
         self.boton_actualizar_aproducto.setText(QCoreApplication.translate("MainWindow", u"ACTUALIZAR", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"ACTUALIZAR PRODUCTO", None))
         self.line_nombre_aproducto.setPlaceholderText(QCoreApplication.translate("MainWindow", u"NOMBRE PRODUCTO", None))
@@ -1106,6 +1158,12 @@ class Ui_MainWindow(object):
         self.boton_buscar_cliente_facturar.setText(QCoreApplication.translate("MainWindow", u"BUSCAR", None))
         self.label_total_iva.setText(QCoreApplication.translate("MainWindow", u"TOTAL + IVA (16%): ", None))
         self.label_iva.setText(QCoreApplication.translate("MainWindow", u"IVA (16%):", None))
+        self.date_mensual.setDisplayFormat(QCoreApplication.translate("MainWindow", u"MMMM/yyyy", None))
+        self.boton_generar_informe.setText(QCoreApplication.translate("MainWindow", u"GENERAR INFORME", None))
+        self.label_6.setText(QCoreApplication.translate("MainWindow", u"GENERAR:", None))
+        self.boton_mensual_data.setText(QCoreApplication.translate("MainWindow", u"TOTAL MENSUAL", None))
+        self.boton_producto_data.setText(QCoreApplication.translate("MainWindow", u"PRODUCTOS VENDIDOS", None))
+        self.boton_cliente_data.setText(QCoreApplication.translate("MainWindow", u"CLIENTES MAS FRECUENTE", None))
         self.line_bproducto.setPlaceholderText(QCoreApplication.translate("MainWindow", u"NOMBRE", None))
         self.combo_buscar_bproducto.setItemText(0, QCoreApplication.translate("MainWindow", u"NOMBRE", None))
         self.combo_buscar_bproducto.setItemText(1, QCoreApplication.translate("MainWindow", u"ID", None))
@@ -1166,8 +1224,6 @@ class Ui_MainWindow(object):
 "CLIENTES", None))
         self.boton_v_editar_clientes.setText(QCoreApplication.translate("MainWindow", u"EDITAR\n"
 "CLIENTES", None))
-        self.boton_v_editar_facturas.setText(QCoreApplication.translate("MainWindow", u"EDITAR\n"
-"FACTURAS", None))
         self.boton_v_cierre.setText(QCoreApplication.translate("MainWindow", u"CIERRE", None))
         self.boton_v_data.setText(QCoreApplication.translate("MainWindow", u"DATA", None))
         self.boton_v_configuracion.setText(QCoreApplication.translate("MainWindow", u"CONFIGURACI\u00d3N", None))

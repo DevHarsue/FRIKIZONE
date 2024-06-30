@@ -34,6 +34,9 @@ class VistaRegistrarClientes:
         self.ui.line_apellido_rcliente.setEnabled(True if estado else False)
     
     def buscar_cliente_registro(self):
+        if self.ui.line_nombre_rcliente.text()=="Cargando del CNE...":
+            return 0
+        
         cedula = self.ui.line_cedula_rcliente.text()
         if cedula == "" or (len(cedula)<7):
             self.ventana.mostrar_mensaje("Cedula invalidad","Porfavor ingresa un numero de cedula valido")
@@ -41,6 +44,7 @@ class VistaRegistrarClientes:
         
         nacionalidad = self.ui.combo_nacionalidad_rcliente.currentText()
         persona = self.tablaClientes.select_cedula(nacionalidad,int(cedula))
+        
         if not bool(persona):
             self.ui.line_apellido_rcliente.setText("Cargando del CNE...")
             self.ui.line_nombre_rcliente.setText("Cargando del CNE...")

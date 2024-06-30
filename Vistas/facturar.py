@@ -220,6 +220,8 @@ class VistaFacturar:
 
         if dolar==0 and bs==0 and cop==0 and self.ui.table_productos_facturar.rowCount()>0:
             self.ui.boton_facturar.setEnabled(True)
+        elif cop==0 and dolar<=0.01 and self.ui.table_productos_facturar.rowCount()>0:
+            self.ui.boton_facturar.setEnabled(True)
         else:
             self.ui.boton_facturar.setDisabled(True)
             

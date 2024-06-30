@@ -12,6 +12,12 @@ class TablaClientes(TablaHija):
         filas = self.bd.consultar(f"SELECT * FROM {self.nombre_tabla} WHERE cliente_nacionalidad = '{nacionalidad}' AND cliente_cedula='{cedula}';")
         filas = self.crear_objetos(filas)
         return filas
+
+    def calcular_clientes(self,año,mes):
+        return self.bd.consultar(f"CALL calcular_cliente('{año}','{mes}');")
+    
+    def calcular_frecuencia_clientes(self,año,mes):
+        return self.bd.consultar(f"CALL calcular_frecuencia_clientes('{año}','{mes}');")
         
 class TablaDivisas(TablaHija):
     def __init__(self) -> None:
