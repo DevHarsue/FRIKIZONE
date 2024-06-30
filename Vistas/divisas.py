@@ -31,7 +31,7 @@ class VistaDivisas:
         self.ventana.vista_facturar.tasa_bolivares = float(TablaDivisas().select(1)[0].relacion)
         self.ventana.vista_facturar.tasa_cop = float(TablaDivisas().select(2)[0].relacion)
         self.ventana.vista_facturar.calcular()
-        self.ventana.vista_facturar.calcular_dolar()
         self.ventana.vista_facturar.calcular_bs()
         self.ventana.vista_facturar.calcular_cop()
+        self.ventana.vista_facturar.calcular_dolar()
         

@@ -27,14 +27,6 @@ class TablaProductos(TablaHija):
         filas = self.crear_objetos(filas)
         return filas
         
-
-class TablaRoles(TablaHija):
-    def __init__(self) -> None:
-        self.nombre_tabla = "Roles"
-        self.claseFila = Rol
-        self.insertar_id = False
-        super().__init__()
-
 class TablaUsuarios(TablaHija):
     def __init__(self) -> None:
         self.nombre_tabla = "Usuarios"
@@ -52,6 +44,11 @@ class TablaVentas(TablaHija):
     def select_ultima_venta(self):
         filas = self.bd.consultar(f"SELECT * FROM ventas ORDER BY venta_id DESC LIMIT 1;")
         return self.crear_objetos(filas)
+    
+    def select_fecha(self,fecha):
+        filas = self.bd.consultar(f"SELECT * FROM ventas WHERE venta_fecha='{fecha}';")
+        filas = self.crear_objetos(filas)
+        return filas
 
 class TablaVentasIngresos(TablaHija):
     def __init__(self) -> None:
@@ -59,6 +56,11 @@ class TablaVentasIngresos(TablaHija):
         self.claseFila = VentaIngreso
         self.insertar_id = False
         super().__init__()
+    
+    def select_venta(self,id):
+        filas = self.bd.consultar(f"SELECT * FROM ventas_ingresos WHERE venta_id='{id}';")
+        filas = self.crear_objetos(filas)
+        return filas
 
 class TablaVentasProductos(TablaHija):
     def __init__(self) -> None:
@@ -75,3 +77,11 @@ class TablaTotalesDiarios(TablaHija):
         self.claseFila = TotalDiario
         self.insertar_id = False
         super().__init__()
+    
+    def select_fecha(self, fecha) -> tuple:
+        filas = self.bd.consultar(f"SELECT * FROM totales_diarios WHERE total_diario_fecha='{fecha}';")
+        filas = self.crear_objetos(filas)
+        return filas
+    
+    def calcular_diario(self,fecha):
+        return self.bd.consultar(f"CALL calcular_diario('{fecha}');")

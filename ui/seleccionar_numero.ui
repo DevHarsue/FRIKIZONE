@@ -106,6 +106,12 @@ QScrollBar::sub-line:vertical {
         <property name="cursor">
          <cursorShape>PointingHandCursor</cursorShape>
         </property>
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>999</number>
+        </property>
        </widget>
       </item>
       <item row="0" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">

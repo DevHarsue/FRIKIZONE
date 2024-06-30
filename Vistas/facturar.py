@@ -3,9 +3,10 @@ from conexion_bd.tablas import TablaClientes,TablaDivisas,TablaVentas,TablaVenta
 from PySide6.QtWidgets import QTableWidgetItem
 from submain import MainWindow
 from utilidades.funciones_utiles import obtener_fecha
-from PDF.PDFS import FacturaPDF
+from PDF.factura import FacturaPDF
 import os
 import webbrowser
+import math
 
 class VistaFacturar:
     def __init__(self,ventana: MainWindow) -> None:
@@ -75,9 +76,9 @@ class VistaFacturar:
             subtotal = self.ui.table_productos_facturar.item(x,4).text()
             productos.append((id,cantidad))
             imprimir.append({'numero': id, 'articulo': nombre,'qty': cantidad, 'precio': precio,"subtotal":subtotal},)
-            
+        
         tabla = TablaVentas()
-        tabla.insert(obtener_fecha(),self.ventana.usuario_id,self.cliente.id)
+        tabla.insert(obtener_fecha(),self.cliente.id,self.ventana.usuario_id)
         venta = tabla.select_ultima_venta()[0]
         
         tabla = TablaVentasIngresos()
@@ -90,7 +91,7 @@ class VistaFacturar:
             tabla.insert(venta.id,producto[0],producto[1])
         self.ventana.mostrar_mensaje("Venta Realizada","Venta Realizada Correctamente")
         
-        pdf = FacturaPDF(venta.id,obtener_fecha(),f"{self.cliente.nombre} {self.cliente.apellido}",self.cliente.telefono,self.cliente.direccion,imprimir,self.total,self.ui.double_dolares_facturar.value(),self.ui.double_bs_facturar.value(),self.ui.spin_cop_facturar.value())
+        pdf = FacturaPDF(venta.id,obtener_fecha(),f"{self.cliente.nombre} {self.cliente.apellido}",self.cliente.telefono,self.cliente.direccion,imprimir,self.total,self.total_sin_iva,self.ui.double_dolares_facturar.value(),self.ui.double_bs_facturar.value(),self.ui.spin_cop_facturar.value())
         documentos_path = str(os.path.expanduser("~\\Documents"))
         try:
             os.makedirs(documentos_path+"\\FRIKIZONE")
@@ -100,6 +101,7 @@ class VistaFacturar:
         pdf.output(path)
         webbrowser.open_new(path)
         
+        self.ventana.vista_cierre.reiniciar()
         self.reiniciar_cliente()
         self.reiniciar_productos()
     
@@ -133,25 +135,36 @@ class VistaFacturar:
         for x in range(row):
             self.total +=float(self.ui.table_productos_facturar.item(x,4).text())
         
+        self.total_sin_iva=self.total
         self.ui.label_total.setText("TOTAL EN DOLARES: "+str(self.total))
+        iva = round(self.total*0.16,2)
+        self.ui.label_iva.setText("IVA (16%): "+str(iva))
+        self.total = round(self.total+iva,2)
+        self.ui.label_total_iva.setText("TOTAL + IVA: "+str(self.total))
         self.ui.label_dolar.setText(str(self.total))
         self.ui.label_bs.setText(str(self.total*self.tasa_bolivares))
         self.ui.label_cop.setText(str(int(self.total*self.tasa_cop)))
         
     
     def cargar_bs(self,e):
-        self.ui.double_bs_facturar.setValue(self.total*self.tasa_bolivares)
+        self.ui.double_bs_facturar.setValue(round(self.total*self.tasa_bolivares,2))
     def cargar_dolar(self,e):
         self.ui.double_dolares_facturar.setValue(self.total)
     def cargar_cop(self,e):
-        self.ui.spin_cop_facturar.setValue(self.total*self.tasa_cop)
+        self.ui.spin_cop_facturar.setValue(round(self.total*self.tasa_cop,-2))
     
     def calcular_dolar(self):
         ingresado_bs = self.ui.double_bs_facturar.value()
         ingresado_cop = self.ui.spin_cop_facturar.value()
         dolar = self.total-round((ingresado_bs/self.tasa_bolivares)+ingresado_cop/self.tasa_cop,2)
+        
         ingresado_dolar = self.ui.double_dolares_facturar.value()
+        protuberancia = ingresado_dolar-dolar
+        if protuberancia<=0.1 and protuberancia>=0:
+            dolar = self.ui.double_dolares_facturar.value()
         if ingresado_dolar > dolar:
+            if int(str(dolar)[-2:].replace(".",""))==99:
+                dolar = round(dolar,0)
             self.ui.double_dolares_facturar.setValue(dolar)
             ingresado_dolar = dolar
         restante_dolar =round(dolar-ingresado_dolar,2)
@@ -174,12 +187,17 @@ class VistaFacturar:
         self.ui.label_bs.setText(str(round(restante_bs,2)))
         self.ui.label_dolar.setText(str(round(restante_bs/self.tasa_bolivares,2)))
         self.ui.label_cop.setText(str(round((restante_bs/self.tasa_bolivares)*self.tasa_cop,-2)))
+        self.calcular_dolar()
         self.comprobar_factura()
 
     def calcular_cop(self):
         ingresado_bs = self.ui.double_bs_facturar.value()
         ingresado_dolar = self.ui.double_dolares_facturar.value()
-        cop = round((self.total-round((ingresado_dolar+ingresado_bs/self.tasa_bolivares),2))*self.tasa_cop,-1)
+        cop = round((self.total-round((ingresado_dolar+ingresado_bs/self.tasa_bolivares),2))*self.tasa_cop,-2)
+        
+        protuberancia = int(str(int(cop))[-2:])
+        if protuberancia >0:
+            cop = cop-protuberancia
         ingresado_cop = self.ui.spin_cop_facturar.value()
         if ingresado_cop > cop:
             self.ui.spin_cop_facturar.setValue(cop)
@@ -190,6 +208,8 @@ class VistaFacturar:
         self.ui.label_dolar.setText(str(round(restante_cop/self.tasa_cop,2)))
         self.ui.label_bs.setText(str(round((restante_cop/self.tasa_cop)*self.tasa_bolivares,2)))
         self.comprobar_factura()
+        # self.calcular_bs()
+        self.calcular_dolar()
     
     def comprobar_factura(self):
         dolar = float(self.ui.label_dolar.text())

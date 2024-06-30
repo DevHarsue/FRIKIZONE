@@ -34,9 +34,9 @@ class VistaActualizarProducto:
                 self.ui.table_productos_facturar.item(x,2).setText(str(precio))
                 self.ui.table_productos_facturar.item(x,4).setText(str(precio*int(self.ui.table_productos_facturar.item(x,3).text())))
                 self.ventana.vista_facturar.calcular()
-                self.ventan.vista_facturar.calcular_dolar()
                 self.ventan.vista_facturar.calcular_bs()
                 self.ventan.vista_facturar.calcular_cop()
+                self.ventan.vista_facturar.calcular_dolar()
                 
         self.volver()
 

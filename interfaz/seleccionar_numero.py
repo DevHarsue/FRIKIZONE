@@ -110,6 +110,8 @@ class Ui_Cantidad(object):
         self.spinBox = QSpinBox(self.centralwidget)
         self.spinBox.setObjectName(u"spinBox")
         self.spinBox.setCursor(QCursor(Qt.PointingHandCursor))
+        self.spinBox.setMinimum(1)
+        self.spinBox.setMaximum(999)
 
         self.gridLayout.addWidget(self.spinBox, 1, 0, 1, 1)
 

@@ -7,7 +7,7 @@ def obtener_fecha():
     now = datetime.now()
     
     # Formatear la fecha y hora en el formato para sql
-    formato = now.strftime('%Y-%m-%d %H:%M:%S')
+    formato = now.strftime('%Y-%m-%d')
 
     return formato
 

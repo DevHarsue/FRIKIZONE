@@ -18,24 +18,16 @@ class Cliente(ObjetoPadre):
     def __repr__(self):
         return f'Cliente("{self.id}",{self.nombre},{self.apellido},{self.direccion})'
     
-class Rol(ObjetoPadre):
-    def __init__(self,id: int,nombre: str,permisos: str):
-        self.id = id
-        self.nombre = nombre
-        self.permisos = permisos
-    
-    def __repr__(self):
-        return f'Rol("{self.id}",{self.nombre},{self.permisos})'
     
 class Usuario(ObjetoPadre):
-    def __init__(self,id: int,nombre: str,contraseña: str,rol_id: int):
+    def __init__(self,id: int,nombre: str,contraseña: str,usuario_rol: str):
         self.id = id
         self.nombre = nombre
         self._contraseña = contraseña
-        self.rol_id = rol_id
+        self.usuario_rol = usuario_rol
     
     def __repr__(self):
-        return f'Usuario("{self.id}",{self.nombre},{self.rol_id})'
+        return f'Usuario("{self.id}",{self.nombre},{self.usuario_rol})'
 
 class Producto(ObjetoPadre):
     def __init__(self,id: int,nombre: str,descripcion: str,valor: float):
