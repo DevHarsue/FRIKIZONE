@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'config_BDKEKUzI.ui'
+## Form generated from reading UI file 'config_BDQCJTCD.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.7.0
 ##
@@ -16,8 +16,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFrame, QGridLayout, QHBoxLayout,
-    QLabel, QLayout, QLineEdit, QMainWindow,
-    QPushButton, QSizePolicy, QVBoxLayout, QWidget)
+    QLabel, QLineEdit, QMainWindow, QPushButton,
+    QSizePolicy, QVBoxLayout, QWidget)
 import imagenes_rc
 import imagenes_rc
 
@@ -58,20 +58,8 @@ class Ui_VentanaRegistro(object):
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.widget = QWidget(self.frame)
         self.widget.setObjectName(u"widget")
-        self.gridlayout = QGridLayout(self.widget)
-        self.gridlayout.setObjectName(u"gridlayout")
-        self.gridlayout.setSizeConstraint(QLayout.SizeConstraint.SetDefaultConstraint)
-        self.gridlayout.setHorizontalSpacing(10)
-        self.gridlayout.setVerticalSpacing(20)
-        self.gridlayout.setContentsMargins(15, 15, 15, 10)
-        self.label = QLabel(self.widget)
-        self.label.setObjectName(u"label")
-        self.label.setMaximumSize(QSize(600, 60))
-        self.label.setStyleSheet(u"font: 30pt \"Sylfaen\";\n"
-"color:rgb(85, 255, 255);")
-
-        self.gridlayout.addWidget(self.label, 0, 0, 1, 2, Qt.AlignmentFlag.AlignHCenter)
-
+        self.gridLayout = QGridLayout(self.widget)
+        self.gridLayout.setObjectName(u"gridLayout")
         self.verticalLayout = QVBoxLayout()
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.label_2 = QLabel(self.widget)
@@ -188,7 +176,57 @@ class Ui_VentanaRegistro(object):
         self.verticalLayout.addWidget(self.lineEdit_5, 0, Qt.AlignmentFlag.AlignHCenter)
 
 
-        self.gridlayout.addLayout(self.verticalLayout, 1, 0, 1, 1)
+        self.gridLayout.addLayout(self.verticalLayout, 1, 0, 1, 1)
+
+        self.label = QLabel(self.widget)
+        self.label.setObjectName(u"label")
+        self.label.setMaximumSize(QSize(600, 60))
+        self.label.setStyleSheet(u"font: 30pt \"Sylfaen\";\n"
+"color:rgb(85, 255, 255);")
+
+        self.gridLayout.addWidget(self.label, 0, 0, 1, 4)
+
+        self.frame_4 = QFrame(self.widget)
+        self.frame_4.setObjectName(u"frame_4")
+        self.frame_4.setMinimumSize(QSize(320, 200))
+        self.frame_4.setMaximumSize(QSize(320, 16777215))
+        self.frame_4.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_4.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout = QHBoxLayout(self.frame_4)
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.imagen = QLabel(self.frame_4)
+        self.imagen.setObjectName(u"imagen")
+        self.imagen.setMinimumSize(QSize(302, 370))
+        self.imagen.setPixmap(QPixmap(u"../images/logo.png"))
+        self.imagen.setScaledContents(True)
+        self.imagen.setWordWrap(False)
+
+        self.horizontalLayout.addWidget(self.imagen)
+
+
+        self.gridLayout.addWidget(self.frame_4, 1, 3, 1, 1)
+
+        self.pushButton_2 = QPushButton(self.widget)
+        self.pushButton_2.setObjectName(u"pushButton_2")
+        self.pushButton_2.setMinimumSize(QSize(75, 24))
+        self.pushButton_2.setMaximumSize(QSize(75, 24))
+        self.pushButton_2.setCursor(QCursor(Qt.PointingHandCursor))
+        self.pushButton_2.setStyleSheet(u"QPushButton{\n"
+"	border-radius:10px;\n"
+"	color: white;\n"
+"	background-color: rgba(57, 215, 200,0.8);\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"	background-color: rgba(57, 225, 180,0.8);\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"	background-color: rgba(57, 210, 168,0.8);\n"
+"}\n"
+"")
+
+        self.gridLayout.addWidget(self.pushButton_2, 2, 3, 1, 1, Qt.AlignmentFlag.AlignRight)
 
         self.pushButton = QPushButton(self.widget)
         self.pushButton.setObjectName(u"pushButton")
@@ -210,27 +248,7 @@ class Ui_VentanaRegistro(object):
 "}\n"
 "")
 
-        self.gridlayout.addWidget(self.pushButton, 2, 0, 1, 2, Qt.AlignmentFlag.AlignHCenter)
-
-        self.frame_4 = QFrame(self.widget)
-        self.frame_4.setObjectName(u"frame_4")
-        self.frame_4.setMinimumSize(QSize(320, 200))
-        self.frame_4.setMaximumSize(QSize(320, 16777215))
-        self.frame_4.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_4.setFrameShadow(QFrame.Shadow.Raised)
-        self.horizontalLayout = QHBoxLayout(self.frame_4)
-        self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.imagen = QLabel(self.frame_4)
-        self.imagen.setObjectName(u"imagen")
-        self.imagen.setMinimumSize(QSize(302, 370))
-        self.imagen.setPixmap(QPixmap(u"../images/logo.png"))
-        self.imagen.setScaledContents(True)
-        self.imagen.setWordWrap(False)
-
-        self.horizontalLayout.addWidget(self.imagen)
-
-
-        self.gridlayout.addWidget(self.frame_4, 1, 1, 1, 1)
+        self.gridLayout.addWidget(self.pushButton, 2, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter)
 
 
         self.verticalLayout_3.addWidget(self.widget, 0, Qt.AlignmentFlag.AlignHCenter)
@@ -249,7 +267,6 @@ class Ui_VentanaRegistro(object):
 
     def retranslateUi(self, VentanaRegistro):
         VentanaRegistro.setWindowTitle(QCoreApplication.translate("VentanaRegistro", u"Registro", None))
-        self.label.setText(QCoreApplication.translate("VentanaRegistro", u"<html><head/><body><p align=\"center\">USUARIO BASE DE DATOS</p><p align=\"center\"><br/></p></body></html>", None))
         self.label_2.setText(QCoreApplication.translate("VentanaRegistro", u"Usuario", None))
 #if QT_CONFIG(tooltip)
         self.lineEdit.setToolTip(QCoreApplication.translate("VentanaRegistro", u"<html><head/><body><p align=\"center\"><br/></p></body></html>", None))
@@ -261,7 +278,9 @@ class Ui_VentanaRegistro(object):
         self.lineEdit_4.setText("")
         self.label_6.setText(QCoreApplication.translate("VentanaRegistro", u"Contrase\u00f1a", None))
         self.lineEdit_5.setText("")
-        self.pushButton.setText(QCoreApplication.translate("VentanaRegistro", u"INGRESAR", None))
+        self.label.setText(QCoreApplication.translate("VentanaRegistro", u"<html><head/><body><p align=\"center\">USUARIO BASE DE DATOS</p><p align=\"center\"><br/></p></body></html>", None))
         self.imagen.setText("")
+        self.pushButton_2.setText(QCoreApplication.translate("VentanaRegistro", u"VOLVER", None))
+        self.pushButton.setText(QCoreApplication.translate("VentanaRegistro", u"INGRESAR", None))
     # retranslateUi
 

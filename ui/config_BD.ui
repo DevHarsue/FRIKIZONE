@@ -82,46 +82,8 @@ QlineEdit{
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <item alignment="Qt::AlignmentFlag::AlignHCenter">
-        <widget class="QWidget" name="" native="true">
-         <layout class="QGridLayout" name="gridlayout">
-          <property name="sizeConstraint">
-           <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
-          </property>
-          <property name="leftMargin">
-           <number>15</number>
-          </property>
-          <property name="topMargin">
-           <number>15</number>
-          </property>
-          <property name="rightMargin">
-           <number>15</number>
-          </property>
-          <property name="bottomMargin">
-           <number>10</number>
-          </property>
-          <property name="horizontalSpacing">
-           <number>10</number>
-          </property>
-          <property name="verticalSpacing">
-           <number>20</number>
-          </property>
-          <item row="0" column="0" colspan="2" alignment="Qt::AlignmentFlag::AlignHCenter">
-           <widget class="QLabel" name="label">
-            <property name="maximumSize">
-             <size>
-              <width>600</width>
-              <height>60</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">font: 30pt &quot;Sylfaen&quot;;
-color:rgb(85, 255, 255);</string>
-            </property>
-            <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;USUARIO BASE DE DATOS&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-            </property>
-           </widget>
-          </item>
+        <widget class="QWidget" name="widget" native="true">
+         <layout class="QGridLayout" name="gridLayout">
           <item row="1" column="0">
            <layout class="QVBoxLayout" name="verticalLayout">
             <item alignment="Qt::AlignmentFlag::AlignHCenter">
@@ -362,45 +324,24 @@ color:rgb(85, 255, 255);</string>
             </item>
            </layout>
           </item>
-          <item row="2" column="0" colspan="2" alignment="Qt::AlignmentFlag::AlignHCenter">
-           <widget class="QPushButton" name="pushButton">
-            <property name="minimumSize">
-             <size>
-              <width>75</width>
-              <height>24</height>
-             </size>
-            </property>
+          <item row="0" column="0" colspan="4">
+           <widget class="QLabel" name="label">
             <property name="maximumSize">
              <size>
-              <width>75</width>
-              <height>24</height>
+              <width>600</width>
+              <height>60</height>
              </size>
             </property>
-            <property name="cursor">
-             <cursorShape>PointingHandCursor</cursorShape>
-            </property>
             <property name="styleSheet">
-             <string notr="true">QPushButton{
-	border-radius:10px;
-	color: white;
-	background-color: rgba(57, 215, 200,0.8);
-}
-
-QPushButton:hover{
-	background-color: rgba(57, 225, 180,0.8);
-}
-
-QPushButton:pressed{
-	background-color: rgba(57, 210, 168,0.8);
-}
-</string>
+             <string notr="true">font: 30pt &quot;Sylfaen&quot;;
+color:rgb(85, 255, 255);</string>
             </property>
             <property name="text">
-             <string>INGRESAR</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;USUARIO BASE DE DATOS&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
            </widget>
           </item>
-          <item row="1" column="1">
+          <item row="1" column="3">
            <widget class="QFrame" name="frame_4">
             <property name="minimumSize">
              <size>
@@ -444,6 +385,82 @@ QPushButton:pressed{
               </widget>
              </item>
             </layout>
+           </widget>
+          </item>
+          <item row="2" column="3" alignment="Qt::AlignmentFlag::AlignRight">
+           <widget class="QPushButton" name="pushButton_2">
+            <property name="minimumSize">
+             <size>
+              <width>75</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>75</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{
+	border-radius:10px;
+	color: white;
+	background-color: rgba(57, 215, 200,0.8);
+}
+
+QPushButton:hover{
+	background-color: rgba(57, 225, 180,0.8);
+}
+
+QPushButton:pressed{
+	background-color: rgba(57, 210, 168,0.8);
+}
+</string>
+            </property>
+            <property name="text">
+             <string>VOLVER</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
+           <widget class="QPushButton" name="pushButton">
+            <property name="minimumSize">
+             <size>
+              <width>75</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>75</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{
+	border-radius:10px;
+	color: white;
+	background-color: rgba(57, 215, 200,0.8);
+}
+
+QPushButton:hover{
+	background-color: rgba(57, 225, 180,0.8);
+}
+
+QPushButton:pressed{
+	background-color: rgba(57, 210, 168,0.8);
+}
+</string>
+            </property>
+            <property name="text">
+             <string>INGRESAR</string>
+            </property>
            </widget>
           </item>
          </layout>
