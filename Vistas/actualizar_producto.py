@@ -1,6 +1,6 @@
 from submain import MainWindow
 from conexion_bd.tablas import TablaProductos,TablaVentasProductos
-
+from Validacion.validador import Validador
 class VistaActualizarProducto:
     def __init__(self,ventana: MainWindow) -> None:
         self.ventana = ventana
@@ -8,6 +8,7 @@ class VistaActualizarProducto:
         self.ui.boton_volver_aproducto.pressed.connect(self.volver)
         self.ui.boton_actualizar_aproducto.pressed.connect(self.actualizar)
         self.ui.boton_borrar_aproducto.pressed.connect(self.borrar)
+        Validador().solo_texto_productos(self.ui.line_nombre_aproducto)
     
     def cargar_producto(self):
         self.datos = self.ventana.vista_productos.datos
@@ -34,9 +35,9 @@ class VistaActualizarProducto:
                 self.ui.table_productos_facturar.item(x,2).setText(str(precio))
                 self.ui.table_productos_facturar.item(x,4).setText(str(precio*int(self.ui.table_productos_facturar.item(x,3).text())))
                 self.ventana.vista_facturar.calcular()
-                self.ventan.vista_facturar.calcular_bs()
-                self.ventan.vista_facturar.calcular_cop()
-                self.ventan.vista_facturar.calcular_dolar()
+                self.ventana.vista_facturar.calcular_bs()
+                self.ventana.vista_facturar.calcular_cop()
+                self.ventana.vista_facturar.calcular_dolar()
                 
         self.volver()
 
@@ -56,7 +57,8 @@ class VistaActualizarProducto:
                 self.ventana.vista_facturar.calcular_bs()
                 self.ventana.vista_facturar.calcular_cop()
                 self.ventana.vista_facturar.calcular_dolar()
-        self.volver()
+                self.volver()
+                return 0
     
     def volver(self):
         self.ui.stacked_widget.setCurrentWidget(self.ui.vista_productos)

@@ -602,12 +602,14 @@ class Ui_MainWindow(object):
 
         self.date_mensual = QDateEdit(self.vista_mensual)
         self.date_mensual.setObjectName(u"date_mensual")
+        self.date_mensual.setCursor(QCursor(Qt.PointingHandCursor))
         self.date_mensual.setCalendarPopup(True)
 
         self.verticalLayout_12.addWidget(self.date_mensual, 0, Qt.AlignmentFlag.AlignHCenter)
 
         self.boton_generar_informe = QPushButton(self.vista_mensual)
         self.boton_generar_informe.setObjectName(u"boton_generar_informe")
+        self.boton_generar_informe.setCursor(QCursor(Qt.PointingHandCursor))
 
         self.verticalLayout_12.addWidget(self.boton_generar_informe, 0, Qt.AlignmentFlag.AlignHCenter)
 
@@ -635,16 +637,19 @@ class Ui_MainWindow(object):
 
         self.boton_mensual_data = QPushButton(self.vista_data)
         self.boton_mensual_data.setObjectName(u"boton_mensual_data")
+        self.boton_mensual_data.setCursor(QCursor(Qt.PointingHandCursor))
 
         self.verticalLayout_10.addWidget(self.boton_mensual_data, 0, Qt.AlignmentFlag.AlignHCenter)
 
         self.boton_producto_data = QPushButton(self.vista_data)
         self.boton_producto_data.setObjectName(u"boton_producto_data")
+        self.boton_producto_data.setCursor(QCursor(Qt.PointingHandCursor))
 
         self.verticalLayout_10.addWidget(self.boton_producto_data, 0, Qt.AlignmentFlag.AlignHCenter)
 
         self.boton_cliente_data = QPushButton(self.vista_data)
         self.boton_cliente_data.setObjectName(u"boton_cliente_data")
+        self.boton_cliente_data.setCursor(QCursor(Qt.PointingHandCursor))
 
         self.verticalLayout_10.addWidget(self.boton_cliente_data, 0, Qt.AlignmentFlag.AlignHCenter)
 
@@ -705,18 +710,88 @@ class Ui_MainWindow(object):
         self.verticalLayout_9.addLayout(self.gridLayout_2)
 
         self.stacked_widget.addWidget(self.vista_productos)
+        self.vista_editar_usuarios = QWidget()
+        self.vista_editar_usuarios.setObjectName(u"vista_editar_usuarios")
+        self.gridLayout_8 = QGridLayout(self.vista_editar_usuarios)
+        self.gridLayout_8.setObjectName(u"gridLayout_8")
+        self.verticalLayout_14 = QVBoxLayout()
+        self.verticalLayout_14.setObjectName(u"verticalLayout_14")
+        self.horizontalLayout_5 = QHBoxLayout()
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.line_usuario = QLineEdit(self.vista_editar_usuarios)
+        self.line_usuario.setObjectName(u"line_usuario")
+
+        self.horizontalLayout_5.addWidget(self.line_usuario)
+
+        self.boton_buscar_usuario = QPushButton(self.vista_editar_usuarios)
+        self.boton_buscar_usuario.setObjectName(u"boton_buscar_usuario")
+        self.boton_buscar_usuario.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.horizontalLayout_5.addWidget(self.boton_buscar_usuario)
+
+
+        self.verticalLayout_14.addLayout(self.horizontalLayout_5)
+
+        self.line_contrasena = QLineEdit(self.vista_editar_usuarios)
+        self.line_contrasena.setObjectName(u"line_contrasena")
+        self.line_contrasena.setEnabled(False)
+        self.line_contrasena.setEchoMode(QLineEdit.EchoMode.Password)
+
+        self.verticalLayout_14.addWidget(self.line_contrasena)
+
+        self.line_confirmar = QLineEdit(self.vista_editar_usuarios)
+        self.line_confirmar.setObjectName(u"line_confirmar")
+        self.line_confirmar.setEnabled(False)
+        self.line_confirmar.setEchoMode(QLineEdit.EchoMode.Password)
+
+        self.verticalLayout_14.addWidget(self.line_confirmar)
+
+        self.boton_actualizar_usuario = QPushButton(self.vista_editar_usuarios)
+        self.boton_actualizar_usuario.setObjectName(u"boton_actualizar_usuario")
+        self.boton_actualizar_usuario.setEnabled(False)
+        self.boton_actualizar_usuario.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.verticalLayout_14.addWidget(self.boton_actualizar_usuario)
+
+        self.boton_borrar_usuario = QPushButton(self.vista_editar_usuarios)
+        self.boton_borrar_usuario.setObjectName(u"boton_borrar_usuario")
+        self.boton_borrar_usuario.setEnabled(False)
+        self.boton_borrar_usuario.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.verticalLayout_14.addWidget(self.boton_borrar_usuario)
+
+
+        self.gridLayout_8.addLayout(self.verticalLayout_14, 1, 1, 1, 1)
+
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.gridLayout_8.addItem(self.horizontalSpacer, 1, 0, 1, 1)
+
+        self.verticalSpacer_10 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.gridLayout_8.addItem(self.verticalSpacer_10, 0, 1, 1, 1)
+
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.gridLayout_8.addItem(self.horizontalSpacer_2, 1, 2, 1, 1)
+
+        self.verticalSpacer_11 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.gridLayout_8.addItem(self.verticalSpacer_11, 2, 1, 1, 1)
+
+        self.stacked_widget.addWidget(self.vista_editar_usuarios)
         self.vista_cierre = QWidget()
         self.vista_cierre.setObjectName(u"vista_cierre")
         self.verticalLayout_7 = QVBoxLayout(self.vista_cierre)
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
         self.gridLayout_6 = QGridLayout()
         self.gridLayout_6.setObjectName(u"gridLayout_6")
-        self.botont_rehacer_cierre = QPushButton(self.vista_cierre)
-        self.botont_rehacer_cierre.setObjectName(u"botont_rehacer_cierre")
-        self.botont_rehacer_cierre.setEnabled(False)
-        self.botont_rehacer_cierre.setCursor(QCursor(Qt.PointingHandCursor))
+        self.boton_rehacer_cierre = QPushButton(self.vista_cierre)
+        self.boton_rehacer_cierre.setObjectName(u"boton_rehacer_cierre")
+        self.boton_rehacer_cierre.setEnabled(False)
+        self.boton_rehacer_cierre.setCursor(QCursor(Qt.PointingHandCursor))
 
-        self.gridLayout_6.addWidget(self.botont_rehacer_cierre, 9, 0, 1, 2, Qt.AlignmentFlag.AlignHCenter)
+        self.gridLayout_6.addWidget(self.boton_rehacer_cierre, 9, 0, 1, 2, Qt.AlignmentFlag.AlignHCenter)
 
         self.date_cierre = QDateEdit(self.vista_cierre)
         self.date_cierre.setObjectName(u"date_cierre")
@@ -1083,17 +1158,78 @@ class Ui_MainWindow(object):
 
         MainWindow.setCentralWidget(self.centralwidget)
         QWidget.setTabOrder(self.boton_v_facturar, self.boton_v_productos)
-        QWidget.setTabOrder(self.boton_v_productos, self.line_nombre_rproducto)
+        QWidget.setTabOrder(self.boton_v_productos, self.boton_v_divisas)
+        QWidget.setTabOrder(self.boton_v_divisas, self.boton_v_registar_productos)
+        QWidget.setTabOrder(self.boton_v_registar_productos, self.boton_v_registrar_clientes)
+        QWidget.setTabOrder(self.boton_v_registrar_clientes, self.boton_v_editar_clientes)
+        QWidget.setTabOrder(self.boton_v_editar_clientes, self.boton_v_cierre)
+        QWidget.setTabOrder(self.boton_v_cierre, self.boton_v_data)
+        QWidget.setTabOrder(self.boton_v_data, self.boton_v_configuracion)
+        QWidget.setTabOrder(self.boton_v_configuracion, self.boton_v_cerrar_sesion)
+        QWidget.setTabOrder(self.boton_v_cerrar_sesion, self.line_nombre_rproducto)
         QWidget.setTabOrder(self.line_nombre_rproducto, self.text_descripcion_rproducto)
         QWidget.setTabOrder(self.text_descripcion_rproducto, self.double_precio_rproducto)
         QWidget.setTabOrder(self.double_precio_rproducto, self.boton_registrar_rproducto)
-        QWidget.setTabOrder(self.boton_registrar_rproducto, self.boton_v_configuracion)
-        QWidget.setTabOrder(self.boton_v_configuracion, self.line_telefono_rcliente)
+        QWidget.setTabOrder(self.boton_registrar_rproducto, self.boton_volver_aproducto)
+        QWidget.setTabOrder(self.boton_volver_aproducto, self.line_nombre_aproducto)
+        QWidget.setTabOrder(self.line_nombre_aproducto, self.text_descripcion_aproducto)
+        QWidget.setTabOrder(self.text_descripcion_aproducto, self.double_precio_aproducto)
+        QWidget.setTabOrder(self.double_precio_aproducto, self.boton_actualizar_aproducto)
+        QWidget.setTabOrder(self.boton_actualizar_aproducto, self.boton_borrar_aproducto)
+        QWidget.setTabOrder(self.boton_borrar_aproducto, self.date_cierre)
+        QWidget.setTabOrder(self.date_cierre, self.boton_buscar_cierre)
+        QWidget.setTabOrder(self.boton_buscar_cierre, self.table_facturas_cierre)
+        QWidget.setTabOrder(self.table_facturas_cierre, self.boton_realizar_cierre)
+        QWidget.setTabOrder(self.boton_realizar_cierre, self.boton_rehacer_cierre)
+        QWidget.setTabOrder(self.boton_rehacer_cierre, self.boton_configurar_bd)
+        QWidget.setTabOrder(self.boton_configurar_bd, self.boton_registrar_usuarios)
+        QWidget.setTabOrder(self.boton_registrar_usuarios, self.boton_v_cambiar_usuarios)
+        QWidget.setTabOrder(self.boton_v_cambiar_usuarios, self.boton_mensual_data)
+        QWidget.setTabOrder(self.boton_mensual_data, self.boton_producto_data)
+        QWidget.setTabOrder(self.boton_producto_data, self.boton_cliente_data)
+        QWidget.setTabOrder(self.boton_cliente_data, self.combo_nacionalidad_ecliente)
+        QWidget.setTabOrder(self.combo_nacionalidad_ecliente, self.line_cedula_ecliente)
+        QWidget.setTabOrder(self.line_cedula_ecliente, self.boton_buscar_ecliente)
+        QWidget.setTabOrder(self.boton_buscar_ecliente, self.line_nombre_ecliente)
+        QWidget.setTabOrder(self.line_nombre_ecliente, self.line_apellido_ecliente)
+        QWidget.setTabOrder(self.line_apellido_ecliente, self.text_descripcion_ecliente)
+        QWidget.setTabOrder(self.text_descripcion_ecliente, self.line_telefono_ecliente)
+        QWidget.setTabOrder(self.line_telefono_ecliente, self.boton_actualizar_ecliente)
+        QWidget.setTabOrder(self.boton_actualizar_ecliente, self.boton_borrar_ecliente)
+        QWidget.setTabOrder(self.boton_borrar_ecliente, self.line_usuario)
+        QWidget.setTabOrder(self.line_usuario, self.boton_buscar_usuario)
+        QWidget.setTabOrder(self.boton_buscar_usuario, self.line_contrasena)
+        QWidget.setTabOrder(self.line_contrasena, self.line_confirmar)
+        QWidget.setTabOrder(self.line_confirmar, self.boton_actualizar_usuario)
+        QWidget.setTabOrder(self.boton_actualizar_usuario, self.boton_borrar_usuario)
+        QWidget.setTabOrder(self.boton_borrar_usuario, self.combo_nacionalidad_facturar)
+        QWidget.setTabOrder(self.combo_nacionalidad_facturar, self.line_cedula_facturar)
+        QWidget.setTabOrder(self.line_cedula_facturar, self.boton_buscar_cliente_facturar)
+        QWidget.setTabOrder(self.boton_buscar_cliente_facturar, self.line_nombre_facturar)
+        QWidget.setTabOrder(self.line_nombre_facturar, self.line_apellido_facturar)
+        QWidget.setTabOrder(self.line_apellido_facturar, self.boton_buscar_producto_facturar)
+        QWidget.setTabOrder(self.boton_buscar_producto_facturar, self.table_productos_facturar)
+        QWidget.setTabOrder(self.table_productos_facturar, self.double_dolares_facturar)
+        QWidget.setTabOrder(self.double_dolares_facturar, self.double_bs_facturar)
+        QWidget.setTabOrder(self.double_bs_facturar, self.spin_cop_facturar)
+        QWidget.setTabOrder(self.spin_cop_facturar, self.boton_facturar)
+        QWidget.setTabOrder(self.boton_facturar, self.date_mensual)
+        QWidget.setTabOrder(self.date_mensual, self.boton_generar_informe)
+        QWidget.setTabOrder(self.boton_generar_informe, self.combo_buscar_bproducto)
+        QWidget.setTabOrder(self.combo_buscar_bproducto, self.line_bproducto)
+        QWidget.setTabOrder(self.line_bproducto, self.table_productos)
+        QWidget.setTabOrder(self.table_productos, self.combo_nacionalidad_rcliente)
+        QWidget.setTabOrder(self.combo_nacionalidad_rcliente, self.line_cedula_rcliente)
+        QWidget.setTabOrder(self.line_cedula_rcliente, self.boton_buscar_rcliente)
+        QWidget.setTabOrder(self.boton_buscar_rcliente, self.check_editar_rcliente)
+        QWidget.setTabOrder(self.check_editar_rcliente, self.line_nombre_rcliente)
+        QWidget.setTabOrder(self.line_nombre_rcliente, self.line_apellido_rcliente)
+        QWidget.setTabOrder(self.line_apellido_rcliente, self.text_descripcion_rcliente)
+        QWidget.setTabOrder(self.text_descripcion_rcliente, self.line_telefono_rcliente)
         QWidget.setTabOrder(self.line_telefono_rcliente, self.boton_registrar_rcliente)
-        QWidget.setTabOrder(self.boton_registrar_rcliente, self.boton_buscar_rcliente)
-        QWidget.setTabOrder(self.boton_buscar_rcliente, self.text_descripcion_rcliente)
-        QWidget.setTabOrder(self.text_descripcion_rcliente, self.line_apellido_rcliente)
-        QWidget.setTabOrder(self.line_apellido_rcliente, self.line_nombre_rcliente)
+        QWidget.setTabOrder(self.boton_registrar_rcliente, self.boton_actualizar_adivisa)
+        QWidget.setTabOrder(self.boton_actualizar_adivisa, self.combo_divisa_adivisa)
+        QWidget.setTabOrder(self.combo_divisa_adivisa, self.double_valor_adivisa)
 
         self.retranslateUi(MainWindow)
 
@@ -1176,7 +1312,13 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem7.setText(QCoreApplication.translate("MainWindow", u"DESCRIPCI\u00d3N", None));
         ___qtablewidgetitem8 = self.table_productos.horizontalHeaderItem(3)
         ___qtablewidgetitem8.setText(QCoreApplication.translate("MainWindow", u"PRECIO", None));
-        self.botont_rehacer_cierre.setText(QCoreApplication.translate("MainWindow", u"REHACER CIERRE", None))
+        self.line_usuario.setPlaceholderText(QCoreApplication.translate("MainWindow", u"USUARIO", None))
+        self.boton_buscar_usuario.setText(QCoreApplication.translate("MainWindow", u"BUSCAR", None))
+        self.line_contrasena.setPlaceholderText(QCoreApplication.translate("MainWindow", u"CONTRASE\u00d1A", None))
+        self.line_confirmar.setPlaceholderText(QCoreApplication.translate("MainWindow", u"CONFIRMAR CONTRASE\u00d1A", None))
+        self.boton_actualizar_usuario.setText(QCoreApplication.translate("MainWindow", u"ACTUALIZAR", None))
+        self.boton_borrar_usuario.setText(QCoreApplication.translate("MainWindow", u"BORRAR", None))
+        self.boton_rehacer_cierre.setText(QCoreApplication.translate("MainWindow", u"REHACER CIERRE", None))
         self.label_bs_cierre.setText(QCoreApplication.translate("MainWindow", u"0", None))
         self.boton_realizar_cierre.setText(QCoreApplication.translate("MainWindow", u"REALIZAR CIERRE", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"TOTAL BS:", None))

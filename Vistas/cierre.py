@@ -13,7 +13,7 @@ class VistaCierre:
         self.ui = ventana.ui
         self.ui.boton_buscar_cierre.pressed.connect(self.buscar)
         self.ui.boton_realizar_cierre.pressed.connect(self.cierre)
-        self.ui.botont_rehacer_cierre.pressed.connect(self.rehacer)
+        self.ui.boton_rehacer_cierre.pressed.connect(self.rehacer)
         self.ui.date_cierre.dateChanged.connect(self.reiniciar)
         self.tabla = TablaTotalesDiarios()
         self.tabla_ventas = TablaVentas()
@@ -27,7 +27,7 @@ class VistaCierre:
         totales = self.tabla.select_fecha(self.fecha)
         if bool(totales):
             self.ventana.mostrar_mensaje("Cierre Encontrado","Este dia ya ha sido cerrado")
-            self.ui.botont_rehacer_cierre.setEnabled(True)
+            self.ui.boton_rehacer_cierre.setEnabled(True)
             self.ui.label_bs_cierre.setText(str(totales[0].total))
             self.ui.label_cop_cierre.setText(str(totales[1].total))
             self.ui.label_dolar_cierre.setText(str(totales[2].total))
@@ -114,7 +114,7 @@ class VistaCierre:
         self.ui.label_cop_cierre.setText(str(totales[1][-1]))
         self.ui.label_dolar_cierre.setText(str(totales[2][-1]))
         self.imprimir(self.fecha,str(totales[0][-1]),str(totales[1][-1]),str(totales[2][-1]))
-        self.ui.botont_rehacer_cierre.setEnabled(True)
+        self.ui.boton_rehacer_cierre.setEnabled(True)
         self.cargar_facturas()
     
     def reiniciar(self):
@@ -129,7 +129,7 @@ class VistaCierre:
         self.ui.label_dolar_cierre.setStyleSheet("")
         
         self.ui.boton_realizar_cierre.setDisabled(True)
-        self.ui.botont_rehacer_cierre.setDisabled(True)
+        self.ui.boton_rehacer_cierre.setDisabled(True)
     
     def imprimir(self,fecha,bs,cop,dolar):
         

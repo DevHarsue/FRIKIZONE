@@ -1,14 +1,15 @@
-from PySide6.QtWidgets import QMainWindow,QDialog
-from PySide6.QtCore import Signal
+from PySide6.QtWidgets import QMainWindow
 from interfaz.interfaz_principal import Ui_MainWindow
-from interfaz.message import Ui_Message
-from interfaz.question import Ui_Question
+from Validacion.hash import texto_a_hash_salt
+
+from ventanas import Mensaje,Preguntar
 
 # Ventana Principal
 class MainWindow(QMainWindow):
-    def __init__(self,usuario_id):
+    def __init__(self,login,rol):
         QMainWindow.__init__(self)
-        self.usuario_id = usuario_id
+        self.rol = rol
+        self.login = login
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.crear_logica()
@@ -32,7 +33,24 @@ class MainWindow(QMainWindow):
         self.ui.boton_v_divisas.pressed.connect(lambda: self.ui.stacked_widget.setCurrentWidget(self.ui.vista_divisas))
         self.ui.boton_v_editar_clientes.pressed.connect(lambda: self.ui.stacked_widget.setCurrentWidget(self.ui.vista_editar_clientes))
         self.ui.boton_v_data.pressed.connect(lambda: self.ui.stacked_widget.setCurrentWidget(self.ui.vista_data))
-        # self.ui.boton_v_cerrar_sesion.pressed.connect()
+        self.ui.boton_v_cerrar_sesion.pressed.connect(self.cerrar)
+        self.ui.boton_v_cambiar_usuarios.pressed.connect(lambda: self.ui.stacked_widget.setCurrentWidget(self.ui.vista_editar_usuarios))
+        self.ajustar()
+    
+    def ajustar(self):
+        if self.rol == texto_a_hash_salt("USER"):
+            self.ui.boton_v_registar_productos.hide()
+            self.ui.boton_v_editar_clientes.hide()
+            self.ui.boton_v_data.hide()
+            self.ui.boton_v_configuracion.hide()
+            self.ui.boton_rehacer_cierre.hide()
+        elif self.rol == texto_a_hash_salt("ADMIN"):
+            self.ui.boton_configurar_bd.hide()
+    
+    def cerrar(self):
+        self.login.show()
+        self.login.ventana = False
+        self.close()
     
     def cambiar_vista_producto(self):
         self.ui.stacked_widget.setCurrentWidget(self.ui.vista_productos)
@@ -50,41 +68,3 @@ class MainWindow(QMainWindow):
             self.respuesta=False
         else:
             self.respuesta=True
-
-class Mensaje(QDialog):
-    def __init__(self):
-        super().__init__()
-        self.setModal(True)
-        self.ui = Ui_Message()
-        self.ui.setupUi(self)
-        self.ui.pushButton.pressed.connect(self.close)
-    
-    def mostrar(self,titulo,mensaje):
-        self.ui.pushButton.setDefault(True)
-        self.setWindowTitle(titulo)
-        self.ui.label.setText(mensaje)
-        self.exec_()
-
-class Preguntar(QDialog):
-    respuesta = Signal(bool)
-    def __init__(self):
-        super().__init__()
-        self.setModal(True)
-        self.ui = Ui_Question()
-        self.ui.setupUi(self)
-        self.ui.pushButton.pressed.connect(self.si)
-        self.ui.pushButton_2.pressed.connect(self.no)
-    
-    def mostrar(self,titulo,mensaje):
-        self.ui.pushButton.setDefault(True)
-        self.setWindowTitle(titulo)
-        self.ui.label.setText(mensaje)
-        self.exec_()
-    
-    def si(self):
-        self.respuesta.emit(True)
-        self.close()
-    
-    def no(self):
-        self.respuesta.emit(False)
-        self.close()

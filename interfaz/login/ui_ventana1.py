@@ -32,6 +32,9 @@ class Ui_login(object):
         MainWindow.setFont(font)
         MainWindow.setMouseTracking(False)
         MainWindow.setTabletTracking(False)
+        icon = QIcon()
+        icon.addFile(u"images/zone.ico", QSize(), QIcon.Normal, QIcon.Off)
+        MainWindow.setWindowIcon(icon)
         MainWindow.setLayoutDirection(Qt.LayoutDirection.RightToLeft)
         MainWindow.setAutoFillBackground(False)
         MainWindow.setStyleSheet(u"QWidget#centralwidget{\n"
@@ -323,7 +326,7 @@ class Ui_login(object):
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"FRIKIZONE", None))
         self.BotonSalir.setText(QCoreApplication.translate("MainWindow", u"Salir", None))
         self.Clave.setText("")
         self.Clave.setPlaceholderText(QCoreApplication.translate("MainWindow", u" Ingrese su contrase\u00f1a", None))

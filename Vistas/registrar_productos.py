@@ -1,12 +1,12 @@
 from conexion_bd.tablas import TablaProductos
-
+from Validacion.validador import Validador
 class VistaRegistrarProductos:
     def __init__(self,ventana) -> None:
         self.ventana = ventana
         self.ui = ventana.ui
         self.ui.boton_registrar_rproducto.pressed.connect(self.registrar_producto)
-        
-        
+        Validador().solo_texto_productos(self.ui.line_nombre_rproducto)
+    
         
     def registrar_producto(self):
         nombre = self.ui.line_nombre_rproducto.text()

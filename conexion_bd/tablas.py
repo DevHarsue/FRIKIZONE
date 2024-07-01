@@ -47,6 +47,16 @@ class TablaUsuarios(TablaHija):
         self.claseFila = Usuario
         self.insertar_id = False
         super().__init__()
+    
+    def select_rol(self, rol: str) -> tuple:
+        filas = self.bd.consultar(f"SELECT * FROM usuarios WHERE usuario_rol='{rol}'")
+        filas = self.crear_objetos(filas)
+        return filas
+
+    def select_usuario(self,nombre):
+        filas = self.bd.consultar(f"SELECT * FROM usuarios WHERE usuario_nombre='{nombre}'")
+        filas = self.crear_objetos(filas)
+        return filas
 
 class TablaVentas(TablaHija):
     def __init__(self) -> None:

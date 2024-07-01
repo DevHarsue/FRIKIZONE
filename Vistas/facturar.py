@@ -80,7 +80,7 @@ class VistaFacturar:
             imprimir.append({'numero': id, 'articulo': nombre,'qty': cantidad, 'precio': precio,"subtotal":subtotal},)
         
         tabla = TablaVentas()
-        tabla.insert(obtener_fecha(),self.cliente.id,self.ventana.usuario_id)
+        tabla.insert(obtener_fecha(),self.cliente.id)
         venta = tabla.select_ultima_venta()[0]
         
         tabla = TablaVentasIngresos()

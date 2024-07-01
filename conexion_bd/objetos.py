@@ -41,14 +41,13 @@ class Producto(ObjetoPadre):
         return f'Producto("{self.id}",{self.nombre},{self.descripcion},{self.valor})'   
 
 class Venta(ObjetoPadre):
-    def __init__(self,id: int,fecha: str,cliente_id: int,usuario_id: int):
+    def __init__(self,id: int,fecha: str,cliente_id: int):
         self.id = id
         self.fecha = fecha
         self.cliente_id = cliente_id
-        self.usuario_id = usuario_id
     
     def __repr__(self):
-        return f'Venta("{self.id}",{self.fecha},{self.cliente_id},{self.usuario_id})'
+        return f'Venta("{self.id}",{self.fecha},{self.cliente_id})'
 
 class VentaIngreso(ObjetoPadre):
     def __init__(self,id: int,venta_id: int,divisa_id: int,cantidad: float):

@@ -2,6 +2,7 @@ from conexion_bd.tablas import TablaProductos
 from PySide6.QtWidgets import QDialog,QTableWidgetItem
 from interfaz.seleccionar_numero import Ui_Cantidad
 from submain import MainWindow
+from Validacion.hash import texto_a_hash_salt
 
 class VistaProductos:
     def __init__(self,ventana: MainWindow) -> None:
@@ -50,6 +51,8 @@ class VistaProductos:
             self.dialogo = NumberInputDialog(self)
             self.dialogo.show()
         else:
+            if self.ventana.rol ==texto_a_hash_salt("USER"):
+                return 0
             self.ventana.preguntar("EDITAR PRODUCTO","Desea editar el producto?")
             if not self.ventana.respuesta:
                 return

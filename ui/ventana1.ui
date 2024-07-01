@@ -35,7 +35,11 @@
    <bool>false</bool>
   </property>
   <property name="windowTitle">
-   <string>Login</string>
+   <string>FRIKIZONE</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../images/zone.ico</normaloff>../images/zone.ico</iconset>
   </property>
   <property name="layoutDirection">
    <enum>Qt::LayoutDirection::RightToLeft</enum>

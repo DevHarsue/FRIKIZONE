@@ -71,6 +71,7 @@ class VistaEditarCliente:
         
         self.ventana.mostrar_mensaje("Cliente Actualizado","Cliente Actualizado Correctamente")
         self.reiniciar()
+        self.ventana.vista_facturar.reiniciar_cliente()
         
     def borrar(self):
         self.ventana.preguntar("Eliminar Cliente","Se eleminaran todos los datos asociados al cliente \n¿Estas seguro de borrar?")
@@ -89,3 +90,5 @@ class VistaEditarCliente:
         self.tabla.delete(self.cliente.id)
         self.ventana.mostrar_mensaje("Cliente Borrado","Cliente borrado exitosamente")
         self.reiniciar()
+        self.ventana.vista_facturar.reiniciar_cliente()
+        
